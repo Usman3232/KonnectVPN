@@ -10,10 +10,13 @@ import 'package:konnekt_vpn/views/pages/auth/forgot/new_password.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/verification_process.dart';
 import 'package:konnekt_vpn/views/pages/auth/login/login.dart';
 import 'package:konnekt_vpn/views/pages/auth/pin/pin.dart';
+import 'package:konnekt_vpn/views/pages/auth/sign%20up/otp.dart';
 import 'package:konnekt_vpn/views/pages/auth/sign%20up/sign_up.dart';
+import 'package:konnekt_vpn/views/pages/auth/verification/citizenship.dart';
+import 'package:konnekt_vpn/views/pages/auth/verification/city.dart';
 import 'package:konnekt_vpn/views/pages/auth/verification/country.dart';
 import 'package:konnekt_vpn/views/pages/auth/verification/verification.dart';
-import 'package:konnekt_vpn/views/pages/splash/splash.dart';
+import 'package:konnekt_vpn/views/pages/auth/choose%20auth/choose_auth.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +43,7 @@ class MyApp extends StatelessWidget {
                 scaffoldBackgroundColor: Colors.black,
               ),
               debugShowCheckedModeBanner: false,
-              home: VerificationDetailScreen(),
+              home: LoginScreen(),
             );
           },
         );

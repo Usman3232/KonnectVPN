@@ -6,7 +6,7 @@ class AppTextStyles {
   static TextStyle bodyExtraSmall = TextStyle(
       color: AppColors.textPrimaryClr,
       fontWeight: FontWeight.w400,
-      fontSize: SizeConfig.textMultiplier * 1.2);
+      fontSize: SizeConfig.textMultiplier * 1.3);
   static TextStyle bodySmall = TextStyle(
       color: AppColors.textPrimaryClr,
       fontWeight: FontWeight.w400,
@@ -19,6 +19,10 @@ class AppTextStyles {
       color: AppColors.textPrimaryClr,
       fontWeight: FontWeight.w400,
       fontSize: SizeConfig.textMultiplier * 1.8);
+  static TextStyle bodyExtraLarge = TextStyle(
+      color: AppColors.textPrimaryClr,
+      fontWeight: FontWeight.w400,
+      fontSize: SizeConfig.textMultiplier * 2);
   static TextStyle headingsmall = TextStyle(
       color: AppColors.textPrimaryClr,
       fontWeight: FontWeight.w600,

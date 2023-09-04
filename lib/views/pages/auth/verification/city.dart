@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
-import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
+import '../../../widgets/custom_back_btn.dart';
 
-class CountryScreen extends StatelessWidget {
-  const CountryScreen({super.key});
+class CityScreen extends StatelessWidget {
+  const CityScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,31 +41,23 @@ class CountryScreen extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     itemCount: 20,
                     itemBuilder: (context, index) {
-                      return Container(
-                        height: SizeConfig.heightMultiplier * 8,
-                        width: SizeConfig.widthMultiplier * 92,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: SizeConfig.widthMultiplier * 3),
-                        margin: EdgeInsets.only(
-                            bottom: SizeConfig.heightMultiplier * 3),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(14),
-                          border: Border.all(color: Colors.white24),
-                        ),
+                      return SizedBox(
+                        height: SizeConfig.heightMultiplier * 6.5,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              height: SizeConfig.heightMultiplier * 3.5,
-                              width: SizeConfig.widthMultiplier * 7,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: AppColors.primaryClr),
-                            ),
-                            Spacing.x(3),
                             Text(
-                              "Indonesia",
-                              style: AppTextStyles.bodySmall
+                              "Surabaya",
+                              style: AppTextStyles.bodyMedium
                                   .copyWith(fontWeight: FontWeight.w600),
+                            ),
+                            Container(
+                              height: SizeConfig.heightMultiplier * 2.5,
+                              width: SizeConfig.widthMultiplier * 5,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(color: Colors.white38),
+                              ),
                             )
                           ],
                         ),
