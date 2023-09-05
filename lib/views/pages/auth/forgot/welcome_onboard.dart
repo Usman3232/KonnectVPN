@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
+import 'package:konnekt_vpn/constants/images.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
@@ -21,35 +21,25 @@ class WelcomeOnboardScreen extends StatelessWidget {
             child: Column(
               children: [
                 Spacing.y(20),
-                Text("Welcome Onboard", style: AppTextStyles.headingMedium),
+                Text(
+                  "Welcome Onboard",
+                  style: AppTextStyles.bodyExtraLarge
+                      .copyWith(fontWeight: FontWeight.w700),
+                ),
                 Spacing.y(2),
                 Text(
                   "You will notify once the verification confirmed",
                   textAlign: TextAlign.center,
-                  style: AppTextStyles.bodySmall
+                  style: AppTextStyles.bodyExtraSmall
                       .copyWith(color: AppColors.textMediumClr),
                 ),
                 Spacing.y(10),
-                Container(
-                  height: SizeConfig.heightMultiplier * 25,
-                  width: SizeConfig.widthMultiplier * 50,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: AppColors.primaryClr),
-                  child: Center(
-                    child: Icon(
-                      Icons.check_circle_outline_rounded,
-                      color: Colors.white54,
-                      size: SizeConfig.imageSizeMultiplier * 20,
-                    ),
-                  ),
-                ),
-                Spacing.y(25),
+                Image.asset(AppImages.getStarted,
+                    height: SizeConfig.imageSizeMultiplier * 65),
+                Spacing.y(24),
                 CustomButton(
                   title: "Get Started Now",
-                  onTap: () {
-                    // Get.to(() => GetStartedScreen(),
-                    //     transition: Transition.rightToLeft);
-                  },
+                  onTap: () {},
                 ),
               ],
             ),

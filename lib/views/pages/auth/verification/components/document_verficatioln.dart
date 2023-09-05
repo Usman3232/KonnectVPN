@@ -28,11 +28,11 @@ class DoumentVerification extends StatelessWidget {
           ),
           Spacing.y(3),
           SizedBox(
-            width: SizeConfig.widthMultiplier * 83,
+            width: SizeConfig.widthMultiplier * 76,
             child: Text(
               "Your document photo helps us prove your identity. It should match the information you have provided in the previous steps.",
               textAlign: TextAlign.center,
-              style: AppTextStyles.bodySmall
+              style: AppTextStyles.bodyExtraSmall
                   .copyWith(color: AppColors.textMediumClr),
             ),
           ),
@@ -95,7 +95,7 @@ class DoumentVerification extends StatelessWidget {
               ),
             ),
           ),
-          Spacing.y(5),
+          Spacing.y(6.3),
         ],
       ),
     );

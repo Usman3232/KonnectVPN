@@ -20,11 +20,11 @@ class PinScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Spacing.y(12),
-                Text("Enter Your Pin", style: AppTextStyles.bodyLarge),
+                Text("Enter Your Pin", style: AppTextStyles.bodyMedium),
                 Spacing.y(2),
                 Text(
                   "Please enter 6 unique number",
-                  style: AppTextStyles.bodySmall
+                  style: AppTextStyles.bodyExtraSmall
                       .copyWith(color: AppColors.textMediumClr),
                 ),
                 Spacing.y(3),
@@ -49,8 +49,8 @@ class PinScreen extends StatelessWidget {
                 Spacing.y(3),
                 Text(
                   "Try New Pin Again",
-                  style: AppTextStyles.bodyMedium
-                      .copyWith(color: AppColors.primaryClr),
+                  style: AppTextStyles.bodySmall.copyWith(
+                      fontWeight: FontWeight.w500, color: AppColors.primaryClr),
                 ),
                 Spacing.y(4),
                 Wrap(
@@ -150,7 +150,7 @@ class PinButton extends StatelessWidget {
               )
             : Text(
                 title,
-                style: AppTextStyles.headingMedium,
+                style: AppTextStyles.headingLarge,
               ),
       ),
     );

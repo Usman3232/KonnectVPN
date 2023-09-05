@@ -38,15 +38,15 @@ class VerificationDetailScreen extends StatelessWidget {
                               : cont.currentSection.value == 2
                                   ? "National ID Scan"
                                   : "",
-                      style: AppTextStyles.headingsmall
-                          .copyWith(fontWeight: FontWeight.w500),
+                      style: AppTextStyles.bodyMedium
+                          .copyWith(fontWeight: FontWeight.w400),
                     ),
                   ),
                   Spacing.y(3),
                   Center(
                     child: SizedBox(
                       height: SizeConfig.heightMultiplier * .8,
-                      width: SizeConfig.widthMultiplier * 70,
+                      width: SizeConfig.widthMultiplier * 65,
                       child: FAProgressBar(
                         currentValue: cont.progressValue.value,
                         backgroundColor: Colors.white10,

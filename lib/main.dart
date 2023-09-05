@@ -7,7 +7,7 @@ import 'package:konnekt_vpn/views/pages/auth/forgot/email_check.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/forgot.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/get_started.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/new_password.dart';
-import 'package:konnekt_vpn/views/pages/auth/forgot/verification_process.dart';
+import 'package:konnekt_vpn/views/pages/auth/forgot/verification_on_process.dart';
 import 'package:konnekt_vpn/views/pages/auth/login/login.dart';
 import 'package:konnekt_vpn/views/pages/auth/pin/pin.dart';
 import 'package:konnekt_vpn/views/pages/auth/sign%20up/otp.dart';
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
                 scaffoldBackgroundColor: Colors.black,
               ),
               debugShowCheckedModeBanner: false,
-              home: LoginScreen(),
+              home: VerificationDetailScreen(),
             );
           },
         );

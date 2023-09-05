@@ -5,7 +5,7 @@ import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
-import 'package:konnekt_vpn/views/pages/auth/forgot/forgot.dart';
+import 'package:konnekt_vpn/views/pages/auth/forgot/verification_on_process.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 import '../../../widgets/auth_textfield.dart';
@@ -27,25 +27,29 @@ class NewPasswordScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Spacing.y(20),
-                Text("Create New Password", style: AppTextStyles.headingMedium),
+                Text(
+                  "Create New Password",
+                  style: AppTextStyles.bodyExtraLarge
+                      .copyWith(fontWeight: FontWeight.w700),
+                ),
                 Spacing.y(2),
                 SizedBox(
-                  width: SizeConfig.widthMultiplier * 82,
+                  width: SizeConfig.widthMultiplier * 80,
                   child: Text(
                     "Your new password must be different from a previously used password",
-                    style: AppTextStyles.bodySmall
+                    style: AppTextStyles.bodyExtraSmall
                         .copyWith(color: AppColors.textMediumClr),
                   ),
                 ),
                 Spacing.y(6),
-                Text("New Password", style: AppTextStyles.bodySmall),
+                Text("New Password", style: AppTextStyles.bodyExtraSmall),
                 Spacing.y(1),
                 AuthTextField(
                   hintText: "Enter your new password",
                   controller: password,
                   isPassword: true,
                 ),
-                Text("Repeat password", style: AppTextStyles.bodySmall),
+                Text("Repeat password", style: AppTextStyles.bodyExtraSmall),
                 Spacing.y(1),
                 AuthTextField(
                   hintText: "Enter your password",
@@ -54,21 +58,28 @@ class NewPasswordScreen extends StatelessWidget {
                 Spacing.y(30),
                 CustomButton(
                   title: "Login",
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(() => VerificationOnProcessScreen(),
+                        transition: Transition.rightToLeft);
+                  },
                 ),
                 Spacing.y(2),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Dont Have An Account? ",
-                        style: AppTextStyles.bodyMedium
-                            .copyWith(color: AppColors.textMediumClr)),
+                    Text(
+                      "Dont Have An Account?   ",
+                      style: AppTextStyles.bodyExtraSmall.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.textMediumClr),
+                    ),
                     GestureDetector(
                       onTap: () {},
                       child: Text(
                         "Sign Up",
-                        style: AppTextStyles.bodyMedium
-                            .copyWith(color: AppColors.primaryClr),
+                        style: AppTextStyles.bodyExtraSmall.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.primaryClr),
                       ),
                     )
                   ],

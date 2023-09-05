@@ -7,6 +7,7 @@ import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/controllers/sign_up.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/auth/forgot/get_started.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 
@@ -99,10 +100,13 @@ class OtpScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                Spacing.y(3),
+                Spacing.y(4),
                 CustomButton(
                   title: "Submit",
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(() => const GetStartedScreen(),
+                        transition: Transition.rightToLeft);
+                  },
                 )
               ],
             ),

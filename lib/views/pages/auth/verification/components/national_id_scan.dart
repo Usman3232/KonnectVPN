@@ -1,4 +1,7 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:konnekt_vpn/views/pages/auth/verification/scan.dart';
 import '../../../../../constants/colors.dart';
 import '../../../../../constants/text_styles.dart';
 import '../../../../../utils/size_config.dart';
@@ -24,7 +27,10 @@ class NationalIdScan extends StatelessWidget {
         ),
         IdCard(
           type: "Front Side",
-          onTap: () {},
+          onTap: () async {
+            await availableCameras()
+                .then((value) => Get.to(() => ScanScreen(cameras: value)));
+          },
         ),
         IdCard(
           type: "Back Side",

@@ -4,6 +4,7 @@ import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/controllers/sign_up.dart';
+import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/email_check.dart';
 import 'package:konnekt_vpn/views/pages/auth/login/login.dart';
@@ -31,27 +32,27 @@ class SignUpScreen extends StatelessWidget {
                   Center(
                     child: Text(
                       "Create Account",
-                      style: AppTextStyles.headingsmall
+                      style: AppTextStyles.bodyMedium
                           .copyWith(fontWeight: FontWeight.w500),
                     ),
                   ),
                   Spacing.y(5),
-                  Text("First Name", style: AppTextStyles.bodySmall),
+                  Text("First Name", style: AppTextStyles.bodyExtraSmall),
                   Spacing.y(1),
                   AuthTextField(
                       hintText: "Enter first name",
                       controller: signUpCont.firstName),
-                  Text("Last Name", style: AppTextStyles.bodySmall),
+                  Text("Last Name", style: AppTextStyles.bodyExtraSmall),
                   Spacing.y(1),
                   AuthTextField(
                       hintText: "Enter last name",
                       controller: signUpCont.lastName),
-                  Text("Email", style: AppTextStyles.bodySmall),
+                  Text("Email", style: AppTextStyles.bodyExtraSmall),
                   Spacing.y(1),
                   AuthTextField(
                       hintText: "Enter your email",
                       controller: signUpCont.email),
-                  Text("Password", style: AppTextStyles.bodySmall),
+                  Text("Password", style: AppTextStyles.bodyExtraSmall),
                   Spacing.y(1),
                   AuthTextField(
                     hintText: "Enter your password",
@@ -60,11 +61,12 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   Text(
                     "At least 12 uppercase, lowercase characters and numbers",
-                    style: AppTextStyles.bodyExtraSmall
-                        .copyWith(color: AppColors.textMediumClr),
+                    style: AppTextStyles.bodyExtraSmall.copyWith(
+                        fontSize: SizeConfig.textMultiplier * 1.2,
+                        color: AppColors.textMediumClr),
                   ),
                   Spacing.y(2),
-                  Text("Referral Code", style: AppTextStyles.bodySmall),
+                  Text("Referral Code", style: AppTextStyles.bodyExtraSmall),
                   Spacing.y(1),
                   AuthTextField(
                       hintText: "Enter your referral code",
@@ -99,9 +101,12 @@ class SignUpScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Dont have an account? ",
-                          style: AppTextStyles.bodyMedium
-                              .copyWith(color: AppColors.textMediumClr)),
+                      Text(
+                        "Dont have an account?   ",
+                        style: AppTextStyles.bodyExtraSmall.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.textMediumClr),
+                      ),
                       GestureDetector(
                         onTap: () {
                           Get.to(() => LoginScreen(),
@@ -109,8 +114,9 @@ class SignUpScreen extends StatelessWidget {
                         },
                         child: Text(
                           "Login",
-                          style: AppTextStyles.bodyMedium
-                              .copyWith(color: AppColors.primaryClr),
+                          style: AppTextStyles.bodyExtraSmall.copyWith(
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.primaryClr),
                         ),
                       )
                     ],

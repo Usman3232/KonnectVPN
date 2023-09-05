@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:konnekt_vpn/views/pages/auth/verification/citizenship.dart';
+import 'package:konnekt_vpn/views/pages/auth/verification/city.dart';
 import 'package:konnekt_vpn/views/pages/auth/verification/country.dart';
 import '../../../../../constants/text_styles.dart';
 import '../../../../../controllers/verification.dart';
@@ -19,14 +21,14 @@ class PersonalInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Full Name", style: AppTextStyles.bodySmall),
+        Text("Full Name", style: AppTextStyles.bodyExtraSmall),
         Spacing.y(1),
         CustomTextField(hintText: "Enter full name", controller: cont.name),
-        Text("Full Address", style: AppTextStyles.bodySmall),
+        Text("Full Address", style: AppTextStyles.bodyExtraSmall),
         Spacing.y(1),
         CustomTextField(
             hintText: "Enter full address", controller: cont.address),
-        Text("Country", style: AppTextStyles.bodySmall),
+        Text("Country", style: AppTextStyles.bodyExtraSmall),
         Spacing.y(1),
         CustomTextField(
           hintText: "Select country",
@@ -43,7 +45,7 @@ class PersonalInformation extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("City", style: AppTextStyles.bodySmall),
+                Text("City", style: AppTextStyles.bodyExtraSmall),
                 Spacing.y(1),
                 SizedBox(
                   width: SizeConfig.widthMultiplier * 55,
@@ -51,7 +53,10 @@ class PersonalInformation extends StatelessWidget {
                     hintText: "Select city",
                     controller: cont.city,
                     readOnly: true,
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const CityScreen(),
+                          transition: Transition.noTransition);
+                    },
                   ),
                 ),
               ],
@@ -59,29 +64,31 @@ class PersonalInformation extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Code", style: AppTextStyles.bodySmall),
+                Text("Code", style: AppTextStyles.bodyExtraSmall),
                 Spacing.y(1),
                 SizedBox(
                   width: SizeConfig.widthMultiplier * 35,
                   child: CustomTextField(
                     hintText: "code",
                     controller: cont.code,
-                    onTap: () {},
                   ),
                 ),
               ],
             )
           ],
         ),
-        Text("Citizenship", style: AppTextStyles.bodySmall),
+        Text("Citizenship", style: AppTextStyles.bodyExtraSmall),
         Spacing.y(1),
         CustomTextField(
           hintText: "Select citizenship",
           controller: cont.citizenship,
           readOnly: true,
-          onTap: () {},
+          onTap: () {
+            Get.to(() => const CitizenShipScreen(),
+                transition: Transition.noTransition);
+          },
         ),
-        Text("Residence", style: AppTextStyles.bodySmall),
+        Text("Residence", style: AppTextStyles.bodyExtraSmall),
         Spacing.y(1),
         CustomTextField(
           hintText: "Select residence",
@@ -89,7 +96,7 @@ class PersonalInformation extends StatelessWidget {
           readOnly: true,
           onTap: () {},
         ),
-        Spacing.y(3),
+        Spacing.y(5),
       ],
     );
   }

@@ -14,4 +14,7 @@ class VerificationCont extends GetxController {
   RxDouble progressValue = 0.0.obs;
 
   RxInt selectedDocument = (-1).obs;
+
+  //SCAN CONTROL
+   RxBool torch = false.obs;
 }

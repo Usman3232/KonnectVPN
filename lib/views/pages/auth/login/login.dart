@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
+import 'package:konnekt_vpn/controllers/login.dart';
+import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/forgot.dart';
 import 'package:konnekt_vpn/views/pages/auth/sign%20up/sign_up.dart';
@@ -13,8 +15,7 @@ import '../../../widgets/auth_textfield.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
+  final cont = Get.put(LoginCont());
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +28,25 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Spacing.y(20),
-                Text("Welcome", style: AppTextStyles.headingMedium),
+                Text("Welcome",
+                    style: AppTextStyles.bodyExtraLarge
+                        .copyWith(fontWeight: FontWeight.w700)),
                 Spacing.y(2),
                 Text(
                   "Protect Your Online Privacy Our VPN app keeps your data secure and your identity anonymous.",
-                  style: AppTextStyles.bodySmall
+                  style: AppTextStyles.bodyExtraSmall
                       .copyWith(color: AppColors.textMediumClr),
                 ),
                 Spacing.y(6),
-                Text("Email", style: AppTextStyles.bodySmall),
+                Text("Email", style: AppTextStyles.bodyExtraSmall),
                 Spacing.y(1),
-                AuthTextField(hintText: "Enter your email", controller: email),
-                Text("Password", style: AppTextStyles.bodySmall),
+                AuthTextField(
+                    hintText: "Enter your email", controller: cont.email),
+                Text("Password", style: AppTextStyles.bodyExtraSmall),
                 Spacing.y(1),
                 AuthTextField(
                   hintText: "Enter your password",
-                  controller: password,
+                  controller: cont.password,
                   isPassword: true,
                 ),
                 Align(
@@ -54,8 +58,10 @@ class LoginScreen extends StatelessWidget {
                     },
                     child: Text(
                       "Forgot Your password",
-                      style: AppTextStyles.bodySmall
-                          .copyWith(color: AppColors.textMediumClr),
+                      style: AppTextStyles.bodyExtraSmall.copyWith(
+                          fontWeight: FontWeight.w500,
+                          fontSize: SizeConfig.textMultiplier * 1.2,
+                          color: AppColors.textMediumClr),
                     ),
                   ),
                 ),
@@ -68,9 +74,10 @@ class LoginScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Dont have an account? ",
-                        style: AppTextStyles.bodyMedium
-                            .copyWith(color: AppColors.textMediumClr)),
+                    Text("Dont have an account?   ",
+                        style: AppTextStyles.bodyExtraSmall.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.textMediumClr)),
                     GestureDetector(
                       onTap: () {
                         Get.to(() => SignUpScreen(),
@@ -78,8 +85,9 @@ class LoginScreen extends StatelessWidget {
                       },
                       child: Text(
                         "Sign Up",
-                        style: AppTextStyles.bodyMedium
-                            .copyWith(color: AppColors.primaryClr),
+                        style: AppTextStyles.bodyExtraSmall.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.primaryClr),
                       ),
                     )
                   ],
