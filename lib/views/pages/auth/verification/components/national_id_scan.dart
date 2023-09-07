@@ -21,8 +21,8 @@ class NationalIdScan extends StatelessWidget {
           child: Text(
             "Have a final check if all data is clearly visible and that it matches the information you have entered in previous steps.",
             textAlign: TextAlign.center,
-            style: AppTextStyles.bodySmall
-                .copyWith(color: AppColors.textMediumClr),
+            style:
+                AppTextStyles.bodySmall.copyWith(color: AppColors.textLightClr),
           ),
         ),
         IdCard(
@@ -95,12 +95,12 @@ class IdCard extends StatelessWidget {
                       Text(
                         "Scan Now",
                         style: AppTextStyles.bodyExtraSmall.copyWith(
-                            color: AppColors.textMediumClr,
+                            color: AppColors.textLightClr,
                             fontSize: SizeConfig.textMultiplier * 1),
                       ),
                       Icon(
                         Icons.arrow_forward_ios_rounded,
-                        color: AppColors.textMediumClr,
+                        color: AppColors.textLightClr,
                         size: SizeConfig.imageSizeMultiplier * 3,
                       )
                     ],

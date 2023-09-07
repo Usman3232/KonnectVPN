@@ -6,7 +6,7 @@ class AppTextStyles {
   static TextStyle bodyExtraSmall = TextStyle(
       color: AppColors.textPrimaryClr,
       fontWeight: FontWeight.w400,
-      fontSize: SizeConfig.textMultiplier * 1.3);
+      fontSize: SizeConfig.textMultiplier * 1.28);
   static TextStyle bodySmall = TextStyle(
       color: AppColors.textPrimaryClr,
       fontWeight: FontWeight.w400,

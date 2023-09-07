@@ -31,7 +31,7 @@ class WelcomeOnboardScreen extends StatelessWidget {
                   "You will notify once the verification confirmed",
                   textAlign: TextAlign.center,
                   style: AppTextStyles.bodyExtraSmall
-                      .copyWith(color: AppColors.textMediumClr),
+                      .copyWith(color: AppColors.textLightClr),
                 ),
                 Spacing.y(10),
                 Image.asset(AppImages.getStarted,

@@ -35,7 +35,7 @@ class GetStartedScreen extends StatelessWidget {
                     "Your profile is now being reviewed. You can expect it to finish in the next 24 hours.",
                     textAlign: TextAlign.center,
                     style: AppTextStyles.bodyExtraSmall
-                        .copyWith(color: AppColors.textMediumClr),
+                        .copyWith(color: AppColors.textLightClr),
                   ),
                 ),
                 Spacing.y(10),

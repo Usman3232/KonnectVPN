@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:konnekt_vpn/constants/icons.dart';
+import 'package:konnekt_vpn/constants/images.dart';
 import '../../../../../constants/colors.dart';
 import '../../../../../constants/text_styles.dart';
 import '../../../../../controllers/verification.dart';
@@ -12,6 +14,12 @@ class DoumentVerification extends StatelessWidget {
   });
 
   final cont = Get.find<VerificationCont>();
+  List<String> documentTypes = ["National ID", "Passport", "Driver’s Lisence"];
+  List<String> documentIcons = [
+    AppIcons.nationalId,
+    AppIcons.passport,
+    AppIcons.drivingLisence
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +28,8 @@ class DoumentVerification extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Spacing.y(3),
-          Container(
-            height: SizeConfig.heightMultiplier * 15,
-            width: SizeConfig.widthMultiplier * 30,
-            decoration: BoxDecoration(
-                color: AppColors.primaryClr, shape: BoxShape.circle),
-          ),
+          Image.asset(AppImages.document,
+              height: SizeConfig.imageSizeMultiplier * 35),
           Spacing.y(3),
           SizedBox(
             width: SizeConfig.widthMultiplier * 76,
@@ -33,7 +37,7 @@ class DoumentVerification extends StatelessWidget {
               "Your document photo helps us prove your identity. It should match the information you have provided in the previous steps.",
               textAlign: TextAlign.center,
               style: AppTextStyles.bodyExtraSmall
-                  .copyWith(color: AppColors.textMediumClr),
+                  .copyWith(color: AppColors.textLightClr),
             ),
           ),
           Spacing.y(5),
@@ -64,12 +68,15 @@ class DoumentVerification extends StatelessWidget {
                     Container(
                       height: SizeConfig.heightMultiplier * 5,
                       width: SizeConfig.widthMultiplier * 11.5,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: SizeConfig.widthMultiplier * 3),
+                      alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: Colors.white10,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Icon(
-                        Icons.web_stories_rounded,
+                      child: Image.asset(
+                        documentIcons[index],
                         color: cont.selectedDocument.value == index
                             ? AppColors.primaryClr
                             : Colors.white38,
@@ -77,7 +84,7 @@ class DoumentVerification extends StatelessWidget {
                     ),
                     Spacing.x(3),
                     Text(
-                      "National ID",
+                      documentTypes[index],
                       style: AppTextStyles.bodySmall,
                     ),
                     const Spacer(),

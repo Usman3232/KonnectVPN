@@ -24,7 +24,7 @@ class CitizenShipScreen extends StatelessWidget {
                 Row(
                   children: [
                     const CustomBackButton(),
-                    Spacing.x(29),
+                    Spacing.x(26),
                     Text(
                       "Ciitizenship",
                       style: AppTextStyles.bodyMedium,

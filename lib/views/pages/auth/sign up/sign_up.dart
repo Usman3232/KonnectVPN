@@ -63,7 +63,7 @@ class SignUpScreen extends StatelessWidget {
                     "At least 12 uppercase, lowercase characters and numbers",
                     style: AppTextStyles.bodyExtraSmall.copyWith(
                         fontSize: SizeConfig.textMultiplier * 1.2,
-                        color: AppColors.textMediumClr),
+                        color: AppColors.textLightClr),
                   ),
                   Spacing.y(2),
                   Text("Referral Code", style: AppTextStyles.bodyExtraSmall),
@@ -105,7 +105,7 @@ class SignUpScreen extends StatelessWidget {
                         "Dont have an account?   ",
                         style: AppTextStyles.bodyExtraSmall.copyWith(
                             fontWeight: FontWeight.w500,
-                            color: AppColors.textMediumClr),
+                            color: AppColors.textLightClr),
                       ),
                       GestureDetector(
                         onTap: () {

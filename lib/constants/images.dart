@@ -4,4 +4,5 @@ class AppImages {
   static String lock = "assets/images/lock.png";
   static String getStarted = "assets/images/getStarted.png";
   static String onProcess = "assets/images/onProcess.png";
+  static String document = "assets/images/document.png";
 }

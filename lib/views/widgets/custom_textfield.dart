@@ -90,7 +90,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           ),
           hintText: widget.hintText,
           hintStyle:
-              AppTextStyles.bodyMedium.copyWith(color: AppColors.textMediumClr),
+              AppTextStyles.bodyMedium.copyWith(color: AppColors.textLightClr),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(14),
           ),

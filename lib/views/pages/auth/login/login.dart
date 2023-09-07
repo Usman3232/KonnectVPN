@@ -35,7 +35,7 @@ class LoginScreen extends StatelessWidget {
                 Text(
                   "Protect Your Online Privacy Our VPN app keeps your data secure and your identity anonymous.",
                   style: AppTextStyles.bodyExtraSmall
-                      .copyWith(color: AppColors.textMediumClr),
+                      .copyWith(color: AppColors.textLightClr),
                 ),
                 Spacing.y(6),
                 Text("Email", style: AppTextStyles.bodyExtraSmall),
@@ -61,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                       style: AppTextStyles.bodyExtraSmall.copyWith(
                           fontWeight: FontWeight.w500,
                           fontSize: SizeConfig.textMultiplier * 1.2,
-                          color: AppColors.textMediumClr),
+                          color: AppColors.textLightClr),
                     ),
                   ),
                 ),
@@ -77,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                     Text("Dont have an account?   ",
                         style: AppTextStyles.bodyExtraSmall.copyWith(
                             fontWeight: FontWeight.w500,
-                            color: AppColors.textMediumClr)),
+                            color: AppColors.textLightClr)),
                     GestureDetector(
                       onTap: () {
                         Get.to(() => SignUpScreen(),

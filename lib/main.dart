@@ -17,6 +17,10 @@ import 'package:konnekt_vpn/views/pages/auth/verification/city.dart';
 import 'package:konnekt_vpn/views/pages/auth/verification/country.dart';
 import 'package:konnekt_vpn/views/pages/auth/verification/verification.dart';
 import 'package:konnekt_vpn/views/pages/auth/choose%20auth/choose_auth.dart';
+import 'package:konnekt_vpn/views/pages/home/home.dart';
+import 'package:konnekt_vpn/views/pages/privacy/privacy.dart';
+import 'package:konnekt_vpn/views/pages/security/security.dart';
+import 'package:konnekt_vpn/views/pages/setting/setting.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,7 +47,7 @@ class MyApp extends StatelessWidget {
                 scaffoldBackgroundColor: Colors.black,
               ),
               debugShowCheckedModeBanner: false,
-              home: VerificationDetailScreen(),
+              home: PrivacyScreen(),
             );
           },
         );

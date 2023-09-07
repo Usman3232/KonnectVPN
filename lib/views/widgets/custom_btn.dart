@@ -7,10 +7,12 @@ class CustomButton extends StatelessWidget {
     required this.title,
     required this.onTap,
     this.isBorder = false,
+    this.isShadow = true,
   }) : super(key: key);
   final VoidCallback onTap;
   final bool isBorder;
   final String title;
+  final bool isShadow;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,14 +32,16 @@ class CustomButton extends StatelessWidget {
             width: isBorder ? 1 : 0),
         boxShadow: isBorder
             ? null
-            : [
-                BoxShadow(
-                  color: const Color(0xff4CC9A7).withOpacity(.15),
-                  // spreadRadius: -20,
-                  blurRadius: 18,
-                  offset: const Offset(0, 24),
-                ),
-              ],
+            : isShadow
+                ? [
+                    BoxShadow(
+                      color: const Color(0xff4CC9A7).withOpacity(.15),
+                      // spreadRadius: -20,
+                      blurRadius: 18,
+                      offset: const Offset(0, 24),
+                    ),
+                  ]
+                : null,
       ),
       child: MaterialButton(
         height: SizeConfig.heightMultiplier * 6,

@@ -38,7 +38,7 @@ class NewPasswordScreen extends StatelessWidget {
                   child: Text(
                     "Your new password must be different from a previously used password",
                     style: AppTextStyles.bodyExtraSmall
-                        .copyWith(color: AppColors.textMediumClr),
+                        .copyWith(color: AppColors.textLightClr),
                   ),
                 ),
                 Spacing.y(6),
@@ -71,7 +71,7 @@ class NewPasswordScreen extends StatelessWidget {
                       "Dont Have An Account?   ",
                       style: AppTextStyles.bodyExtraSmall.copyWith(
                           fontWeight: FontWeight.w500,
-                          color: AppColors.textMediumClr),
+                          color: AppColors.textLightClr),
                     ),
                     GestureDetector(
                       onTap: () {},

@@ -47,7 +47,7 @@ class OtpScreen extends StatelessWidget {
                 Text(
                   "We have sent the code verification to your Email",
                   style: AppTextStyles.bodyExtraSmall
-                      .copyWith(color: AppColors.textMediumClr),
+                      .copyWith(color: AppColors.textLightClr),
                 ),
                 Spacing.y(2),
                 Text(
@@ -88,7 +88,7 @@ class OtpScreen extends StatelessWidget {
                     Text("Don’t receive any code?   ",
                         style: AppTextStyles.bodySmall.copyWith(
                             fontWeight: FontWeight.w500,
-                            color: AppColors.textMediumClr)),
+                            color: AppColors.textLightClr)),
                     GestureDetector(
                       onTap: () {},
                       child: Text(

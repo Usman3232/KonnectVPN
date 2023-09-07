@@ -33,7 +33,7 @@ class VerificationOnProcessScreen extends StatelessWidget {
                   "You’ll need a verification before using",
                   textAlign: TextAlign.center,
                   style: AppTextStyles.bodyExtraSmall
-                      .copyWith(color: AppColors.textMediumClr),
+                      .copyWith(color: AppColors.textLightClr),
                 ),
                 Spacing.y(10),
                 Image.asset(AppImages.onProcess,

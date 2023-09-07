@@ -36,7 +36,7 @@ class EmailCheckScreen extends StatelessWidget {
                     "Follow a password recovery instruction we have just sent to your email address",
                     textAlign: TextAlign.center,
                     style: AppTextStyles.bodyExtraSmall
-                        .copyWith(color: AppColors.textMediumClr),
+                        .copyWith(color: AppColors.textLightClr),
                   ),
                 ),
                 Spacing.y(10),

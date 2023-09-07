@@ -37,7 +37,7 @@ class ForgotScreen extends StatelessWidget {
                   child: Text(
                     "Enter your registated email address to receive password reset instruction",
                     style: AppTextStyles.bodyExtraSmall
-                        .copyWith(color: AppColors.textMediumClr),
+                        .copyWith(color: AppColors.textLightClr),
                   ),
                 ),
                 Spacing.y(6),
