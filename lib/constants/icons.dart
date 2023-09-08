@@ -25,4 +25,5 @@ class AppIcons {
   static String delete = "assets/icons/delete.png";
   static String phone = "assets/icons/phone.png";
   static String email = "assets/icons/email.png";
+  static String announcement = "assets/icons/annoucement.png";
 }

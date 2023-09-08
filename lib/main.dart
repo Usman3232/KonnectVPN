@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
+import 'package:konnekt_vpn/views/pages/about%20us/about_us.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/email_check.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/forgot.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/get_started.dart';
@@ -18,7 +19,9 @@ import 'package:konnekt_vpn/views/pages/auth/verification/country.dart';
 import 'package:konnekt_vpn/views/pages/auth/verification/verification.dart';
 import 'package:konnekt_vpn/views/pages/auth/choose%20auth/choose_auth.dart';
 import 'package:konnekt_vpn/views/pages/home/home.dart';
+import 'package:konnekt_vpn/views/pages/notification/notification.dart';
 import 'package:konnekt_vpn/views/pages/privacy/privacy.dart';
+import 'package:konnekt_vpn/views/pages/privacy/privacy_note.dart';
 import 'package:konnekt_vpn/views/pages/security/security.dart';
 import 'package:konnekt_vpn/views/pages/setting/setting.dart';
 
@@ -47,7 +50,7 @@ class MyApp extends StatelessWidget {
                 scaffoldBackgroundColor: Colors.black,
               ),
               debugShowCheckedModeBanner: false,
-              home: PrivacyScreen(),
+              home: NotificationScreen(),
             );
           },
         );

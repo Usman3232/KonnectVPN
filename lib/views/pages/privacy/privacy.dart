@@ -32,7 +32,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               Row(
                 children: [
                   const CustomBackButton(),
-                  Spacing.x(28),
+                  Spacing.x(30),
                   Text("Privacy", style: AppTextStyles.bodyMedium)
                 ],
               ),
