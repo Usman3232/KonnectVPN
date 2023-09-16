@@ -17,12 +17,12 @@ class NationalIdScan extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          width: SizeConfig.widthMultiplier * 76,
+          width: SizeConfig.widthMultiplier * 74,
           child: Text(
             "Have a final check if all data is clearly visible and that it matches the information you have entered in previous steps.",
             textAlign: TextAlign.center,
-            style:
-                AppTextStyles.bodySmall.copyWith(color: AppColors.textLightClr),
+            style: AppTextStyles.bodyExtraSmall
+                .copyWith(height: 1.9, color: Colors.white38),
           ),
         ),
         IdCard(
@@ -87,7 +87,7 @@ class IdCard extends StatelessWidget {
                       horizontal: SizeConfig.widthMultiplier * 2),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Colors.white38),
+                    border: Border.all(color: AppColors.borderClr),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,12 +95,12 @@ class IdCard extends StatelessWidget {
                       Text(
                         "Scan Now",
                         style: AppTextStyles.bodyExtraSmall.copyWith(
-                            color: AppColors.textLightClr,
+                            color: Colors.white38,
                             fontSize: SizeConfig.textMultiplier * 1),
                       ),
                       Icon(
                         Icons.arrow_forward_ios_rounded,
-                        color: AppColors.textLightClr,
+                        color: Colors.white38,
                         size: SizeConfig.imageSizeMultiplier * 3,
                       )
                     ],

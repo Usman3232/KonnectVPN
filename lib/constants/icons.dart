@@ -26,4 +26,12 @@ class AppIcons {
   static String phone = "assets/icons/phone.png";
   static String email = "assets/icons/email.png";
   static String announcement = "assets/icons/annoucement.png";
+  static String crownBasic = "assets/icons/crown_basic.png";
+  static String crownBronze = "assets/icons/crown_bronze.png";
+  static String crownSilver = "assets/icons/crown_silver.png";
+  static String crownGold = "assets/icons/crown_gold.png";
+  static String dataBase = "assets/icons/database.png";
+  static String facebook = "assets/icons/facebook.png";
+  static String twitter = "assets/icons/twitter.png";
+  static String discord = "assets/icons/discord.png";
 }

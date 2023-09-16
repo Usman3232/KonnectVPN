@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
+import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/controllers/verification.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
@@ -89,9 +90,9 @@ class _ScanScreenState extends State<ScanScreen> {
             child: Text(
                 "Position your document inside the frame. Make sure that all the data is clearly visible.",
                 textAlign: TextAlign.center,
-                style: AppTextStyles.bodyExtraSmall),
+                style: AppTextStyles.bodyExtraSmall.copyWith(height: 1.9)),
           ),
-          Spacing.y(25),
+          Spacing.y(24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -111,6 +112,11 @@ class _ScanScreenState extends State<ScanScreen> {
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.white38),
                   ),
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    AppIcons.flash,
+                    height: SizeConfig.imageSizeMultiplier * 7,
+                  ),
                 ),
               ),
               SizedBox(
@@ -128,6 +134,11 @@ class _ScanScreenState extends State<ScanScreen> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.white38),
+                ),
+                alignment: Alignment.center,
+                child: Image.asset(
+                  AppIcons.gallery,
+                  height: SizeConfig.imageSizeMultiplier * 7,
                 ),
               ),
             ],

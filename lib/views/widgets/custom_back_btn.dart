@@ -6,12 +6,13 @@ import '../../utils/size_config.dart';
 class CustomBackButton extends StatelessWidget {
   const CustomBackButton({
     super.key,
+    this.onTap,
   });
-
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.back(),
+      onTap: onTap ?? () => Get.back(),
       child: Container(
         height: SizeConfig.heightMultiplier * 4.5,
         width: SizeConfig.widthMultiplier * 10,

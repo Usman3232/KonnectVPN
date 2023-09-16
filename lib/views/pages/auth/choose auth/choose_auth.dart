@@ -19,7 +19,7 @@ class ChooseAuthScreen extends StatelessWidget {
       body: Background(
         child: Column(
           children: [
-            Spacing.y(40),
+            Spacing.y(38),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -36,7 +36,7 @@ class ChooseAuthScreen extends StatelessWidget {
             CustomButton(
               title: "Login",
               onTap: () {
-                Get.to(() => LoginScreen(), transition: Transition.rightToLeft);
+                Get.to(() => LoginScreen());
               },
             ),
             SizedBox(height: SizeConfig.heightMultiplier * 2),
@@ -44,8 +44,7 @@ class ChooseAuthScreen extends StatelessWidget {
               title: "Create Account",
               isBorder: true,
               onTap: () {
-                Get.to(() => SignUpScreen(),
-                    transition: Transition.rightToLeft);
+                Get.to(() => SignUpScreen());
               },
             )
           ],

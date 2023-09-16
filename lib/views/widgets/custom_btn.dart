@@ -53,7 +53,7 @@ class CustomButton extends StatelessWidget {
         child: Text(
           title,
           style: TextStyle(
-              fontSize: SizeConfig.textMultiplier * 1.6,
+              fontSize: SizeConfig.textMultiplier * 1.4,
               color: Colors.white,
               fontWeight: FontWeight.w700),
         ),
@@ -61,3 +61,5 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
+
+

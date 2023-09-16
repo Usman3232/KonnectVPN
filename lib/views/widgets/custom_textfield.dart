@@ -9,16 +9,16 @@ class CustomTextField extends StatefulWidget {
     required this.hintText,
     required this.controller,
     this.keyboardType,
-    // this.enabled = true,
     this.readOnly = false,
     this.onTap,
+    this.isfilled = true,
   });
   final String hintText;
   final TextEditingController controller;
   final VoidCallback? onTap;
   final TextInputType? keyboardType;
-  // final bool enabled;
   final bool readOnly;
+  final bool isfilled;
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -81,7 +81,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 ),
           isCollapsed: true,
           fillColor: Colors.white10,
-          filled: true,
+          filled: widget.isfilled,
           contentPadding: EdgeInsets.only(
             left: SizeConfig.widthMultiplier * 5,
             right: !widget.readOnly ? SizeConfig.widthMultiplier * 5 : 0,
@@ -89,9 +89,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
             bottom: SizeConfig.heightMultiplier * 2,
           ),
           hintText: widget.hintText,
-          hintStyle:
-              AppTextStyles.bodyMedium.copyWith(color: AppColors.textLightClr),
+          hintStyle: AppTextStyles.bodySmall.copyWith(color: Colors.white38),
           enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: widget.isfilled ? Colors.transparent : Colors.white10),
             borderRadius: BorderRadius.circular(14),
           ),
           focusedBorder: OutlineInputBorder(
@@ -113,7 +114,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
           ),
         ),
-        style: AppTextStyles.bodyMedium,
+        style: AppTextStyles.bodySmall.copyWith(fontWeight: FontWeight.w500),
       ),
     );
   }

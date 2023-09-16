@@ -5,14 +5,23 @@ import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/constants/images.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
+import 'package:konnekt_vpn/controllers/home.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/bottom%20sheets/kpn.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
-import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 import '../../../utils/size_config.dart';
-import '../../bottom sheets/kpn.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final cont = Get.put(DrawerCont());
+  List<String> homeTypeTitle = ["Susbcription", "Miners"];
+  List<String> homeTypeIcons = [AppIcons.subcription, AppIcons.miner];
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +36,9 @@ class HomeScreen extends StatelessWidget {
               Row(
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      cont.toggleDrawer();
+                    },
                     child: Container(
                       height: SizeConfig.heightMultiplier * 4.5,
                       width: SizeConfig.widthMultiplier * 10,
@@ -78,8 +89,9 @@ class HomeScreen extends StatelessWidget {
               Text(
                 "Total Bandwidth Speed",
                 style: AppTextStyles.bodyExtraSmall
-                    .copyWith(color: AppColors.textLightClr),
+                    .copyWith(color: Colors.white54),
               ),
+              Spacing.y(.5),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -99,81 +111,54 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Spacing.y(7),
+              Spacing.y(6),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      Get.bottomSheet(const KpnTypeBottomSheet());
-                    },
-                    child: Container(
-                      height: SizeConfig.heightMultiplier * 7,
-                      width: SizeConfig.widthMultiplier * 45,
-                      padding: const EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                        color: const Color(0xff1E1E1E),
-                        borderRadius: BorderRadius.circular(60),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            height: SizeConfig.heightMultiplier * 6,
-                            width: SizeConfig.widthMultiplier * 15,
-                            margin: EdgeInsets.only(
-                                right: SizeConfig.widthMultiplier * 1),
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Color(0xff343434),
+                  ...List.generate(
+                    2,
+                    (index) => GestureDetector(
+                      onTap: () {
+                        if (index == 0) {
+                          Get.bottomSheet(KpnTypeBottomSheet(),
+                              isScrollControlled: true);
+                        }
+                      },
+                      child: Container(
+                        height: SizeConfig.heightMultiplier * 7,
+                        width: SizeConfig.widthMultiplier * 45,
+                        padding: const EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          color: const Color(0xff1E1E1E),
+                          borderRadius: BorderRadius.circular(60),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: SizeConfig.heightMultiplier * 6,
+                              width: SizeConfig.widthMultiplier * 15,
+                              margin: EdgeInsets.only(
+                                  right: SizeConfig.widthMultiplier * 1),
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xff343434),
+                              ),
+                              alignment: Alignment.center,
+                              child: Image.asset(
+                                homeTypeIcons[index],
+                                height: SizeConfig.imageSizeMultiplier * 6,
+                              ),
                             ),
-                            alignment: Alignment.center,
-                            child: Image.asset(
-                              AppIcons.subcription,
-                              height: SizeConfig.imageSizeMultiplier * 7,
-                            ),
-                          ),
-                          Text(
-                            "Susbcription",
-                            style: AppTextStyles.bodyExtraSmall
-                                .copyWith(fontWeight: FontWeight.w600),
-                          )
-                        ],
+                            Text(
+                              homeTypeTitle[index],
+                              style: AppTextStyles.bodyExtraSmall
+                                  .copyWith(fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                  Container(
-                    height: SizeConfig.heightMultiplier * 7,
-                    width: SizeConfig.widthMultiplier * 45,
-                    padding: const EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                      color: const Color(0xff1E1E1E),
-                      borderRadius: BorderRadius.circular(60),
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          height: SizeConfig.heightMultiplier * 6,
-                          width: SizeConfig.widthMultiplier * 15,
-                          margin: EdgeInsets.only(
-                              right: SizeConfig.widthMultiplier * 1),
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xff343434),
-                          ),
-                          alignment: Alignment.center,
-                          child: Image.asset(
-                            AppIcons.miner,
-                            height: SizeConfig.imageSizeMultiplier * 7,
-                          ),
-                        ),
-                        Text(
-                          "Miners",
-                          style: AppTextStyles.bodyExtraSmall
-                              .copyWith(fontWeight: FontWeight.w600),
-                        )
-                      ],
-                    ),
-                  )
                 ],
               )
             ],

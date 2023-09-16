@@ -69,7 +69,7 @@ class _KpnTypeBottomSheetState extends State<KpnTypeBottomSheet> {
                       margin: EdgeInsets.only(
                           right: SizeConfig.widthMultiplier * 3),
                       decoration: BoxDecoration(
-                        color: const Color(0xff1C1C1C),
+                        color: Colors.white10,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       alignment: Alignment.center,
@@ -87,7 +87,10 @@ class _KpnTypeBottomSheetState extends State<KpnTypeBottomSheet> {
                       padding: const EdgeInsets.all(2),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        border: Border.all(color: AppColors.borderClr),
+                        border: Border.all(
+                            color: selectedKpnType == index
+                                ? AppColors.primaryClr
+                                : AppColors.borderClr),
                       ),
                       alignment: AlignmentDirectional.center,
                       child: AnimatedContainer(
@@ -97,7 +100,7 @@ class _KpnTypeBottomSheetState extends State<KpnTypeBottomSheet> {
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: selectedKpnType == index
-                                ? AppColors.borderClr
+                                ? AppColors.primaryClr
                                 : Colors.transparent),
                       ),
                     )

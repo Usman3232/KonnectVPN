@@ -12,9 +12,10 @@ class VerificationCont extends GetxController {
 
   RxInt currentSection = 0.obs;
   RxDouble progressValue = 0.0.obs;
+  PageController pageCont = PageController(initialPage: 0);
 
   RxInt selectedDocument = (-1).obs;
 
   //SCAN CONTROL
-   RxBool torch = false.obs;
+  RxBool torch = false.obs;
 }

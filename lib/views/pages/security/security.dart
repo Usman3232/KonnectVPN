@@ -33,7 +33,7 @@ class SecurityScreen extends StatelessWidget {
                   Text("Security", style: AppTextStyles.bodyMedium)
                 ],
               ),
-              Spacing.y(5),
+              Spacing.y(3),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.widthMultiplier * 2),
@@ -43,8 +43,8 @@ class SecurityScreen extends StatelessWidget {
                     ...List.generate(
                       2,
                       (index) => Padding(
-                        padding: EdgeInsets.only(
-                            bottom: SizeConfig.heightMultiplier * 4),
+                        padding: EdgeInsets.symmetric(
+                            vertical: SizeConfig.heightMultiplier * 2),
                         child: InkWell(
                           onTap: () {},
                           child: Row(
@@ -65,7 +65,7 @@ class SecurityScreen extends StatelessWidget {
                                         .copyWith(
                                             fontSize:
                                                 SizeConfig.textMultiplier * 1,
-                                            color: AppColors.textLightClr),
+                                            color: Colors.white38),
                                   )
                                 ],
                               ),
@@ -77,13 +77,13 @@ class SecurityScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Spacing.y(2),
+                    Spacing.y(4),
                     Text(
                       "Verification",
                       style: AppTextStyles.bodySmall
                           .copyWith(fontWeight: FontWeight.w600),
                     ),
-                    Spacing.y(3),
+                    Spacing.y(1.5),
                     VerificationTile(
                       title: "Authenticator App",
                       subtitle: "Added : February 16, 2021",
@@ -94,13 +94,13 @@ class SecurityScreen extends StatelessWidget {
                     VerificationTile(
                       title: "Phone Number Verification",
                       subtitle: "(708) 813-8989",
-                      icon: AppIcons.mobile,
+                      icon: AppIcons.phone,
                       onEditTap: () {},
                     ),
                     VerificationTile(
                       title: "Email Verification",
                       subtitle: "r.m.smith@gmail.com",
-                      icon: AppIcons.mobile,
+                      icon: AppIcons.email,
                       onEditTap: () {
                         print("object");
                       },
@@ -137,7 +137,8 @@ class VerificationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: SizeConfig.heightMultiplier * 3),
+      padding:
+          EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier * 1.5),
       child: Row(
         children: [
           Container(
@@ -163,7 +164,7 @@ class VerificationTile extends StatelessWidget {
                 subtitle,
                 style: AppTextStyles.bodyExtraSmall.copyWith(
                     fontSize: SizeConfig.textMultiplier * 1.05,
-                    color: AppColors.textLightClr),
+                    color: Colors.white38),
               )
             ],
           ),

@@ -16,62 +16,60 @@ class CitizenShipScreen extends StatelessWidget {
       body: Background(
         child: Padding(
           padding: AppConstants.defaultPadding,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Spacing.y(8),
-                Row(
-                  children: [
-                    const CustomBackButton(),
-                    Spacing.x(26),
-                    Text(
-                      "Ciitizenship",
-                      style: AppTextStyles.bodyMedium,
-                    )
-                  ],
-                ),
-                Spacing.y(5),
-                SizedBox(
-                  height: SizeConfig.heightMultiplier * 70,
-                  width: SizeConfig.widthMultiplier * 85,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: 20,
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        height: SizeConfig.heightMultiplier * 6.5,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Ciitizen",
-                              style: AppTextStyles.bodyMedium
-                                  .copyWith(fontWeight: FontWeight.w600),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Spacing.y(6),
+              Row(
+                children: [
+                  const CustomBackButton(),
+                  Spacing.x(25.5),
+                  Text(
+                    "Ciitizenship",
+                    style: AppTextStyles.bodyMedium,
+                  )
+                ],
+              ),
+              Spacing.y(5),
+              SizedBox(
+                height: SizeConfig.heightMultiplier * 72,
+                width: SizeConfig.widthMultiplier * 85,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: 20,
+                  itemBuilder: (context, index) {
+                    return SizedBox(
+                      height: SizeConfig.heightMultiplier * 6.5,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Ciitizen",
+                            style: AppTextStyles.bodyMedium
+                                .copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          Container(
+                            height: SizeConfig.heightMultiplier * 2.5,
+                            width: SizeConfig.widthMultiplier * 5,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Colors.white38),
                             ),
-                            Container(
-                              height: SizeConfig.heightMultiplier * 2.5,
-                              width: SizeConfig.widthMultiplier * 5,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(color: Colors.white38),
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                          )
+                        ],
+                      ),
+                    );
+                  },
                 ),
-                Spacing.y(3),
-                CustomButton(
-                  title: "Next Step",
-                  onTap: () {},
-                )
-              ],
-            ),
+              ),
+              Spacing.y(3),
+              CustomButton(
+                title: "Next Step",
+                onTap: () {},
+              )
+            ],
           ),
         ),
       ),

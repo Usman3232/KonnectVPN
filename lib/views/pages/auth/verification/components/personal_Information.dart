@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/views/pages/auth/verification/citizenship.dart';
@@ -98,7 +96,7 @@ class PersonalInformation extends StatelessWidget {
           readOnly: true,
           onTap: () {},
         ),
-        Spacing.y(5),
+        Spacing.y(8),
       ],
     );
   }

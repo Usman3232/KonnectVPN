@@ -9,35 +9,13 @@ import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 
-class AboutUsScreen extends StatefulWidget {
+class AboutUsScreen extends StatelessWidget {
   AboutUsScreen({super.key});
-
-  @override
-  State<AboutUsScreen> createState() => _AboutUsScreenState();
-}
-
-class _AboutUsScreenState extends State<AboutUsScreen>
-    with SingleTickerProviderStateMixin {
-  static const List<Tab> myTabs = <Tab>[
-    Tab(text: 'LEFT'),
-    Tab(text: 'RIGHT'),
-    Tab(text: 'RIGHT'),
-    Tab(text: 'RIGHT'),
+  List<String> socialIcons = [
+    AppIcons.facebook,
+    AppIcons.twitter,
+    AppIcons.discord
   ];
-
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(vsync: this, length: myTabs.length);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,31 +30,8 @@ class _AboutUsScreenState extends State<AboutUsScreen>
               Row(
                 children: [
                   const CustomBackButton(),
-                  Spacing.x(30),
+                  Spacing.x(27.5),
                   Text("About Us", style: AppTextStyles.bodyMedium)
-                ],
-              ),
-              Spacing.y(5),
-              Stack(
-                children: [
-                  Positioned(
-                    bottom: 0,
-                    child: Container(
-                      height: SizeConfig.heightMultiplier * .2,
-                      width: SizeConfig.widthMultiplier * 100,
-                      color: Colors.white10,
-                    ),
-                  ),
-                  TabBar(
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    indicatorWeight: SizeConfig.heightMultiplier * .2,
-                    indicatorColor: AppColors.primaryClr,
-                    controller: _tabController,
-                    labelColor: AppColors.primaryClr,
-                    unselectedLabelColor: Colors.white30,
-                    labelStyle: AppTextStyles.bodyExtraSmall,
-                    tabs: myTabs,
-                  ),
                 ],
               ),
               Spacing.y(5),
@@ -107,7 +62,7 @@ class _AboutUsScreenState extends State<AboutUsScreen>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ...List.generate(
-                          3,
+                          socialIcons.length,
                           (index) => Container(
                             height: SizeConfig.heightMultiplier * 5.5,
                             width: SizeConfig.widthMultiplier * 12,
@@ -115,31 +70,94 @@ class _AboutUsScreenState extends State<AboutUsScreen>
                                 horizontal: SizeConfig.widthMultiplier * 2),
                             decoration: const BoxDecoration(
                                 color: Colors.white10, shape: BoxShape.circle),
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              socialIcons[index],
+                              height: SizeConfig.imageSizeMultiplier * 6,
+                            ),
                           ),
                         )
                       ],
                     ),
                     Spacing.y(5),
-                    InkWell(
-                      onTap: () {},
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            AppIcons.document,
-                            height: SizeConfig.imageSizeMultiplier * 5,
-                            color: Colors.white,
+                    ...List.generate(
+                      3,
+                      (index) => Padding(
+                        padding: EdgeInsets.only(
+                            bottom: SizeConfig.heightMultiplier * 5),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                AppIcons.document,
+                                height: SizeConfig.imageSizeMultiplier * 5.5,
+                                color: Colors.white,
+                              ),
+                              Spacing.x(4),
+                              Text(
+                                "Terms & Conditions",
+                                style: AppTextStyles.bodySmall
+                                    .copyWith(fontWeight: FontWeight.w500),
+                              ),
+                              const Spacer(),
+                              Icon(Icons.arrow_forward_ios_rounded,
+                                  color: Colors.white,
+                                  size: SizeConfig.imageSizeMultiplier * 4)
+                            ],
                           ),
-                          Spacing.x(4),
-                          Text(
-                            "Terms & Conditions",
-                            style: AppTextStyles.bodySmall
-                                .copyWith(fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ),
+                    Divider(color: AppColors.borderClr, height: 0),
+                    Spacing.y(5),
+                    ...List.generate(
+                      2,
+                      (index) => Padding(
+                        padding: EdgeInsets.only(
+                            bottom: SizeConfig.heightMultiplier * 4),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 44,
+                                width: 44,
+                                margin: EdgeInsets.only(
+                                    right: SizeConfig.widthMultiplier * 3),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    color: Colors.white10),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Device id",
+                                    style: AppTextStyles.bodyExtraSmall
+                                        .copyWith(fontWeight: FontWeight.w700),
+                                  ),
+                                  Spacing.y(1),
+                                  Text(
+                                    "91733964163015807410",
+                                    style: AppTextStyles.bodyExtraSmall
+                                        .copyWith(
+                                            fontSize:
+                                                SizeConfig.textMultiplier *
+                                                    1.05,
+                                            color: Colors.white38),
+                                  ),
+                                ],
+                              ),
+                              const Spacer(),
+                              Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                color: Colors.white,
+                                size: SizeConfig.imageSizeMultiplier * 4,
+                              )
+                            ],
                           ),
-                          const Spacer(),
-                          Icon(Icons.arrow_forward_ios_rounded,
-                              color: Colors.white,
-                              size: SizeConfig.imageSizeMultiplier * 4)
-                        ],
+                        ),
                       ),
                     ),
                   ],

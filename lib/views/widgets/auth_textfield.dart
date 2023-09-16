@@ -42,7 +42,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                       }),
                   child: Icon(
                     isObscure ? FeatherIcons.eyeOff : FeatherIcons.eye,
-                    size: SizeConfig.imageSizeMultiplier * 5.5,
+                    size: SizeConfig.imageSizeMultiplier * 4.5,
                     color: AppColors.primaryClr,
                   ))
               : null,
@@ -52,9 +52,9 @@ class _AuthTextFieldState extends State<AuthTextField> {
               horizontal: SizeConfig.widthMultiplier * 5,
               vertical: SizeConfig.heightMultiplier * 2),
           hintText: widget.hintText,
-          hintStyle:
-              AppTextStyles.bodyMedium.copyWith(color: AppColors.textMediumClr),
+          hintStyle: AppTextStyles.bodySmall.copyWith(color: Colors.white38),
           enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.transparent),
             borderRadius: BorderRadius.circular(14),
           ),
           focusedBorder: OutlineInputBorder(
@@ -76,7 +76,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
             ),
           ),
         ),
-        style: AppTextStyles.bodyMedium,
+        style: AppTextStyles.bodySmall.copyWith(fontWeight: FontWeight.w500),
       ),
     );
   }

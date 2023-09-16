@@ -6,7 +6,6 @@ import 'package:konnekt_vpn/constants/images.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
-import 'package:konnekt_vpn/views/pages/auth/forgot/get_started.dart';
 import 'package:konnekt_vpn/views/pages/auth/sign%20up/otp.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
@@ -36,18 +35,17 @@ class EmailCheckScreen extends StatelessWidget {
                     "Follow a password recovery instruction we have just sent to your email address",
                     textAlign: TextAlign.center,
                     style: AppTextStyles.bodyExtraSmall
-                        .copyWith(color: AppColors.textLightClr),
+                        .copyWith(height: 1.9, color: Colors.white38),
                   ),
                 ),
                 Spacing.y(10),
                 Image.asset(AppImages.lock,
                     height: SizeConfig.imageSizeMultiplier * 65),
-                Spacing.y(23),
+                Spacing.y(21),
                 CustomButton(
                   title: "Next",
                   onTap: () {
-                    Get.to(() => OtpScreen(),
-                        transition: Transition.rightToLeft);
+                    Get.to(() => OtpScreen());
                   },
                 ),
               ],

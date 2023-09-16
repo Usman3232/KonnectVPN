@@ -24,59 +24,62 @@ class VerificationDetailScreen extends StatelessWidget {
         body: Background(
           child: Padding(
             padding: AppConstants.defaultPadding,
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Spacing.y(8),
-                  Center(
-                    child: Text(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Spacing.y(8),
+                Center(
+                  child: Text(
+                    cont.currentSection.value == 0
+                        ? "Personal Information"
+                        : cont.currentSection.value == 1
+                            ? "Document Verification"
+                            : cont.currentSection.value == 2
+                                ? "National ID Scan"
+                                : "",
+                    style: AppTextStyles.bodyMedium
+                        .copyWith(fontWeight: FontWeight.w400),
+                  ),
+                ),
+                Spacing.y(3),
+                Center(
+                  child: SizedBox(
+                    height: SizeConfig.heightMultiplier * .6,
+                    width: SizeConfig.widthMultiplier * 55,
+                    child: FAProgressBar(
+                      currentValue: cont.progressValue.value,
+                      backgroundColor: Colors.white10,
+                      progressColor: AppColors.primaryClr,
+                      maxValue: 3,
+                    ),
+                  ),
+                ),
+                Spacing.y(2.5),
+                Expanded(
+                  child: SingleChildScrollView(
+                      child: Column(
+                    children: [
+                      Spacing.y(2.5),
                       cont.currentSection.value == 0
-                          ? "Personal Information"
+                          ? PersonalInformation()
                           : cont.currentSection.value == 1
-                              ? "Document Verification"
+                              ? DoumentVerification()
                               : cont.currentSection.value == 2
-                                  ? "National ID Scan"
-                                  : "",
-                      style: AppTextStyles.bodyMedium
-                          .copyWith(fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                  Spacing.y(3),
-                  Center(
-                    child: SizedBox(
-                      height: SizeConfig.heightMultiplier * .8,
-                      width: SizeConfig.widthMultiplier * 65,
-                      child: FAProgressBar(
-                        currentValue: cont.progressValue.value,
-                        backgroundColor: Colors.white10,
-                        progressColor: AppColors.primaryClr,
-                        maxValue: 3,
+                                  ? const NationalIdScan()
+                                  : const SizedBox(),
+                      CustomButton(
+                        title: cont.currentSection.value == 2
+                            ? "Finish Verification"
+                            : "Next Step",
+                        onTap: () {
+                          cont.progressValue.value += 1;
+                          cont.currentSection.value += 1;
+                        },
                       ),
-                    ),
-                  ),
-                  Spacing.y(5),
-                  cont.currentSection.value == 0
-                      ? PersonalInformation()
-                      : cont.currentSection.value == 1
-                          ? DoumentVerification()
-                          : cont.currentSection.value == 2
-                              ? const NationalIdScan()
-                              : const SizedBox(),
-                  CustomButton(
-                    title: cont.currentSection.value == 2
-                        ? "Finish Verification"
-                        : "Next Step",
-                    onTap: () {
-                      cont.progressValue.value += 1;
-                      cont.currentSection.value += 1;
-                    },
-                  ),
-                  cont.currentSection.value == 2
-                      ? Spacing.y(3)
-                      : const SizedBox(),
-                ],
-              ),
+                    ],
+                  )),
+                ),
+              ],
             ),
           ),
         ),

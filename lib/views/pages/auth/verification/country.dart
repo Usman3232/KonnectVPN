@@ -17,70 +17,68 @@ class CountryScreen extends StatelessWidget {
       body: Background(
         child: Padding(
           padding: AppConstants.defaultPadding,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Spacing.y(8),
-                Row(
-                  children: [
-                    const CustomBackButton(),
-                    Spacing.x(29),
-                    Text(
-                      "Country",
-                      style: AppTextStyles.bodyMedium,
-                    )
-                  ],
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Spacing.y(6),
+              Row(
+                children: [
+                  const CustomBackButton(),
+                  Spacing.x(28.5),
+                  Text(
+                    "Country",
+                    style: AppTextStyles.bodyMedium,
+                  )
+                ],
+              ),
+              Spacing.y(5),
+              SizedBox(
+                height: SizeConfig.heightMultiplier * 72,
+                width: SizeConfig.widthMultiplier * 85,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: 20,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: SizeConfig.heightMultiplier * 8,
+                      width: SizeConfig.widthMultiplier * 92,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: SizeConfig.widthMultiplier * 3),
+                      margin: EdgeInsets.only(
+                          bottom: SizeConfig.heightMultiplier * 3),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(color: Colors.white24),
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: SizeConfig.heightMultiplier * 3.5,
+                            width: SizeConfig.widthMultiplier * 7,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColors.primaryClr),
+                          ),
+                          Spacing.x(3),
+                          Text(
+                            "Indonesia",
+                            style: AppTextStyles.bodySmall
+                                .copyWith(fontWeight: FontWeight.w600),
+                          )
+                        ],
+                      ),
+                    );
+                  },
                 ),
-                Spacing.y(5),
-                SizedBox(
-                  height: SizeConfig.heightMultiplier * 70,
-                  width: SizeConfig.widthMultiplier * 85,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: 20,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: SizeConfig.heightMultiplier * 8,
-                        width: SizeConfig.widthMultiplier * 92,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: SizeConfig.widthMultiplier * 3),
-                        margin: EdgeInsets.only(
-                            bottom: SizeConfig.heightMultiplier * 3),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(14),
-                          border: Border.all(color: Colors.white24),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              height: SizeConfig.heightMultiplier * 3.5,
-                              width: SizeConfig.widthMultiplier * 7,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: AppColors.primaryClr),
-                            ),
-                            Spacing.x(3),
-                            Text(
-                              "Indonesia",
-                              style: AppTextStyles.bodySmall
-                                  .copyWith(fontWeight: FontWeight.w600),
-                            )
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                Spacing.y(3),
-                CustomButton(
-                  title: "Next Step",
-                  onTap: () {},
-                )
-              ],
-            ),
+              ),
+              Spacing.y(3),
+              CustomButton(
+                title: "Next Step",
+                onTap: () {},
+              )
+            ],
           ),
         ),
       ),

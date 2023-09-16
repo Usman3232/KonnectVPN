@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/images.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
@@ -33,7 +32,7 @@ class VerificationOnProcessScreen extends StatelessWidget {
                   "You’ll need a verification before using",
                   textAlign: TextAlign.center,
                   style: AppTextStyles.bodyExtraSmall
-                      .copyWith(color: AppColors.textLightClr),
+                      .copyWith(color: Colors.white38),
                 ),
                 Spacing.y(10),
                 Image.asset(AppImages.onProcess,
@@ -42,8 +41,7 @@ class VerificationOnProcessScreen extends StatelessWidget {
                 CustomButton(
                   title: "Back To Login",
                   onTap: () {
-                    Get.to(() => WelcomeOnboardScreen(),
-                        transition: Transition.rightToLeft);
+                    Get.to(() => const WelcomeOnboardScreen());
                   },
                 ),
               ],

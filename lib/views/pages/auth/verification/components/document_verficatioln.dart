@@ -37,7 +37,7 @@ class DoumentVerification extends StatelessWidget {
               "Your document photo helps us prove your identity. It should match the information you have provided in the previous steps.",
               textAlign: TextAlign.center,
               style: AppTextStyles.bodyExtraSmall
-                  .copyWith(color: AppColors.textLightClr),
+                  .copyWith(height: 1.9, color: Colors.white38),
             ),
           ),
           Spacing.y(5),
@@ -61,7 +61,7 @@ class DoumentVerification extends StatelessWidget {
                   border: Border.all(
                       color: cont.selectedDocument.value == index
                           ? AppColors.primaryClr
-                          : Colors.white24),
+                          : Colors.white10),
                 ),
                 child: Row(
                   children: [
@@ -102,7 +102,7 @@ class DoumentVerification extends StatelessWidget {
               ),
             ),
           ),
-          Spacing.y(6.3),
+          Spacing.y(4.7),
         ],
       ),
     );

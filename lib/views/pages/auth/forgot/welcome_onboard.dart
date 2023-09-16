@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/images.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
@@ -31,7 +30,7 @@ class WelcomeOnboardScreen extends StatelessWidget {
                   "You will notify once the verification confirmed",
                   textAlign: TextAlign.center,
                   style: AppTextStyles.bodyExtraSmall
-                      .copyWith(color: AppColors.textLightClr),
+                      .copyWith(color: Colors.white38),
                 ),
                 Spacing.y(10),
                 Image.asset(AppImages.getStarted,

@@ -88,7 +88,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                       "Opt out of sharing data with 3rd party marketing vendors for analytics and to improve targeted advertising.",
                       style: AppTextStyles.bodyExtraSmall.copyWith(
                           fontSize: SizeConfig.textMultiplier * 1.05,
-                          color: AppColors.textLightClr),
+                          color: Colors.white38),
                     ),
                     Spacing.y(3),
                     Row(
@@ -109,7 +109,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                                 "Binance may share usage data to 3rd party analytics platforms to help improve our products and marketing.",
                                 style: AppTextStyles.bodyExtraSmall.copyWith(
                                     fontSize: SizeConfig.textMultiplier * 1.05,
-                                    color: AppColors.textLightClr),
+                                    color: Colors.white38),
                               ),
                             ),
                           ],
@@ -145,7 +145,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                                 "Binance may share usage data to 3rd party ad platforms to help improve our targeting and marketing quality",
                                 style: AppTextStyles.bodyExtraSmall.copyWith(
                                     fontSize: SizeConfig.textMultiplier * 1.05,
-                                    color: AppColors.textLightClr),
+                                    color: Colors.white38),
                               ),
                             ),
                           ],

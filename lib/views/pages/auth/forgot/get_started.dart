@@ -35,18 +35,17 @@ class GetStartedScreen extends StatelessWidget {
                     "Your profile is now being reviewed. You can expect it to finish in the next 24 hours.",
                     textAlign: TextAlign.center,
                     style: AppTextStyles.bodyExtraSmall
-                        .copyWith(color: AppColors.textLightClr),
+                        .copyWith(height: 1.9, color: Colors.white38),
                   ),
                 ),
                 Spacing.y(10),
                 Image.asset(AppImages.getStarted,
                     height: SizeConfig.imageSizeMultiplier * 65),
-                Spacing.y(23),
+                Spacing.y(21),
                 CustomButton(
                   title: "Get Started Now",
                   onTap: () {
-                    Get.to(() => NewPasswordScreen(),
-                        transition: Transition.rightToLeft);
+                    Get.to(() => NewPasswordScreen());
                   },
                 ),
               ],

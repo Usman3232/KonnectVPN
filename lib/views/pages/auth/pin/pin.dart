@@ -25,7 +25,7 @@ class PinScreen extends StatelessWidget {
                 Text(
                   "Please enter 6 unique number",
                   style: AppTextStyles.bodyExtraSmall
-                      .copyWith(color: AppColors.textLightClr),
+                      .copyWith(color: Colors.white38),
                 ),
                 Spacing.y(3),
                 Row(
