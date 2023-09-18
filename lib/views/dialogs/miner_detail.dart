@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:konnekt_vpn/constants/images.dart';
+import 'package:get/get.dart';
+import 'package:konnekt_vpn/constants/icons.dart';
+import 'package:konnekt_vpn/controllers/device.dart';
 import '../../constants/colors.dart';
 import '../../constants/text_styles.dart';
 import '../../utils/size_config.dart';
@@ -15,9 +17,27 @@ class MinersDetailDialog extends StatefulWidget {
 }
 
 class _MinersDetailDialogState extends State<MinersDetailDialog> {
+  final cont = Get.find<DeviceCont>();
   TextEditingController deviceModel = TextEditingController();
   TextEditingController seriralNumber = TextEditingController();
   TextEditingController ipAddress = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = true;
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -47,11 +67,16 @@ class _MinersDetailDialogState extends State<MinersDetailDialog> {
             ),
             Spacing.y(3),
             Container(
-              height: 80,
-              width: 80,
+              height: SizeConfig.heightMultiplier * 8.8,
+              width: SizeConfig.widthMultiplier * 19.5,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24),
                   color: Colors.white10),
+              alignment: Alignment.center,
+              child: Image.asset(
+                AppIcons.power,
+                height: SizeConfig.imageSizeMultiplier * 12,
+              ),
             ),
             Spacing.y(2),
             Text(

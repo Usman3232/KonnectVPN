@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
+import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/controllers/payment_method.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/detail/detail.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
-import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 
@@ -20,6 +22,14 @@ class PaymentMethodScreen extends StatelessWidget {
   final TextEditingController date = TextEditingController();
   final TextEditingController cvc = TextEditingController();
 
+  List<String> eWalletTitles = ["Paypal", "Google Pay", "Apple Pay"];
+
+  List<String> eWalletIcons = [
+    AppIcons.paypal,
+    AppIcons.googlePay,
+    AppIcons.applePay
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -31,17 +41,7 @@ class PaymentMethodScreen extends StatelessWidget {
             child: Column(
               children: [
                 Spacing.y(6),
-                Row(
-                  children: [
-                    const CustomBackButton(),
-                    Spacing.x(20),
-                    Text(
-                      "Payment Method",
-                      style: AppTextStyles.bodyMedium
-                          .copyWith(color: Colors.white.withOpacity(.8)),
-                    )
-                  ],
-                ),
+                const CustomAppbar(title: "Payment Method"),
                 Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: SizeConfig.widthMultiplier * 2),
@@ -55,6 +55,7 @@ class PaymentMethodScreen extends StatelessWidget {
                           Spacing.y(3),
                           PaymentMethodTile(
                             title: "Credit/Debit Card",
+                            icon: AppIcons.card,
                             onTap: () {
                               cont.isIdCard.value = !cont.isIdCard.value;
                             },
@@ -63,7 +64,7 @@ class PaymentMethodScreen extends StatelessWidget {
                           Visibility(
                             visible: cont.isIdCard.value,
                             child: FadeIn(
-                              duration: const Duration(milliseconds: 300),
+                              duration: const Duration(milliseconds: 600),
                               curve: Curves.easeIn,
                               child: Container(
                                 width: SizeConfig.widthMultiplier * 88,
@@ -116,6 +117,7 @@ class PaymentMethodScreen extends StatelessWidget {
                           ),
                           PaymentMethodTile(
                             title: "E-Wallet",
+                            icon: AppIcons.eWallet,
                             onTap: () {
                               cont.isEWallet.value = !cont.isEWallet.value;
                             },
@@ -130,60 +132,82 @@ class PaymentMethodScreen extends StatelessWidget {
                                 children: [
                                   ...List.generate(
                                     3,
-                                    (index) => Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical:
-                                              SizeConfig.heightMultiplier * .5),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            height: 36,
-                                            width: 36,
-                                            margin: EdgeInsets.only(
-                                                left:
-                                                    SizeConfig.widthMultiplier *
-                                                        8,
-                                                right:
-                                                    SizeConfig.widthMultiplier *
-                                                        4),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white10,
-                                              borderRadius:
-                                                  BorderRadius.circular(12),
-                                            ),
-                                          ),
-                                          Text(
-                                            "Paypal",
-                                            style: AppTextStyles.bodyExtraSmall
-                                                .copyWith(
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                          ),
-                                          const Spacer(),
-                                          AnimatedContainer(
-                                            duration: const Duration(
-                                                milliseconds: 300),
-                                            height: 16,
-                                            width: 16,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                color: const Color(0xff44CCCC),
+                                    (index) => InkWell(
+                                      onTap: () {
+                                        cont.selectedEWallet.value = index;
+                                      },
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            vertical:
+                                                SizeConfig.heightMultiplier *
+                                                    .5),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              height: 36,
+                                              width: 36,
+                                              margin: EdgeInsets.only(
+                                                  left: SizeConfig
+                                                          .widthMultiplier *
+                                                      8,
+                                                  right: SizeConfig
+                                                          .widthMultiplier *
+                                                      4),
+                                              decoration: BoxDecoration(
+                                                color: Colors.white10,
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: Image.asset(
+                                                eWalletIcons[index],
+                                                height: SizeConfig
+                                                        .imageSizeMultiplier *
+                                                    6,
                                               ),
                                             ),
-                                            alignment: Alignment.center,
-                                            child: AnimatedContainer(
+                                            Text(
+                                              eWalletTitles[index],
+                                              style: AppTextStyles
+                                                  .bodyExtraSmall
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                            ),
+                                            const Spacer(),
+                                            AnimatedContainer(
                                               duration: const Duration(
                                                   milliseconds: 300),
-                                              height: 10,
-                                              width: 10,
-                                              decoration: const BoxDecoration(
+                                              height: 16,
+                                              width: 16,
+                                              decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
-                                                color: Color(0xff44CCCC),
+                                                border: Border.all(
+                                                  color: cont.selectedEWallet
+                                                              .value ==
+                                                          index
+                                                      ? const Color(0xff44CCCC)
+                                                      : Colors.white24,
+                                                ),
                                               ),
-                                            ),
-                                          )
-                                        ],
+                                              alignment: Alignment.center,
+                                              child: AnimatedContainer(
+                                                duration: const Duration(
+                                                    milliseconds: 300),
+                                                height: 10,
+                                                width: 10,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: cont.selectedEWallet
+                                                              .value ==
+                                                          index
+                                                      ? const Color(0xff44CCCC)
+                                                      : Colors.transparent,
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -194,6 +218,7 @@ class PaymentMethodScreen extends StatelessWidget {
                           ),
                           PaymentMethodTile(
                             title: "Crypto",
+                            icon: AppIcons.crypto,
                             onTap: () {
                               cont.isCrypto.value = !cont.isCrypto.value;
                             },
@@ -209,6 +234,11 @@ class PaymentMethodScreen extends StatelessWidget {
                             style: AppTextStyles.bodyExtraSmall,
                           ),
                           Spacing.y(1),
+                          // Container(
+                          //   height: SizeConfig.heightMultiplier * 6,
+                          //   width: SizeConfig.widthMultiplier * 88,
+                          //   decoration: BoxDecoration(borderRadius: BorderRadius.circular(14),border: ),
+                          // ),
                           TextFormField(
                             cursorColor: AppColors.primaryClr,
                             // keyboardType: keyboardType,
@@ -218,17 +248,19 @@ class PaymentMethodScreen extends StatelessWidget {
                               fillColor: Colors.white10,
                               filled: true,
                               prefixIcon: SizedBox(
-                                width: SizeConfig.widthMultiplier * 6,
+                                width: SizeConfig.widthMultiplier * 17,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
                                         width:
                                             SizeConfig.widthMultiplier * 1.6),
-                                    const Icon(
-                                      Icons.view_comfy_rounded,
-                                      color: Colors.white38,
+                                    Image.asset(
+                                      AppIcons.promo,
+                                      height:
+                                          SizeConfig.imageSizeMultiplier * 6,
                                     ),
+                                    Spacing.x(2),
                                     SizedBox(
                                       height: SizeConfig.heightMultiplier * 3,
                                       child: VerticalDivider(
@@ -264,7 +296,9 @@ class PaymentMethodScreen extends StatelessWidget {
                           Spacing.y(8),
                           CustomButton(
                             title: "Continue Payment",
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(() => const DetailScreen());
+                            },
                           ),
                           Spacing.y(2)
                         ],
@@ -362,9 +396,10 @@ class PaymentMethodTile extends StatelessWidget {
     required this.title,
     required this.onTap,
     required this.isCheck,
+    required this.icon,
   });
 
-  final String title;
+  final String title, icon;
   final VoidCallback onTap;
   final bool isCheck;
 
@@ -386,6 +421,11 @@ class PaymentMethodTile extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white10,
+              ),
+              alignment: Alignment.center,
+              child: Image.asset(
+                icon,
+                height: SizeConfig.imageSizeMultiplier * 4.5,
               ),
             ),
             Text(

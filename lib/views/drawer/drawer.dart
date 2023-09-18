@@ -4,9 +4,17 @@ import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
-import 'package:konnekt_vpn/controllers/home.dart';
+import 'package:konnekt_vpn/controllers/drawer.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/about%20us/about_us.dart';
+import 'package:konnekt_vpn/views/pages/auth/login/login.dart';
+import 'package:konnekt_vpn/views/pages/calculator/calculator.dart';
 import 'package:konnekt_vpn/views/pages/home/home.dart';
+import 'package:konnekt_vpn/views/pages/levels/levels.dart';
+import 'package:konnekt_vpn/views/pages/notification/notification.dart';
+import 'package:konnekt_vpn/views/pages/referral/referrral.dart';
+import 'package:konnekt_vpn/views/pages/setting/setting.dart';
+import 'package:konnekt_vpn/views/pages/subcription/subcription.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import '../../../utils/size_config.dart';
 
@@ -45,7 +53,9 @@ class MenuDrawer extends StatelessWidget {
     super.key,
   });
 
-  List<String> title = [
+  final cont = Get.find<DrawerCont>();
+
+  List<String> drawerTitle = [
     "Home",
     "Notification",
     "Subscription",
@@ -55,6 +65,17 @@ class MenuDrawer extends StatelessWidget {
     "Levels",
     "Settings",
     "About Us"
+  ];
+  List<String> drawerIcons = [
+    AppIcons.home,
+    AppIcons.bell,
+    AppIcons.subcription,
+    AppIcons.miner,
+    AppIcons.calculator,
+    AppIcons.referral,
+    AppIcons.level,
+    AppIcons.setting,
+    AppIcons.info,
   ];
   @override
   Widget build(BuildContext context) {
@@ -78,6 +99,8 @@ class MenuDrawer extends StatelessWidget {
                     ),
                     child: CircleAvatar(
                       backgroundColor: Colors.grey.shade900,
+                      backgroundImage:
+                          const AssetImage("assets/images/profile.jpg"),
                     ),
                   ),
                   Spacing.x(30),
@@ -116,17 +139,47 @@ class MenuDrawer extends StatelessWidget {
               ),
               Spacing.y(3),
               ...List.generate(
-                title.length,
+                drawerTitle.length,
                 (index) => DrawerTile(
-                  title: title[index],
-                  onTap: () {},
+                  title: drawerTitle[index],
+                  icons: drawerIcons[index],
+                  onTap: () {
+                    if (index == 0) {
+                      cont.toggleDrawer();
+                    }
+                    if (index == 1) {
+                      Get.to(() => NotificationScreen());
+                    }
+                    if (index == 2) {
+                      Get.to(() => SubcriptionScreen());
+                    }
+                    if (index == 3) {}
+                    if (index == 4) {
+                      Get.to(() => CalculatorScreen());
+                    }
+                    if (index == 5) {
+                      Get.to(() => ReferralScreen());
+                    }
+                    if (index == 6) {
+                      Get.to(() => LevelScreen());
+                    }
+                    if (index == 7) {
+                      Get.to(() => SettingScreen());
+                    }
+                    if (index == 8) {
+                      Get.to(() => AboutUsScreen());
+                    }
+                  },
                 ),
               ),
               Spacing.y(5),
               DrawerTile(
                 title: "Sign Out",
                 isSignOut: true,
-                onTap: () {},
+                icons: AppIcons.signOut,
+                onTap: () {
+                  Get.offAll(() => LoginScreen());
+                },
               )
             ],
           ),
@@ -141,9 +194,11 @@ class DrawerTile extends StatelessWidget {
       {super.key,
       required this.title,
       this.isSignOut = false,
-      required this.onTap});
+      required this.onTap,
+      required this.icons});
 
   final String title;
+  final String icons;
   final bool isSignOut;
   final VoidCallback onTap;
 
@@ -156,9 +211,9 @@ class DrawerTile extends StatelessWidget {
             EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier * 1.7),
         child: Row(
           children: [
-            const Icon(
-              Icons.house_rounded,
-              color: Colors.white,
+            Image.asset(
+              icons,
+              height: SizeConfig.imageSizeMultiplier * 5,
             ),
             Spacing.x(3),
             Text(

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../constants/icons.dart';
 import '../../constants/text_styles.dart';
+import '../../controllers/swap.dart';
 import '../../utils/size_config.dart';
 import '../../utils/spacing.dart';
 
@@ -13,6 +16,27 @@ class EmptyWalletOptionDialog extends StatefulWidget {
 }
 
 class _EmptyWalletOptionDialogState extends State<EmptyWalletOptionDialog> {
+  final cont = Get.find<SwapCont>();
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = true;
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = false;
+    });
+  }
+
+  List<String> walletButtonTitle = ["Import", "Create"];
+  List<String> walletButtonIcons = [AppIcons.import, AppIcons.create];
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -76,19 +100,25 @@ class _EmptyWalletOptionDialogState extends State<EmptyWalletOptionDialog> {
                         horizontal: SizeConfig.widthMultiplier * 1.5),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(62),
-                        color: Colors.white10),
+                        color: Colors.white.withOpacity(.05)),
                     child: Row(
                       children: [
                         Container(
-                          height: 36,
-                          width: 36,
+                          height: SizeConfig.heightMultiplier * 4,
+                          width: SizeConfig.widthMultiplier * 8.8,
                           margin: EdgeInsets.only(
                               right: SizeConfig.widthMultiplier * 3),
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle, color: Colors.white10),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white.withOpacity(.05)),
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            walletButtonIcons[index],
+                            height: SizeConfig.imageSizeMultiplier * 4,
+                          ),
                         ),
                         Text(
-                          "Import",
+                          walletButtonTitle[index],
                           style: AppTextStyles.bodyExtraSmall.copyWith(
                               fontWeight: FontWeight.w500,
                               color: Colors.white54),

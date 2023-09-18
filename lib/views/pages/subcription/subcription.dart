@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/images.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/special%20offer/special_offer.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 
@@ -42,18 +45,7 @@ class _SubcriptionScreenState extends State<SubcriptionScreen> {
           child: Column(
             children: [
               Spacing.y(6),
-              Row(
-                children: [
-                  const CustomBackButton(),
-                  Spacing.x(24),
-                  Text(
-                    "Subcriptions",
-                    style: AppTextStyles.bodyMedium.copyWith(
-                      color: Colors.white.withOpacity(.8),
-                    ),
-                  )
-                ],
-              ),
+              const CustomAppbar(title: "Subcriptions"),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.widthMultiplier * 2),
@@ -71,7 +63,7 @@ class _SubcriptionScreenState extends State<SubcriptionScreen> {
                       ),
                       Spacing.y(3),
                       ...List.generate(
-                        4,
+                        subcriptionType.length,
                         (index) => Padding(
                           padding: EdgeInsets.only(
                               bottom: SizeConfig.heightMultiplier * 2),
@@ -93,7 +85,10 @@ class _SubcriptionScreenState extends State<SubcriptionScreen> {
                                       horizontal:
                                           SizeConfig.widthMultiplier * 4),
                                   decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.white10),
+                                      border: Border.all(
+                                          color: selectedSubcription == index
+                                              ? AppColors.primaryClr
+                                              : Colors.white10),
                                       borderRadius: BorderRadius.circular(14),
                                       color: Colors.white10),
                                   child: Row(
@@ -172,7 +167,9 @@ class _SubcriptionScreenState extends State<SubcriptionScreen> {
                       Spacing.y(8),
                       CustomButton(
                         title: "Subscribe",
-                        onTap: () {},
+                        onTap: () {
+                          Get.to(() => SpecialOfferScreen());
+                        },
                       ),
                       Spacing.y(2)
                     ],

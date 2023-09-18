@@ -54,7 +54,9 @@ class _NotificationScreenState extends State<NotificationScreen>
                     children: [
                       const CustomBackButton(),
                       Spacing.x(24),
-                      Text("Notifications", style: AppTextStyles.bodyMedium)
+                      Text("Notifications",
+                          style: AppTextStyles.bodyMedium
+                              .copyWith(color: Colors.white.withOpacity(.8)))
                     ],
                   ),
                   Spacing.y(5),

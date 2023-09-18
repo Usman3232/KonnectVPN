@@ -9,7 +9,9 @@ import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/pages/about%20us/about_us.dart';
 import 'package:konnekt_vpn/views/pages/history/history.dart';
+import 'package:konnekt_vpn/views/pages/language/language.dart';
 import 'package:konnekt_vpn/views/pages/manage%20account/manage_account.dart';
+import 'package:konnekt_vpn/views/pages/netwok%20test/network_test.dart';
 import 'package:konnekt_vpn/views/pages/notification/notification.dart';
 import 'package:konnekt_vpn/views/pages/privacy/privacy.dart';
 import 'package:konnekt_vpn/views/pages/security/security.dart';
@@ -50,7 +52,12 @@ class SettingScreen extends StatelessWidget {
                 children: [
                   const CustomBackButton(),
                   Spacing.x(28),
-                  Text("Settings", style: AppTextStyles.bodyMedium)
+                  Text(
+                    "Settings",
+                    style: AppTextStyles.bodyMedium.copyWith(
+                      color: Colors.white.withOpacity(.8),
+                    ),
+                  )
                 ],
               ),
               Expanded(
@@ -69,10 +76,10 @@ class SettingScreen extends StatelessWidget {
                               border:
                                   Border.all(color: Colors.white10, width: 10),
                             ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.grey.shade900),
+                            child: CircleAvatar(
+                              backgroundColor: Colors.grey.shade900,
+                              backgroundImage:
+                                  const AssetImage("assets/images/profile.jpg"),
                             ),
                           ),
                           Positioned(
@@ -203,24 +210,28 @@ class SettingScreen extends StatelessWidget {
                             Spacing.y(1.5),
                             ...List.generate(
                               generalTitles.length,
-                              (index) => Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical:
-                                        SizeConfig.heightMultiplier * 1.5),
-                                child: InkWell(
-                                  onTap: () {
-                                    if (index == 0) {
-                                      Get.to(() => NotificationScreen());
-                                    } else if (index == 1) {
-                                      Get.to(() => SecurityScreen());
-                                    } else if (index == 3) {
-                                      Get.to(() => HistoryScreen());
-                                    } else if (index == 4) {
-                                      Get.to(() => PrivacyScreen());
-                                    } else if (index == 6) {
-                                      Get.to(() => AboutUsScreen());
-                                    }
-                                  },
+                              (index) => InkWell(
+                                onTap: () {
+                                  if (index == 0) {
+                                    Get.to(() => NotificationScreen());
+                                  } else if (index == 1) {
+                                    Get.to(() => SecurityScreen());
+                                  } else if (index == 2) {
+                                    Get.to(() => LanguageScreen());
+                                  } else if (index == 3) {
+                                    Get.to(() => HistoryScreen());
+                                  } else if (index == 4) {
+                                    Get.to(() => PrivacyScreen());
+                                  } else if (index == 5) {
+                                    Get.to(() => const NetworkTestScreen());
+                                  } else if (index == 6) {
+                                    Get.to(() => AboutUsScreen());
+                                  }
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical:
+                                          SizeConfig.heightMultiplier * 1.5),
                                   child: Row(
                                     children: [
                                       Image.asset(generalIcons[index],
@@ -246,7 +257,8 @@ class SettingScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            )
+                            ),
+                            Spacing.y(2),
                           ],
                         ),
                       ),

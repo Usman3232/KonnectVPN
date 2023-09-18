@@ -16,6 +16,23 @@ class AboutUsScreen extends StatelessWidget {
     AppIcons.twitter,
     AppIcons.discord
   ];
+  List<String> aboutTitle = [
+    "Terms & Conditions",
+    "Privacy Policy",
+    "Review The App"
+  ];
+  List<String> aboutIcons = [
+    AppIcons.document,
+    AppIcons.privacyPolicy,
+    AppIcons.star
+  ];
+
+  List<String> aboutDevice = ["Device id", "Check For Updated"];
+  List<String> aboutDeviceIcons = [AppIcons.mobile, AppIcons.checkUpdate];
+  List<String> aboutDeviceUpdate = [
+    "91733964163015807410",
+    "Your current version is up to date"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +44,14 @@ class AboutUsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Spacing.y(6),
+             
               Row(
                 children: [
                   const CustomBackButton(),
                   Spacing.x(27.5),
-                  Text("About Us", style: AppTextStyles.bodyMedium)
+                  Text("About Us",
+                      style: AppTextStyles.bodyMedium
+                          .copyWith(color: Colors.white.withOpacity(.8)))
                 ],
               ),
               Spacing.y(5),
@@ -81,7 +101,7 @@ class AboutUsScreen extends StatelessWidget {
                     ),
                     Spacing.y(5),
                     ...List.generate(
-                      3,
+                      aboutTitle.length,
                       (index) => Padding(
                         padding: EdgeInsets.only(
                             bottom: SizeConfig.heightMultiplier * 5),
@@ -90,13 +110,13 @@ class AboutUsScreen extends StatelessWidget {
                           child: Row(
                             children: [
                               Image.asset(
-                                AppIcons.document,
+                                aboutIcons[index],
                                 height: SizeConfig.imageSizeMultiplier * 5.5,
                                 color: Colors.white,
                               ),
                               Spacing.x(4),
                               Text(
-                                "Terms & Conditions",
+                                aboutTitle[index],
                                 style: AppTextStyles.bodySmall
                                     .copyWith(fontWeight: FontWeight.w500),
                               ),
@@ -112,7 +132,7 @@ class AboutUsScreen extends StatelessWidget {
                     Divider(color: AppColors.borderClr, height: 0),
                     Spacing.y(5),
                     ...List.generate(
-                      2,
+                      aboutDevice.length,
                       (index) => Padding(
                         padding: EdgeInsets.only(
                             bottom: SizeConfig.heightMultiplier * 4),
@@ -128,18 +148,23 @@ class AboutUsScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(16),
                                     color: Colors.white10),
+                                alignment: Alignment.center,
+                                child: Image.asset(
+                                  aboutDeviceIcons[index],
+                                  height: SizeConfig.imageSizeMultiplier * 5.5,
+                                ),
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Device id",
+                                    aboutDevice[index],
                                     style: AppTextStyles.bodyExtraSmall
                                         .copyWith(fontWeight: FontWeight.w700),
                                   ),
                                   Spacing.y(1),
                                   Text(
-                                    "91733964163015807410",
+                                    aboutDeviceUpdate[index],
                                     style: AppTextStyles.bodyExtraSmall
                                         .copyWith(
                                             fontSize:

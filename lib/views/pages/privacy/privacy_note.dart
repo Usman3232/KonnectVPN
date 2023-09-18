@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
-import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
@@ -23,7 +20,7 @@ class PrivacyNoteScreen extends StatelessWidget {
               height: SizeConfig.heightMultiplier * 30,
               width: SizeConfig.widthMultiplier * 100,
               padding: AppConstants.defaultPadding,
-              color: Colors.white10,
+              color: Colors.white.withOpacity(.05),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

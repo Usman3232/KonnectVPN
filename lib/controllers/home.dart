@@ -1,12 +1,7 @@
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 
-class DrawerCont extends GetxController {
-  final zoomDrawerController = ZoomDrawerController();
-
-  void toggleDrawer() {
-    print("Toggle drawer");
-    zoomDrawerController.toggle?.call();
-    update();
-  }
+class HomeCont extends GetxController {
+  RxBool isBlur = false.obs;
+  RxInt selectedKpnType = 0.obs;
+  RxInt selectedVal = (-1).obs;
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 import '../../constants/text_styles.dart';
+import '../../controllers/swap.dart';
 import '../../utils/size_config.dart';
 import '../../utils/spacing.dart';
 import '../widgets/auth_textfield.dart';
@@ -13,6 +15,24 @@ class CreateDialog extends StatefulWidget {
 }
 
 class _CreateDialogState extends State<CreateDialog> {
+  final cont = Get.find<SwapCont>();
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = true;
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = false;
+    });
+  }
+
   TextEditingController nickName = TextEditingController();
   TextEditingController address = TextEditingController();
   @override
@@ -21,9 +41,8 @@ class _CreateDialogState extends State<CreateDialog> {
       insetPadding: EdgeInsets.zero,
       backgroundColor: Colors.transparent,
       child: Container(
-        // height: SizeConfig.heightMultiplier * 35,
-
-        height: 476, width: SizeConfig.widthMultiplier * 88,
+        height: SizeConfig.heightMultiplier * 52,
+        width: SizeConfig.widthMultiplier * 88,
         padding: EdgeInsets.only(
             top: SizeConfig.heightMultiplier * 3,
             left: SizeConfig.widthMultiplier * 5,

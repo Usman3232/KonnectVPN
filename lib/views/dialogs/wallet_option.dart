@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:konnekt_vpn/constants/icons.dart';
+import 'package:konnekt_vpn/controllers/swap.dart';
+import 'package:konnekt_vpn/views/pages/import/import.dart';
+import 'package:konnekt_vpn/views/pages/wallet/wallet.dart';
 
 import '../../constants/text_styles.dart';
 import '../../utils/size_config.dart';
@@ -14,6 +19,33 @@ class WalletOptionDialog extends StatefulWidget {
 }
 
 class _WalletOptionDialogState extends State<WalletOptionDialog> {
+  final cont = Get.find<SwapCont>();
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = true;
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = false;
+    });
+  }
+
+  List<String> walletTitle = ["BNB Smart Chain", "Polygon", "Polygon"];
+  List<String> walletIcons = [
+    AppIcons.bnb,
+    AppIcons.bnb,
+    AppIcons.bnb,
+  ];
+  List<String> walletButtonTitle = ["Import", "Create"];
+  List<String> walletButtonIcons = [AppIcons.import, AppIcons.create];
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -48,23 +80,29 @@ class _WalletOptionDialogState extends State<WalletOptionDialog> {
             ),
             Spacing.y(1.5),
             ...List.generate(
-              3,
+              walletTitle.length,
               (index) => Padding(
                 padding: EdgeInsets.symmetric(
                     vertical: SizeConfig.heightMultiplier * 1.5),
                 child: Row(
                   children: [
                     Container(
-                      height: 42,
-                      width: 42,
+                      height: SizeConfig.heightMultiplier * 4.6,
+                      width: SizeConfig.widthMultiplier * 10.3,
                       margin: EdgeInsets.only(
                           right: SizeConfig.widthMultiplier * 4),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white10),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white.withOpacity(.05),
+                      ),
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        walletIcons[index],
+                        height: SizeConfig.imageSizeMultiplier * 5,
+                      ),
                     ),
                     Text(
-                      "BNB Smart Chain",
+                      walletTitle[index],
                       style: AppTextStyles.bodyExtraSmall
                           .copyWith(fontWeight: FontWeight.w500),
                     ),
@@ -83,33 +121,49 @@ class _WalletOptionDialogState extends State<WalletOptionDialog> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ...List.generate(
-                  2,
-                  (index) => Container(
-                    // height: 52,
-                    height: SizeConfig.heightMultiplier * 5.6,
-                    width: SizeConfig.widthMultiplier * 37,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: SizeConfig.widthMultiplier * 1.5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(62),
-                        color: Colors.white10),
-                    child: Row(
-                      children: [
-                        Container(
-                          height: 36,
-                          width: 36,
-                          margin: EdgeInsets.only(
-                              right: SizeConfig.widthMultiplier * 3),
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle, color: Colors.white10),
-                        ),
-                        Text(
-                          "Import",
-                          style: AppTextStyles.bodyExtraSmall.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white54),
-                        )
-                      ],
+                  walletButtonTitle.length,
+                  (index) => InkWell(
+                    onTap: () {
+                      Get.back();
+                      cont.isBlur.value = false;
+                      if (index == 0) {
+                        Get.to(() => ImportScreen());
+                      } else if (index == 1) {
+                        Get.to(() => WalletScreen());
+                      }
+                    },
+                    child: Container(
+                      height: SizeConfig.heightMultiplier * 5.6,
+                      width: SizeConfig.widthMultiplier * 37,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: SizeConfig.widthMultiplier * 1.5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(62),
+                          color: Colors.white.withOpacity(.05)),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: SizeConfig.heightMultiplier * 4,
+                            width: SizeConfig.widthMultiplier * 8.8,
+                            margin: EdgeInsets.only(
+                                right: SizeConfig.widthMultiplier * 3),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white.withOpacity(.05)),
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              walletButtonIcons[index],
+                              height: SizeConfig.imageSizeMultiplier * 4,
+                            ),
+                          ),
+                          Text(
+                            walletButtonTitle[index],
+                            style: AppTextStyles.bodyExtraSmall.copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white54),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 )

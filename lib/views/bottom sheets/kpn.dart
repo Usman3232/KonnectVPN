@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:konnekt_vpn/controllers/home.dart';
 import '../../constants/colors.dart';
 import '../../constants/icons.dart';
 import '../../constants/text_styles.dart';
@@ -18,13 +18,30 @@ class KpnTypeBottomSheet extends StatefulWidget {
 }
 
 class _KpnTypeBottomSheetState extends State<KpnTypeBottomSheet> {
+  final cont = Get.find<HomeCont>();
   List<String> kpnTitles = ["Full KPN", "Smart KPN", "Disable KPN"];
   List<String> kpnIcons = [
     AppIcons.thunder,
     AppIcons.lightBuld,
     AppIcons.closeCircleFilled
   ];
-  int selectedKpnType = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = true;
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,8 +71,7 @@ class _KpnTypeBottomSheetState extends State<KpnTypeBottomSheet> {
             3,
             (index) => InkWell(
               onTap: () {
-                selectedKpnType = index;
-                setState(() {});
+                cont.selectedKpnType.value = index;
               },
               child: Padding(
                 padding:
@@ -88,7 +104,7 @@ class _KpnTypeBottomSheetState extends State<KpnTypeBottomSheet> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                            color: selectedKpnType == index
+                            color: cont.selectedKpnType.value == index
                                 ? AppColors.primaryClr
                                 : AppColors.borderClr),
                       ),
@@ -99,7 +115,7 @@ class _KpnTypeBottomSheetState extends State<KpnTypeBottomSheet> {
                         width: SizeConfig.widthMultiplier * 5,
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: selectedKpnType == index
+                            color: cont.selectedKpnType.value == index
                                 ? AppColors.primaryClr
                                 : Colors.transparent),
                       ),

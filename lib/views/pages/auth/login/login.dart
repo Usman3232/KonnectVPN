@@ -6,6 +6,7 @@ import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/controllers/login.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/drawer/drawer.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/forgot.dart';
 import 'package:konnekt_vpn/views/pages/auth/sign%20up/sign_up.dart';
 import 'package:konnekt_vpn/views/pages/home/home.dart';
@@ -72,7 +73,7 @@ class LoginScreen extends StatelessWidget {
                   CustomButton(
                     title: "Login",
                     onTap: () {
-                      Get.to(() => HomeScreen());
+                      Get.to(() => DrawerScreen());
                     },
                   ),
                   Spacing.y(2),

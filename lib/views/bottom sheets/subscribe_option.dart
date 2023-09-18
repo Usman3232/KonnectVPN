@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:konnekt_vpn/controllers/calculator.dart';
 import '../../constants/colors.dart';
 import '../../constants/icons.dart';
 import '../../constants/text_styles.dart';
@@ -19,6 +20,7 @@ class SubscribeOptionBottomSheet extends StatefulWidget {
 
 class _SubscribeOptionBottomSheetState
     extends State<SubscribeOptionBottomSheet> {
+  final cont = Get.find<CalculatorCont>();
   List<String> subscribeTitles = ["Basic", "Bronze", "Silver", "Gold"];
   List<String> subscribeIcons = [
     AppIcons.crownBasic,
@@ -28,6 +30,23 @@ class _SubscribeOptionBottomSheetState
   ];
 
   int selectedSubcription = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = true;
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    Future.delayed(Duration.zero, () {
+      cont.isBlur.value = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/skate%20kpn/skate_kpn.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 
@@ -21,18 +24,7 @@ class StackingScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Spacing.y(6),
-              Row(
-                children: [
-                  const CustomBackButton(),
-                  Spacing.x(27),
-                  Text(
-                    "Stacking",
-                    style: AppTextStyles.bodyMedium.copyWith(
-                      color: Colors.white.withOpacity(.8),
-                    ),
-                  )
-                ],
-              ),
+              const CustomAppbar(title: "Stacking"),
               Spacing.y(8),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -87,7 +79,9 @@ class StackingScreen extends StatelessWidget {
                     Spacing.y(25),
                     CustomButton(
                       title: "Stake",
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => const SkateKpnScreen());
+                      },
                     )
                   ],
                 ),

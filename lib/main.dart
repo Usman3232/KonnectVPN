@@ -33,6 +33,7 @@ import 'package:konnekt_vpn/views/pages/levels/levels.dart';
 import 'package:konnekt_vpn/views/pages/manage%20account/manage_account.dart';
 import 'package:konnekt_vpn/views/pages/miner%20detail/miner_detail.dart';
 import 'package:konnekt_vpn/views/pages/miners/miners.dart';
+import 'package:konnekt_vpn/views/pages/netwok%20test/network_test.dart';
 import 'package:konnekt_vpn/views/pages/notification/notification.dart';
 import 'package:konnekt_vpn/views/pages/payment%20method/payment_method.dart';
 import 'package:konnekt_vpn/views/pages/privacy/privacy.dart';
@@ -46,7 +47,7 @@ import 'package:konnekt_vpn/views/pages/subcription/subcription.dart';
 import 'package:konnekt_vpn/views/pages/swap/swap.dart';
 import 'package:konnekt_vpn/views/pages/transaction%20detail/transaction_detail.dart';
 import 'package:konnekt_vpn/views/pages/wallet/wallet.dart';
-import 'package:konnekt_vpn/views/skate%20kpn/skate_kpn.dart';
+import 'package:konnekt_vpn/views/pages/skate%20kpn/skate_kpn.dart';
 
 void main() {
   runApp(const MyApp());
@@ -73,7 +74,7 @@ class MyApp extends StatelessWidget {
                 scaffoldBackgroundColor: Colors.black,
               ),
               debugShowCheckedModeBanner: false,
-              home: LanguageScreen(),
+              home: DrawerScreen(),
             );
           },
         );

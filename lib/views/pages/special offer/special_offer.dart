@@ -7,19 +7,13 @@ import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/controllers/special_offer.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/payment%20method/payment_method.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 
 class SpecialOfferScreen extends StatelessWidget {
   SpecialOfferScreen({super.key});
   final cont = Get.put(SpecialOfferCont());
-
-  // final List<Widget> imgList = [
-  //   SpecialOffer(),
-  //   SpecialOffer(),
-  //   SpecialOffer(),
-  //   SpecialOffer(),
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +60,9 @@ class SpecialOfferScreen extends StatelessWidget {
             MaterialButton(
               height: SizeConfig.heightMultiplier * 6,
               minWidth: SizeConfig.widthMultiplier * 92,
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => PaymentMethodScreen());
+              },
               shape: RoundedRectangleBorder(
                 side: BorderSide(color: AppColors.primaryClr),
                 borderRadius: BorderRadius.circular(14),

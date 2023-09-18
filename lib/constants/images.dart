@@ -10,4 +10,5 @@ class AppImages {
 
   //DUMMY
   static String level = "assets/images/level.png";
+  static String lineChart = "assets/images/line_chart.png";
 }

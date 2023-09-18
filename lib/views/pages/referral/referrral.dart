@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
+import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/controllers/referral.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/dialogs/wallet_option.dart';
+import 'package:konnekt_vpn/views/pages/skate%20kpn/skate_kpn.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 import '../../../constants/text_styles.dart';
@@ -22,11 +26,12 @@ class ReferralScreen extends StatefulWidget {
 class _ReferralScreenState extends State<ReferralScreen> {
   final cont = Get.put(ReferralCont());
   List<String> type = ["Share Code", "Get Money", "Withdraw"];
+  List<String> typeIcons = [AppIcons.users, AppIcons.getMoney, AppIcons.import];
   int selectedType = 0;
 
   @override
   Widget build(BuildContext context) {
-    Duration animaDuration = Duration(milliseconds: 700);
+    Duration animaDuration = const Duration(milliseconds: 700);
     return Scaffold(
       body: Background(
         child: Obx(
@@ -39,26 +44,17 @@ class _ReferralScreenState extends State<ReferralScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Spacing.y(6),
-                    Row(
-                      children: [
-                        CustomBackButton(
-                          onTap: () {
-                            if (cont.isWiddraw.value) {
-                              cont.isWiddraw.value = false;
-                              Future.delayed(animaDuration,
-                                  () => cont.showBody.value = true);
-                            }
-                          },
-                        ),
-                        Spacing.x(23),
-                        Text(
-                          "Referral Code",
-                          style: AppTextStyles.bodyMedium.copyWith(
-                            color: Colors.white.withOpacity(.8),
-                          ),
-                        ),
-                       
-                      ],
+                    CustomAppbar(
+                      title: "Referral Code",
+                      onTap: () {
+                        if (cont.isWiddraw.value) {
+                          cont.isWiddraw.value = false;
+                          Future.delayed(
+                              animaDuration, () => cont.showBody.value = true);
+                        } else {
+                          Get.back();
+                        }
+                      },
                     ),
                     Spacing.y(6),
                     Padding(
@@ -147,6 +143,16 @@ class _ReferralScreenState extends State<ReferralScreen> {
                                                               BoxShape.circle,
                                                           color:
                                                               Colors.white10),
+                                                  alignment: Alignment.center,
+                                                  child: Image.asset(
+                                                    typeIcons[index],
+                                                    height: SizeConfig
+                                                            .imageSizeMultiplier *
+                                                        5.5,
+                                                    color: selectedType == index
+                                                        ? Colors.white
+                                                        : Colors.white38,
+                                                  ),
                                                 ),
                                                 Text(
                                                   type[index],
@@ -319,28 +325,33 @@ class _ReferralScreenState extends State<ReferralScreen> {
                             style: AppTextStyles.headingMedium
                                 .copyWith(fontWeight: FontWeight.w500),
                           ),
-                          Container(
-                            height: 28,
-                            width: 63,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                color: Colors.white10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Wallet",
-                                  style: AppTextStyles.bodyExtraSmall.copyWith(
-                                      fontSize:
-                                          SizeConfig.textMultiplier * 1.05,
-                                      color: Colors.white54),
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_down_rounded,
-                                  color: Colors.white54,
-                                  size: SizeConfig.imageSizeMultiplier * 4.5,
-                                )
-                              ],
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 28,
+                              width: 63,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.white10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Wallet",
+                                    style: AppTextStyles.bodyExtraSmall
+                                        .copyWith(
+                                            fontSize:
+                                                SizeConfig.textMultiplier *
+                                                    1.05,
+                                            color: Colors.white54),
+                                  ),
+                                  Icon(
+                                    Icons.keyboard_arrow_down_rounded,
+                                    color: Colors.white54,
+                                    size: SizeConfig.imageSizeMultiplier * 4.5,
+                                  )
+                                ],
+                              ),
                             ),
                           )
                         ],
@@ -437,7 +448,9 @@ class _ReferralScreenState extends State<ReferralScreen> {
                       Spacing.y(4),
                       CustomButton(
                         title: "Transfer",
-                        onTap: () {},
+                        onTap: () {
+                          Get.to(() => const SkateKpnScreen());
+                        },
                       )
                     ],
                   ),
@@ -491,6 +504,11 @@ class MyReferralsTile extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white10,
               borderRadius: BorderRadius.circular(14),
+            ),
+            alignment: Alignment.center,
+            child: Image.asset(
+              AppIcons.myReferrals,
+              height: SizeConfig.imageSizeMultiplier * 5.5,
             ),
           ),
           Column(

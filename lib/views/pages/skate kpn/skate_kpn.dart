@@ -3,9 +3,10 @@ import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
-import '../../../constants/text_styles.dart';
+import '../../../../constants/text_styles.dart';
 
 class SkateKpnScreen extends StatelessWidget {
   const SkateKpnScreen({super.key});
@@ -20,18 +21,7 @@ class SkateKpnScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Spacing.y(6),
-              Row(
-                children: [
-                  const CustomBackButton(),
-                  Spacing.x(26),
-                  Text(
-                    "Skate KPN",
-                    style: AppTextStyles.bodyMedium.copyWith(
-                      color: Colors.white.withOpacity(.8),
-                    ),
-                  )
-                ],
-              ),
+              const CustomAppbar(title: "Skate KPN"),
               Spacing.y(10),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -97,7 +87,7 @@ class SkateKpnScreen extends StatelessWidget {
                     _rowInfo("Total", "\$12"),
                     Spacing.y(22),
                     CustomButton(
-                      title: "Stake",
+                      title: "Stake Now",
                       onTap: () {},
                     )
                   ],

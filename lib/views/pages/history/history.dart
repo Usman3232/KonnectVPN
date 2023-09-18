@@ -54,7 +54,7 @@ class _HistoryScreenState extends State<HistoryScreen>
                   Row(
                     children: [
                       const CustomBackButton(),
-                      Spacing.x(29.5),
+                      Spacing.x(29),
                       Text("History", style: AppTextStyles.bodyMedium)
                     ],
                   ),

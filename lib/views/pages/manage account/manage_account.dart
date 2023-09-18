@@ -29,8 +29,13 @@ class ManageAccountScreen extends StatelessWidget {
               Row(
                 children: [
                   const CustomBackButton(),
-                  Spacing.x(21),
-                  Text("Manage Account", style: AppTextStyles.bodyMedium)
+                  Spacing.x(20),
+                  Text(
+                    "Manage Account",
+                    style: AppTextStyles.bodyMedium.copyWith(
+                      color: Colors.white.withOpacity(.8),
+                    ),
+                  )
                 ],
               ),
               Spacing.y(5),

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/payment%20method/payment_method.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 
@@ -27,18 +31,7 @@ class _MinerScreenState extends State<MinerScreen> {
           child: Column(
             children: [
               Spacing.y(6),
-              Row(
-                children: [
-                  const CustomBackButton(),
-                  Spacing.x(24),
-                  Text(
-                    "Miners Detail",
-                    style: AppTextStyles.bodyMedium.copyWith(
-                      color: Colors.white.withOpacity(.8),
-                    ),
-                  )
-                ],
-              ),
+              const CustomAppbar(title: "Miners Detail"),
               Spacing.y(5),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -65,7 +58,10 @@ class _MinerScreenState extends State<MinerScreen> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: SizeConfig.widthMultiplier * 3),
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.white10),
+                                  border: Border.all(
+                                      color: selectedMiner == index
+                                          ? AppColors.primaryClr
+                                          : Colors.white10),
                                   borderRadius: BorderRadius.circular(14),
                                   color: Colors.white10),
                               child: Row(
@@ -111,7 +107,9 @@ class _MinerScreenState extends State<MinerScreen> {
                     Spacing.y(24),
                     CustomButton(
                       title: "Buy Now",
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => PaymentMethodScreen());
+                      },
                     )
                   ],
                 ),

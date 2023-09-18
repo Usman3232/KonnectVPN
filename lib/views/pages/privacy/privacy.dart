@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/privacy/privacy_note.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 
@@ -32,8 +34,10 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
               Row(
                 children: [
                   const CustomBackButton(),
-                  Spacing.x(30),
-                  Text("Privacy", style: AppTextStyles.bodyMedium)
+                  Spacing.x(29),
+                  Text("Privacy",
+                      style: AppTextStyles.bodyMedium
+                          .copyWith(color: Colors.white.withOpacity(.8)))
                 ],
               ),
               Spacing.y(5),
@@ -44,7 +48,9 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => const PrivacyNoteScreen());
+                      },
                       child: Row(
                         children: [
                           Container(

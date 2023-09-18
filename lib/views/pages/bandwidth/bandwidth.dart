@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/icons.dart';
@@ -8,11 +7,11 @@ import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_slider.dart';
-// import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../../constants/text_styles.dart';
 
 class BandwidthScreen extends StatelessWidget {
-  BandwidthScreen({super.key});
+  const BandwidthScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,70 @@ class BandwidthScreen extends StatelessWidget {
                 ],
               ),
               Spacing.y(6),
-              Spacing.y(30),
+              Center(
+                child: CircularPercentIndicator(
+                  animation: true,
+                  radius: SizeConfig.imageSizeMultiplier * 28,
+                  lineWidth: SizeConfig.widthMultiplier * 4,
+                  percent: 0.8,
+                  circularStrokeCap: CircularStrokeCap.round,
+                  widgetIndicator: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: SizeConfig.widthMultiplier * 24),
+                    child: Container(
+                      height: 10,
+                      width: 10,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.primaryClr,
+                        border: Border.all(color: Colors.white, width: 5),
+                      ),
+                    ),
+                  ),
+                  backgroundColor: Colors.white10,
+                  linearGradient: LinearGradient(colors: [
+                    AppColors.primaryClr.withOpacity(.5),
+                    AppColors.primaryClr,
+                  ]),
+                  center: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "4579",
+                        style: AppTextStyles.headingLarge.copyWith(
+                            fontSize: SizeConfig.textMultiplier * 4.8,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      Text(
+                        "KNKT/m",
+                        style: AppTextStyles.headingMedium
+                            .copyWith(color: AppColors.primaryClr),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Spacing.y(7),
+              // Spacing.y(30),
+
+              // SfRadialGauge(axes: <RadialAxis>[
+              //   RadialAxis(minimum: 0, maximum: 150, ranges: <GaugeRange>[
+              //     GaugeRange(startValue: 0, endValue: 50, color: Colors.green),
+              //     GaugeRange(
+              //         startValue: 50, endValue: 100, color: Colors.orange),
+              //     GaugeRange(startValue: 100, endValue: 150, color: Colors.red)
+              //   ], pointers: <GaugePointer>[
+              //     NeedlePointer(value: 90)
+              //   ], annotations: <GaugeAnnotation>[
+              //     GaugeAnnotation(
+              //         widget: Container(
+              //             child: Text('90.0',
+              //                 style: TextStyle(
+              //                     fontSize: 25, fontWeight: FontWeight.bold))),
+              //         angle: 90,
+              //         positionFactor: 0.5)
+              //   ])
+              // ]),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.widthMultiplier * 2),
@@ -88,7 +150,7 @@ class BandwidthScreen extends StatelessWidget {
                               ],
                             ),
                             Spacing.y(1),
-                            const CustomSlider(value: 95),
+                            const CustomSlider(value: 50),
                           ],
                         )
                       ],
@@ -113,8 +175,13 @@ class BandwidthScreen extends StatelessWidget {
                               margin: EdgeInsets.only(
                                   right: SizeConfig.widthMultiplier * 4),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(16),
                                   color: Colors.white10),
+                              alignment: Alignment.center,
+                              child: Image.asset(
+                                AppIcons.dataBase,
+                                height: SizeConfig.imageSizeMultiplier * 6,
+                              ),
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

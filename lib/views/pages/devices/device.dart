@@ -3,278 +3,302 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
+import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
+import 'package:konnekt_vpn/controllers/device.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
-import 'package:konnekt_vpn/views/dialogs/create.dart';
-import 'package:konnekt_vpn/views/dialogs/import.dart';
 import 'package:konnekt_vpn/views/dialogs/miner_detail.dart';
+import 'package:konnekt_vpn/views/pages/miners/miners.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
-import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
-import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
+import 'package:konnekt_vpn/views/widgets/glass_background.dart';
 
 class DeviceScreen extends StatelessWidget {
-  const DeviceScreen({super.key});
+  DeviceScreen({super.key});
+
+  final cont = Get.put(DeviceCont());
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Background(
-        child: Padding(
-          padding: AppConstants.defaultPadding,
-          child: Column(
-            children: [
-              Spacing.y(6),
-              Row(
+    return Obx(
+      () => Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: GlassBackground(
+          inAsyncCall: cont.isBlur.value,
+          child: Background(
+            child: Padding(
+              padding: AppConstants.defaultPadding,
+              child: Column(
                 children: [
-                  CustomBackButton(),
-                  Spacing.x(28.5),
-                  Text(
-                    "Devices",
-                    style: AppTextStyles.bodyMedium.copyWith(
-                      color: Colors.white.withOpacity(.8),
-                    ),
-                  ),
-                ],
-              ),
-              Spacing.y(5),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: SizeConfig.widthMultiplier * 2),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "10",
-                      style: AppTextStyles.headingLarge
-                          .copyWith(fontSize: SizeConfig.textMultiplier * 6.4),
-                    ),
-                    Text(
-                      "Device Total",
-                      style: AppTextStyles.bodyMedium.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.primaryClr),
-                    ),
-                    Spacing.y(5),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Spacing.y(6),
+                  const CustomAppbar(title: "Devices"),
+                  Spacing.y(5),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: SizeConfig.widthMultiplier * 2),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        ...List.generate(
-                          2,
-                          (index) => InkWell(
-                            onTap: () {},
-                            child: Container(
-                              height: SizeConfig.heightMultiplier * 5,
-                              width: SizeConfig.widthMultiplier * 42,
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.white24),
-                                borderRadius: BorderRadius.circular(62),
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: SizeConfig.heightMultiplier * 4.5,
-                                    width: SizeConfig.widthMultiplier * 9,
-                                    margin: EdgeInsets.only(
-                                        right: SizeConfig.widthMultiplier * 3),
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.white10),
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "04",
-                                      style: AppTextStyles.bodyExtraSmall
-                                          .copyWith(
-                                              fontWeight: FontWeight.w600),
-                                    ),
+                        Text(
+                          "10",
+                          style: AppTextStyles.headingLarge.copyWith(
+                              fontSize: SizeConfig.textMultiplier * 6.4),
+                        ),
+                        Text(
+                          "Device Total",
+                          style: AppTextStyles.bodyMedium.copyWith(
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.primaryClr),
+                        ),
+                        Spacing.y(5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ...List.generate(
+                              2,
+                              (index) => InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  height: SizeConfig.heightMultiplier * 5,
+                                  width: SizeConfig.widthMultiplier * 42,
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.white24),
+                                    borderRadius: BorderRadius.circular(62),
                                   ),
-                                  Text(
-                                    "Device On",
-                                    style: AppTextStyles.bodyExtraSmall
-                                        .copyWith(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize:
-                                                SizeConfig.textMultiplier *
-                                                    1.05,
-                                            color: Colors.white54),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        height:
+                                            SizeConfig.heightMultiplier * 4.5,
+                                        width: SizeConfig.widthMultiplier * 9,
+                                        margin: EdgeInsets.only(
+                                            right:
+                                                SizeConfig.widthMultiplier * 3),
+                                        decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.white10),
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "04",
+                                          style: AppTextStyles.bodyExtraSmall
+                                              .copyWith(
+                                                  fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                      Text(
+                                        "Device On",
+                                        style: AppTextStyles.bodyExtraSmall
+                                            .copyWith(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize:
+                                                    SizeConfig.textMultiplier *
+                                                        1.05,
+                                                color: Colors.white54),
+                                      ),
+                                      Spacing.x(8),
+                                      Image.asset(
+                                        AppIcons.power,
+                                        height:
+                                            SizeConfig.imageSizeMultiplier * 5,
+                                      )
+                                    ],
                                   ),
-                                  Spacing.x(8),
-                                  Icon(
-                                    FeatherIcons.power,
-                                    color: AppColors.primaryClr,
-                                    size: SizeConfig.imageSizeMultiplier * 4,
-                                  )
-                                ],
+                                ),
                               ),
                             ),
+                          ],
+                        ),
+                        Spacing.y(5),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Device Model",
+                            style: AppTextStyles.bodySmall
+                                .copyWith(fontWeight: FontWeight.w600),
                           ),
                         ),
-                      ],
-                    ),
-                    Spacing.y(5),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Device Model",
-                        style: AppTextStyles.bodySmall
-                            .copyWith(fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Spacing.y(1.5),
-                    Stack(
-                      children: [
-                        SizedBox(
-                          height: SizeConfig.heightMultiplier * 54.5,
-                          child: ListView.builder(
-                            physics: const BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            padding: EdgeInsets.zero,
-                            itemCount: 20,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical:
-                                        SizeConfig.heightMultiplier * 1.5),
-                                child: InkWell(
-                                  onTap: () {
-                                    Get.dialog(MinersDetailDialog());
-                                  },
-                                  child: Container(
-                                    height: 76,
-                                    width: SizeConfig.widthMultiplier * 88,
+                        Spacing.y(1.5),
+                        Stack(
+                          children: [
+                            SizedBox(
+                              height: SizeConfig.heightMultiplier * 54.5,
+                              child: ListView.builder(
+                                physics: const BouncingScrollPhysics(),
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                itemCount: 20,
+                                itemBuilder: (context, index) {
+                                  return Padding(
                                     padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            SizeConfig.widthMultiplier * 3),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(14),
-                                        color: Colors.white.withOpacity(.07)),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          height: 52,
-                                          width: 52,
-                                          margin: EdgeInsets.only(
-                                              right:
-                                                  SizeConfig.widthMultiplier *
-                                                      4),
-                                          decoration: BoxDecoration(
+                                        vertical:
+                                            SizeConfig.heightMultiplier * 1.5),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Get.dialog(MinersDetailDialog());
+                                      },
+                                      child: Container(
+                                        height:
+                                            SizeConfig.heightMultiplier * 8.3,
+                                        width: SizeConfig.widthMultiplier * 88,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal:
+                                                SizeConfig.widthMultiplier * 3),
+                                        decoration: BoxDecoration(
                                             borderRadius:
-                                                BorderRadius.circular(12),
+                                                BorderRadius.circular(14),
                                             color:
-                                                Colors.white.withOpacity(.05),
-                                          ),
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                                Colors.white.withOpacity(.07)),
+                                        child: Row(
                                           children: [
-                                            Row(
+                                            Container(
+                                              height:
+                                                  SizeConfig.heightMultiplier *
+                                                      5.7,
+                                              width:
+                                                  SizeConfig.widthMultiplier *
+                                                      12.7,
+                                              margin: EdgeInsets.only(
+                                                  right: SizeConfig
+                                                          .widthMultiplier *
+                                                      4),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                                color: Colors.white
+                                                    .withOpacity(.05),
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: Image.asset(
+                                                AppIcons.power,
+                                                height: SizeConfig
+                                                        .imageSizeMultiplier *
+                                                    6,
+                                              ),
+                                            ),
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  "ID : ",
-                                                  style: AppTextStyles.bodySmall
-                                                      .copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w700),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      "ID : ",
+                                                      style: AppTextStyles
+                                                          .bodySmall
+                                                          .copyWith(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700),
+                                                    ),
+                                                    Text(
+                                                      "12EWTU",
+                                                      style: AppTextStyles
+                                                          .bodySmall
+                                                          .copyWith(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                              color: AppColors
+                                                                  .primaryClr),
+                                                    ),
+                                                  ],
                                                 ),
+                                                Spacing.y(1),
                                                 Text(
-                                                  "12EWTU",
-                                                  style: AppTextStyles.bodySmall
+                                                  "192.168.1.1",
+                                                  style: AppTextStyles
+                                                      .bodyExtraSmall
                                                       .copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          color: AppColors
-                                                              .primaryClr),
-                                                ),
+                                                          color:
+                                                              Colors.white38),
+                                                )
                                               ],
                                             ),
-                                            Spacing.y(1),
-                                            Text(
-                                              "192.168.1.1",
-                                              style: AppTextStyles
-                                                  .bodyExtraSmall
-                                                  .copyWith(
-                                                      color: Colors.white38),
+                                            const Spacer(),
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  "1 KNKT/m",
+                                                  style: AppTextStyles
+                                                      .bodyExtraSmall
+                                                      .copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                ),
+                                                Spacing.y(1),
+                                                Text(
+                                                  "Aug 19, 2023",
+                                                  style: AppTextStyles
+                                                      .bodyExtraSmall
+                                                      .copyWith(
+                                                          fontSize: SizeConfig
+                                                                  .textMultiplier *
+                                                              1.05,
+                                                          color:
+                                                              Colors.white38),
+                                                )
+                                              ],
                                             )
                                           ],
                                         ),
-                                        const Spacer(),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              "1 KNKT/m",
-                                              style: AppTextStyles
-                                                  .bodyExtraSmall
-                                                  .copyWith(
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                            ),
-                                            Spacing.y(1),
-                                            Text(
-                                              "Aug 19, 2023",
-                                              style: AppTextStyles
-                                                  .bodyExtraSmall
-                                                  .copyWith(
-                                                      fontSize: SizeConfig
-                                                              .textMultiplier *
-                                                          1.05,
-                                                      color: Colors.white38),
-                                            )
-                                          ],
-                                        )
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                        Positioned(
-                          bottom: SizeConfig.heightMultiplier * 2,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black,
-                                  spreadRadius: 30,
-                                  blurRadius: 45,
-                                  offset: Offset(0, 3),
-                                ),
-                              ],
+                                  );
+                                },
+                              ),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                DeviceButton(
-                                  title: "Add Device",
-                                  isBorder: true,
-                                  onTap: () {},
+                            Positioned(
+                              bottom: SizeConfig.heightMultiplier * 2,
+                              left: 0,
+                              right: 0,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black,
+                                      spreadRadius: 30,
+                                      blurRadius: 45,
+                                      offset: Offset(0, 3),
+                                    ),
+                                  ],
                                 ),
-                                DeviceButton(
-                                  title: "Buy Devices",
-                                  onTap: () {},
-                                )
-                              ],
-                            ),
-                          ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    DeviceButton(
+                                      title: "Add Device",
+                                      isBorder: true,
+                                      onTap: () {
+                                        Get.to(() => MinerScreen());
+                                      },
+                                    ),
+                                    DeviceButton(
+                                      title: "Buy Devices",
+                                      onTap: () {
+                                        Get.to(() => MinerScreen());
+                                      },
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
                         )
                       ],
-                    )
-                  ],
-                ),
-              )
-            ],
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
         ),
       ),

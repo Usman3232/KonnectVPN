@@ -30,7 +30,9 @@ class SecurityScreen extends StatelessWidget {
                 children: [
                   const CustomBackButton(),
                   Spacing.x(28),
-                  Text("Security", style: AppTextStyles.bodyMedium)
+                  Text("Security",
+                      style: AppTextStyles.bodyMedium
+                          .copyWith(color: Colors.white.withOpacity(.8)))
                 ],
               ),
               Spacing.y(3),

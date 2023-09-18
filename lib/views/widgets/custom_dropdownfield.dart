@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
@@ -10,20 +12,25 @@ class CustomDropDownField extends StatelessWidget {
     required this.listdata,
     this.onChanged,
     this.hinttext,
+    this.height,
+    this.radius,
   });
   final String? hinttext;
   final String? currentSelectedValue;
   final List<String> listdata;
   Function(String?)? onChanged;
+  final double? height;
+  final double? radius;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.heightMultiplier * 5,
+      height: height ?? SizeConfig.heightMultiplier * 5,
       width: SizeConfig.widthMultiplier * 92,
       padding: EdgeInsets.only(right: SizeConfig.widthMultiplier * 2),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8), color: Colors.white10),
+          borderRadius: BorderRadius.circular(radius ?? 8),
+          color: Colors.white10),
       child: DropdownButtonHideUnderline(
         child: DropdownButton2<String>(
           iconStyleData: const IconStyleData(

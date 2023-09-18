@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/images.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/stacking/stacking.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 
 class LevelScreen extends StatelessWidget {
@@ -25,18 +28,7 @@ class LevelScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Spacing.y(6),
-                  Row(
-                    children: [
-                      const CustomBackButton(),
-                      Spacing.x(30.5),
-                      Text(
-                        "Levels",
-                        style: AppTextStyles.bodyMedium.copyWith(
-                          color: Colors.white.withOpacity(.8),
-                        ),
-                      )
-                    ],
-                  ),
+                  const CustomAppbar(title: "Levels"),
                   Spacing.y(8),
                   Image.asset(
                     AppImages.level,
@@ -130,7 +122,9 @@ class LevelScreen extends StatelessWidget {
                   ),
                   Spacing.y(4),
                   MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(() => const StackingScreen());
+                    },
                     height: SizeConfig.heightMultiplier * 6,
                     minWidth: SizeConfig.widthMultiplier * 92,
                     shape: RoundedRectangleBorder(
