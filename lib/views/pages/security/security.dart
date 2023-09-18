@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
+import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/icons.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/auth/pin/pin.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
-import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 
 class SecurityScreen extends StatelessWidget {
   SecurityScreen({super.key});
@@ -19,22 +18,16 @@ class SecurityScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             children: [
               Spacing.y(6),
-              Row(
-                children: [
-                  const CustomBackButton(),
-                  Spacing.x(28),
-                  Text("Security",
-                      style: AppTextStyles.bodyMedium
-                          .copyWith(color: Colors.white.withOpacity(.8)))
-                ],
-              ),
+              const CustomAppbar(title: "Security"),
               Spacing.y(3),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -48,7 +41,11 @@ class SecurityScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             vertical: SizeConfig.heightMultiplier * 2),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            if (index == 0) {
+                              Get.to(() => const PinScreen());
+                            }
+                          },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -57,17 +54,15 @@ class SecurityScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     securityTitle[index],
-                                    style: AppTextStyles.bodyExtraSmall
+                                    style: textTheme.displaySmall!
                                         .copyWith(fontWeight: FontWeight.w500),
                                   ),
                                   Spacing.y(1),
                                   Text(
                                     securitysubtitle[index],
-                                    style: AppTextStyles.bodyExtraSmall
-                                        .copyWith(
-                                            fontSize:
-                                                SizeConfig.textMultiplier * 1,
-                                            color: Colors.white38),
+                                    style: textTheme.displaySmall!.copyWith(
+                                        fontSize: SizeConfig.textMultiplier * 1,
+                                        color: Colors.white38),
                                   )
                                 ],
                               ),
@@ -82,7 +77,7 @@ class SecurityScreen extends StatelessWidget {
                     Spacing.y(4),
                     Text(
                       "Verification",
-                      style: AppTextStyles.bodySmall
+                      style: textTheme.bodySmall!
                           .copyWith(fontWeight: FontWeight.w600),
                     ),
                     Spacing.y(1.5),
@@ -138,6 +133,7 @@ class VerificationTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding:
           EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier * 1.5),
@@ -158,13 +154,13 @@ class VerificationTile extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: AppTextStyles.bodyExtraSmall
+                style: textTheme.displaySmall!
                     .copyWith(fontWeight: FontWeight.w500),
               ),
               Spacing.y(1),
               Text(
                 subtitle,
-                style: AppTextStyles.bodyExtraSmall.copyWith(
+                style: textTheme.displaySmall!.copyWith(
                     fontSize: SizeConfig.textMultiplier * 1.05,
                     color: Colors.white38),
               )

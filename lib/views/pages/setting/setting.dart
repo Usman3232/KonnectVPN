@@ -16,6 +16,7 @@ import 'package:konnekt_vpn/views/pages/notification/notification.dart';
 import 'package:konnekt_vpn/views/pages/privacy/privacy.dart';
 import 'package:konnekt_vpn/views/pages/security/security.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -41,25 +42,17 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             children: [
               Spacing.y(6),
-              Row(
-                children: [
-                  const CustomBackButton(),
-                  Spacing.x(28),
-                  Text(
-                    "Settings",
-                    style: AppTextStyles.bodyMedium.copyWith(
-                      color: Colors.white.withOpacity(.8),
-                    ),
-                  )
-                ],
-              ),
+              const CustomAppbar(title: "Settings"),
+             
               Expanded(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
@@ -100,19 +93,19 @@ class SettingScreen extends StatelessWidget {
                       Spacing.y(1),
                       Text(
                         "6184749169",
-                        style: AppTextStyles.bodyExtraSmall.copyWith(
+                        style: textTheme.displaySmall!.copyWith(
                             fontWeight: FontWeight.w500, color: Colors.white60),
                       ),
                       Spacing.y(1),
                       Text(
                         "Mattie Hardwick",
-                        style: AppTextStyles.bodyLarge
+                        style: textTheme.bodyLarge!
                             .copyWith(fontWeight: FontWeight.w500),
                       ),
                       Spacing.y(.5),
                       Text(
                         "Verification Is Denied",
-                        style: AppTextStyles.bodyExtraSmall.copyWith(
+                        style: textTheme.displaySmall!.copyWith(
                             color: AppColors.errorClr,
                             fontWeight: FontWeight.w400),
                       ),
@@ -126,7 +119,7 @@ class SettingScreen extends StatelessWidget {
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 "Account",
-                                style: AppTextStyles.bodySmall
+                                style: textTheme.bodySmall!
                                     .copyWith(fontWeight: FontWeight.w600),
                               ),
                             ),
@@ -159,16 +152,15 @@ class SettingScreen extends StatelessWidget {
                                     children: [
                                       Text(
                                         "Manage Account",
-                                        style: AppTextStyles.bodyExtraSmall
-                                            .copyWith(
-                                                fontWeight: FontWeight.w500),
+                                        style: textTheme.displaySmall!.copyWith(
+                                            fontWeight: FontWeight.w500),
                                       ),
                                       Spacing.y(1),
                                       Row(
                                         children: [
                                           Text(
                                             "2",
-                                            style: AppTextStyles.bodyExtraSmall
+                                            style: textTheme.displaySmall!
                                                 .copyWith(
                                                     color: AppColors.primaryClr,
                                                     fontSize: SizeConfig
@@ -177,7 +169,7 @@ class SettingScreen extends StatelessWidget {
                                           ),
                                           Text(
                                             "/4 Document Verified",
-                                            style: AppTextStyles.bodyExtraSmall
+                                            style: textTheme.displaySmall!
                                                 .copyWith(
                                                     color: Colors.white38,
                                                     fontSize: SizeConfig
@@ -202,7 +194,7 @@ class SettingScreen extends StatelessWidget {
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 "General",
-                                style: AppTextStyles.bodySmall.copyWith(
+                                style: textTheme.bodySmall!.copyWith(
                                     color: Colors.white.withOpacity(.8),
                                     fontWeight: FontWeight.w600),
                               ),
@@ -242,7 +234,7 @@ class SettingScreen extends StatelessWidget {
                                       Spacing.x(3),
                                       Text(
                                         generalTitles[index],
-                                        style: AppTextStyles.bodySmall.copyWith(
+                                        style: textTheme.bodySmall!.copyWith(
                                             color: Colors.white.withOpacity(.8),
                                             fontWeight: FontWeight.w500),
                                       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
+import 'package:get/get.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/bandwidth/bandwidth.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
@@ -12,11 +12,13 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             children: [
               Spacing.y(6),
@@ -29,42 +31,51 @@ class DetailScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Gold",
-                      style: AppTextStyles.bodyExtraLarge,
+                      style: textTheme.displayLarge!,
                     ),
                     Spacing.y(3),
                     Text(
                       "\$10,0 / Month",
-                      style: AppTextStyles.headingLarge
+                      style: textTheme.headlineLarge!
                           .copyWith(fontSize: SizeConfig.textMultiplier * 4),
                     ),
                     Spacing.y(1),
                     Text(
                       "\$120 / year by billing yearly",
-                      style: AppTextStyles.bodyExtraSmall
+                      style: textTheme.displaySmall!
                           .copyWith(color: Colors.white38),
                     ),
                     Spacing.y(6),
-                    rowInfo("Bill", "\$120"),
-                    rowInfo("Discount", "-\$10"),
-                    rowInfo("Fee", "\$1"),
+                    rowInfo("Bill", "\$120", context),
+                    rowInfo("Discount", "-\$10", context),
+                    rowInfo("Fee", "\$1", context),
                     const Divider(
                       height: 0,
                       color: Colors.white24,
                     ),
                     Spacing.y(2),
-                    rowInfo("Total", "\$12"),
+                    rowInfo("Total", "\$12", context),
                     Spacing.y(5),
-                    columnInfo(
-                        "Transaction ID", "3M8w2knJKsr3jqMatYiyuraxVvZA"),
-                    columnInfo("Promo Code", "xVvZA"),
-                    Spacing.y(17),
-                    CustomButton(
-                      title: "Pay Now",
-                      onTap: () {},
-                    )
+                    columnInfo("Transaction ID", "3M8w2knJKsr3jqMatYiyuraxVvZA",
+                        context),
+                    columnInfo("Promo Code", "xVvZA", context),
                   ],
                 ),
-              )
+              ),
+              const Spacer(),
+              Spacing.y(2),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.widthMultiplier * 2),
+                child: CustomButton(
+                  title: "Pay Now",
+                  isShadow: false,
+                  onTap: () {
+                    Get.to(() => const BandwidthScreen());
+                  },
+                ),
+              ),
+              Spacing.y(2),
             ],
           ),
         ),
@@ -72,7 +83,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  Widget columnInfo(String title, code) {
+  Widget columnInfo(String title, code, BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: SizeConfig.heightMultiplier * 2),
       child: Align(
@@ -82,15 +93,17 @@ class DetailScreen extends StatelessWidget {
           children: [
             Text(
               title,
-              style: AppTextStyles.bodyExtraSmall.copyWith(
+              style: Theme.of(context).textTheme.displaySmall!.copyWith(
                   color: Colors.white38,
                   fontSize: SizeConfig.textMultiplier * 1.05),
             ),
             Spacing.y(1),
             Text(
               code,
-              style:
-                  AppTextStyles.bodySmall.copyWith(fontWeight: FontWeight.w700),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(fontWeight: FontWeight.w700),
             ),
           ],
         ),
@@ -98,7 +111,7 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-  Widget rowInfo(String title, price) {
+  Widget rowInfo(String title, price, BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: SizeConfig.heightMultiplier * 2),
       child: Row(
@@ -106,11 +119,14 @@ class DetailScreen extends StatelessWidget {
         children: [
           Text(
             title,
-            style: AppTextStyles.bodySmall.copyWith(color: Colors.white30),
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall!
+                .copyWith(color: Colors.white30),
           ),
           Text(
             price,
-            style: AppTextStyles.bodySmall,
+            style: Theme.of(context).textTheme.bodySmall!,
           )
         ],
       ),

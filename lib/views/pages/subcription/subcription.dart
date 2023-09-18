@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/images.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/pages/special%20offer/special_offer.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
-import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 
 class SubcriptionScreen extends StatefulWidget {
@@ -37,11 +34,13 @@ class _SubcriptionScreenState extends State<SubcriptionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             children: [
               Spacing.y(6),
@@ -58,7 +57,7 @@ class _SubcriptionScreenState extends State<SubcriptionScreen> {
                       Spacing.y(6),
                       Text(
                         "Choose Your Plan",
-                        style: AppTextStyles.bodySmall
+                        style: textTheme.bodySmall!
                             .copyWith(fontWeight: FontWeight.w600),
                       ),
                       Spacing.y(3),
@@ -103,17 +102,17 @@ class _SubcriptionScreenState extends State<SubcriptionScreen> {
                                         children: [
                                           Text(
                                             subcriptionType[index],
-                                            style: AppTextStyles.bodyMedium,
+                                            style: textTheme.bodyMedium!,
                                           ),
                                           Spacing.y(2),
                                           Text(
                                             subcriptionPriceMonthly[index],
-                                            style: AppTextStyles.headingMedium,
+                                            style: textTheme.headlineMedium!,
                                           ),
                                           Spacing.y(1),
                                           Text(
                                             subcriptionPriceYearly[index],
-                                            style: AppTextStyles.bodyExtraSmall
+                                            style: textTheme.displaySmall!
                                                 .copyWith(
                                                     color: Colors.white38),
                                           )
@@ -167,6 +166,7 @@ class _SubcriptionScreenState extends State<SubcriptionScreen> {
                       Spacing.y(8),
                       CustomButton(
                         title: "Subscribe",
+                        isShadow: false,
                         onTap: () {
                           Get.to(() => SpecialOfferScreen());
                         },

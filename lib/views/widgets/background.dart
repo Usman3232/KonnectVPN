@@ -33,9 +33,11 @@ class _BackgroundState extends State<Background> {
               height: SizeConfig.heightMultiplier * 100,
               width: SizeConfig.widthMultiplier * 100,
               color: Colors.black.withOpacity(0.8),
+           
             ),
           ),
           widget.child
+         
         ],
       ),
     );

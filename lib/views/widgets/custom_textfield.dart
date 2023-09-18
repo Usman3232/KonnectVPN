@@ -26,6 +26,7 @@ class CustomTextField extends StatefulWidget {
 class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: EdgeInsets.only(bottom: SizeConfig.heightMultiplier * 2),
       child: TextField(
@@ -89,7 +90,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             bottom: SizeConfig.heightMultiplier * 2,
           ),
           hintText: widget.hintText,
-          hintStyle: AppTextStyles.bodySmall.copyWith(color: Colors.white38),
+          hintStyle: textTheme.bodySmall!.copyWith(color: Colors.white38),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
                 color: widget.isfilled ? Colors.transparent : Colors.white10),
@@ -114,7 +115,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
           ),
         ),
-        style: AppTextStyles.bodySmall.copyWith(fontWeight: FontWeight.w500),
+        style: textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500),
       ),
     );
   }

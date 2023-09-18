@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
-import '../../../constants/text_styles.dart';
 
 class LanguageScreen extends StatefulWidget {
   LanguageScreen({super.key});
@@ -17,31 +16,21 @@ class LanguageScreen extends StatefulWidget {
 
 class _LanguageScreenState extends State<LanguageScreen> {
   List<String> languageTitle = ["English", "Chinese", "Bahasa"];
-
   int selectedLanguage = 0;
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Spacing.y(6),
-              Row(
-                children: [
-                  const CustomBackButton(),
-                  Spacing.x(26),
-                  Text(
-                    "Language",
-                    style: AppTextStyles.bodyMedium.copyWith(
-                      color: Colors.white.withOpacity(.8),
-                    ),
-                  ),
-                ],
-              ),
+              const CustomAppbar(title: "Language"),
               Spacing.y(5),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -65,7 +54,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                             children: [
                               Text(
                                 languageTitle[index],
-                                style: AppTextStyles.bodyMedium
+                                style: textTheme.bodyMedium!
                                     .copyWith(fontWeight: FontWeight.w600),
                               ),
                               AnimatedContainer(
@@ -95,14 +84,20 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         ),
                       ),
                     ),
-                    Spacing.y(56),
-                    CustomButton(
-                      title: "Save",
-                      onTap: () {},
-                    )
                   ],
                 ),
-              )
+              ),
+              const Spacer(),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.widthMultiplier * 2),
+                child: CustomButton(
+                  title: "Save",
+                  isShadow: false,
+                  onTap: () {},
+                ),
+              ),
+              Spacing.y(2)
             ],
           ),
         ),

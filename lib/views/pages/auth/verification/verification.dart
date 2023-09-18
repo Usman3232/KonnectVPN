@@ -19,11 +19,13 @@ class VerificationDetailScreen extends StatelessWidget {
   final cont = Get.put(VerificationCont());
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Obx(
       () => Scaffold(
         body: Background(
           child: Padding(
-            padding: AppConstants.defaultPadding,
+            padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.widthMultiplier * 4),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -37,7 +39,7 @@ class VerificationDetailScreen extends StatelessWidget {
                             : cont.currentSection.value == 2
                                 ? "National ID Scan"
                                 : "",
-                    style: AppTextStyles.bodyMedium
+                    style: textTheme.bodyMedium!
                         .copyWith(fontWeight: FontWeight.w400),
                   ),
                 ),
@@ -67,18 +69,19 @@ class VerificationDetailScreen extends StatelessWidget {
                               : cont.currentSection.value == 2
                                   ? const NationalIdScan()
                                   : const SizedBox(),
-                      CustomButton(
-                        title: cont.currentSection.value == 2
-                            ? "Finish Verification"
-                            : "Next Step",
-                        onTap: () {
-                          cont.progressValue.value += 1;
-                          cont.currentSection.value += 1;
-                        },
-                      ),
                     ],
                   )),
                 ),
+                CustomButton(
+                  title: cont.currentSection.value == 2
+                      ? "Finish Verification"
+                      : "Next Step",
+                  onTap: () {
+                    cont.progressValue.value += 1;
+                    cont.currentSection.value += 1;
+                  },
+                ),
+                Spacing.y(2)
               ],
             ),
           ),

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:konnekt_vpn/controllers/home.dart';
 import '../../constants/colors.dart';
 import '../../constants/icons.dart';
-import '../../constants/text_styles.dart';
 import '../../utils/size_config.dart';
 import '../../utils/spacing.dart';
 import '../widgets/custom_btn.dart';
@@ -44,6 +43,7 @@ class _KpnTypeBottomSheetState extends State<KpnTypeBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Container(
       height: SizeConfig.heightMultiplier * 45,
       margin: EdgeInsets.symmetric(
@@ -62,8 +62,8 @@ class _KpnTypeBottomSheetState extends State<KpnTypeBottomSheet> {
             alignment: Alignment.topLeft,
             child: Text(
               "KPN Type",
-              style: AppTextStyles.bodyMedium
-                  .copyWith(fontWeight: FontWeight.w700),
+              style:
+                  textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
             ),
           ),
           Spacing.y(2),
@@ -93,7 +93,7 @@ class _KpnTypeBottomSheetState extends State<KpnTypeBottomSheet> {
                     ),
                     Text(
                       kpnTitles[index],
-                      style: AppTextStyles.bodySmall
+                      style: textTheme.bodySmall!
                           .copyWith(fontWeight: FontWeight.w700),
                     ),
                     const Spacer(),

@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
 import '../../utils/size_config.dart';
 
 class CustomDropDownField extends StatelessWidget {
@@ -24,6 +21,7 @@ class CustomDropDownField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Container(
       height: height ?? SizeConfig.heightMultiplier * 5,
       width: SizeConfig.widthMultiplier * 92,
@@ -39,14 +37,14 @@ class CustomDropDownField extends StatelessWidget {
           )),
           hint: Text(
             hinttext.toString(),
-            style: AppTextStyles.bodySmall.copyWith(color: Colors.white38),
+            style: textTheme.bodySmall!.copyWith(color: Colors.white38),
           ),
           items: listdata
               .map((String item) => DropdownMenuItem<String>(
                     value: item,
                     child: Text(
                       item,
-                      style: AppTextStyles.bodySmall
+                      style: textTheme.bodySmall!
                           .copyWith(fontWeight: FontWeight.w600),
                     ),
                   ))

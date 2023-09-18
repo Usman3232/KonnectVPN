@@ -6,6 +6,7 @@ import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -39,26 +40,20 @@ class _NotificationScreenState extends State<NotificationScreen>
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: AppConstants.defaultPadding,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Spacing.y(6),
-                  Row(
-                    children: [
-                      const CustomBackButton(),
-                      Spacing.x(24),
-                      Text("Notifications",
-                          style: AppTextStyles.bodyMedium
-                              .copyWith(color: Colors.white.withOpacity(.8)))
-                    ],
-                  ),
+                  const CustomAppbar(title: "Notifications"),
                   Spacing.y(5),
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -81,7 +76,7 @@ class _NotificationScreenState extends State<NotificationScreen>
                           controller: _tabController,
                           labelColor: AppColors.primaryClr,
                           unselectedLabelColor: Colors.white30,
-                          labelStyle: AppTextStyles.bodyExtraSmall
+                          labelStyle: textTheme.displaySmall!
                               .copyWith(fontWeight: FontWeight.w500),
                           tabs: myTabs,
                         ),
@@ -115,6 +110,7 @@ class SystemTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
       itemCount: 10,
@@ -148,7 +144,7 @@ class SystemTab extends StatelessWidget {
                     child: Text(
                       "Sollicitudin ligula et non non. Vestibulum gravida metus nisi id posuere ullamcorper blandit nisl.",
                       overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.bodyExtraSmall
+                      style: textTheme.displaySmall!
                           .copyWith(fontWeight: FontWeight.w500),
                     ),
                   ),
@@ -158,7 +154,7 @@ class SystemTab extends StatelessWidget {
                       "Augue volutpat in volutpat adipiscing. Tempus massa purus ultricies interdum nisi. Neque et sem enim elit tincidunt congue sem sagittis sed.",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
-                      style: AppTextStyles.bodyExtraSmall.copyWith(
+                      style: textTheme.displaySmall!.copyWith(
                           height: 1.9,
                           color: Colors.white38,
                           fontSize: SizeConfig.textMultiplier * 1.05),
@@ -167,7 +163,7 @@ class SystemTab extends StatelessWidget {
                   Spacing.y(2),
                   Text(
                     "Jul 12, 2023 1:16 pm",
-                    style: AppTextStyles.bodyExtraSmall.copyWith(
+                    style: textTheme.displaySmall!.copyWith(
                         color: AppColors.primaryClr,
                         fontSize: SizeConfig.textMultiplier * 1.05),
                   )
@@ -188,6 +184,7 @@ class AnnouncementTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
       itemCount: 10,
@@ -220,7 +217,7 @@ class AnnouncementTab extends StatelessWidget {
                     child: Text(
                       "Sollicitudin ligula et non non. Vestibulum gravida metus nisi id posuere ullamcorper blandit nisl.",
                       overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.bodyExtraSmall
+                      style: textTheme.displaySmall!
                           .copyWith(fontWeight: FontWeight.w500),
                     ),
                   ),
@@ -230,7 +227,7 @@ class AnnouncementTab extends StatelessWidget {
                       "Augue volutpat in volutpat adipiscing. Tempus massa purus ultricies interdum nisi. Neque et sem enim elit tincidunt congue sem sagittis sed.",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
-                      style: AppTextStyles.bodyExtraSmall.copyWith(
+                      style: textTheme.displaySmall!.copyWith(
                           height: 1.9,
                           color: Colors.white38,
                           fontSize: SizeConfig.textMultiplier * 1.05),
@@ -239,7 +236,7 @@ class AnnouncementTab extends StatelessWidget {
                   Spacing.y(2),
                   Text(
                     "Jul 12, 2023 1:16 pm",
-                    style: AppTextStyles.bodyExtraSmall.copyWith(
+                    style: textTheme.displaySmall!.copyWith(
                         color: AppColors.primaryClr,
                         fontSize: SizeConfig.textMultiplier * 1.05),
                   )
@@ -260,6 +257,7 @@ class CompaigntTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
       itemCount: 10,
@@ -284,13 +282,13 @@ class CompaigntTab extends StatelessWidget {
               Spacing.y(2),
               Text(
                 "Sollicitudin ligula et non non. Vestibulum gravida metus nisi id posuere ullamcorper blandit nisl.",
-                style: AppTextStyles.bodyExtraSmall
+                style: textTheme.displaySmall!
                     .copyWith(height: 1.5, fontWeight: FontWeight.w500),
               ),
               Spacing.y(1),
               Text(
                 "Jul 12, 2023 1:16 pm",
-                style: AppTextStyles.bodyExtraSmall.copyWith(
+                style: textTheme.displaySmall!.copyWith(
                     color: AppColors.primaryClr,
                     fontSize: SizeConfig.textMultiplier * 1.05),
               )

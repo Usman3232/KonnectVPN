@@ -14,38 +14,38 @@ class VerificationOnProcessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: AppConstants.defaultPadding,
-            child: Column(
-              children: [
-                Spacing.y(20),
-                Text(
-                  "Verification On Process",
-                  style: AppTextStyles.bodyExtraLarge
-                      .copyWith(fontWeight: FontWeight.w700),
-                ),
-                Spacing.y(2),
-                Text(
-                  "You’ll need a verification before using",
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.bodyExtraSmall
-                      .copyWith(color: Colors.white38),
-                ),
-                Spacing.y(10),
-                Image.asset(AppImages.onProcess,
-                    height: SizeConfig.imageSizeMultiplier * 65),
-                Spacing.y(24),
-                CustomButton(
-                  title: "Back To Login",
-                  onTap: () {
-                    Get.to(() => const WelcomeOnboardScreen());
-                  },
-                ),
-              ],
-            ),
+        child: Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
+          child: Column(
+            children: [
+              Spacing.y(20),
+              Text(
+                "Verification On Process",
+                style: textTheme.displayLarge!
+                    .copyWith(fontWeight: FontWeight.w700),
+              ),
+              Spacing.y(2),
+              Text(
+                "You’ll need a verification before using",
+                textAlign: TextAlign.center,
+                style: textTheme.displaySmall!.copyWith(color: Colors.white38),
+              ),
+              Spacing.y(10),
+              Image.asset(AppImages.onProcess,
+                  height: SizeConfig.imageSizeMultiplier * 65),
+              const Spacer(),
+              CustomButton(
+                title: "Back To Login",
+                onTap: () {
+                  Get.to(() => const WelcomeOnboardScreen());
+                },
+              ),
+              Spacing.y(3)
+            ],
           ),
         ),
       ),

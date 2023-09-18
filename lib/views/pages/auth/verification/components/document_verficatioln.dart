@@ -23,6 +23,7 @@ class DoumentVerification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Obx(
       () => Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,7 +37,7 @@ class DoumentVerification extends StatelessWidget {
             child: Text(
               "Your document photo helps us prove your identity. It should match the information you have provided in the previous steps.",
               textAlign: TextAlign.center,
-              style: AppTextStyles.bodyExtraSmall
+              style: textTheme.displaySmall!
                   .copyWith(height: 1.9, color: Colors.white38),
             ),
           ),
@@ -85,7 +86,7 @@ class DoumentVerification extends StatelessWidget {
                     Spacing.x(3),
                     Text(
                       documentTypes[index],
-                      style: AppTextStyles.bodySmall,
+                      style: textTheme.bodySmall!,
                     ),
                     const Spacer(),
                     Icon(
@@ -102,7 +103,6 @@ class DoumentVerification extends StatelessWidget {
               ),
             ),
           ),
-          Spacing.y(4.7),
         ],
       ),
     );

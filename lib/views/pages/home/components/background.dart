@@ -12,6 +12,7 @@ class HomeBackground extends StatefulWidget {
 class _HomeBackgroundState extends State<HomeBackground> {
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Container(
       height: SizeConfig.heightMultiplier * 100,
       width: SizeConfig.widthMultiplier * 100,

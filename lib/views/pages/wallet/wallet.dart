@@ -20,11 +20,13 @@ class WalletScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             children: [
               Spacing.y(6),
@@ -35,13 +37,13 @@ class WalletScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Nick Name",
-                    style: AppTextStyles.bodyExtraSmall,
+                    style: textTheme.displaySmall!,
                   ),
                   Spacing.y(1),
                   AuthTextField(hintText: "Nickname", controller: nickName),
                   Text(
                     "Wallet Option",
-                    style: AppTextStyles.bodyExtraSmall,
+                    style: textTheme.displaySmall!,
                   ),
                   Spacing.y(1),
                   Obx(
@@ -62,21 +64,23 @@ class WalletScreen extends StatelessWidget {
                   // AuthTextField(hintText: "Nickname", controller: nickName),
                   Text(
                     "Address",
-                    style: AppTextStyles.bodyExtraSmall,
+                    style: textTheme.displaySmall!,
                   ),
                   Spacing.y(1),
                   AuthTextField(hintText: "Address", controller: address),
-                  Spacing.y(41),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: SizeConfig.widthMultiplier * 2),
-                    child: CustomButton(
-                      title: "Add",
-                      onTap: () {},
-                    ),
-                  )
                 ],
-              )
+              ),
+              const Spacer(),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.widthMultiplier * 2),
+                child: CustomButton(
+                  title: "Add",
+                  isShadow: false,
+                  onTap: () {},
+                ),
+              ),
+              Spacing.y(2),
             ],
           ),
         ),

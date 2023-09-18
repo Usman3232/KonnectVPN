@@ -7,6 +7,7 @@ import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 
 class AboutUsScreen extends StatelessWidget {
@@ -36,24 +37,17 @@ class AboutUsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Spacing.y(6),
-             
-              Row(
-                children: [
-                  const CustomBackButton(),
-                  Spacing.x(27.5),
-                  Text("About Us",
-                      style: AppTextStyles.bodyMedium
-                          .copyWith(color: Colors.white.withOpacity(.8)))
-                ],
-              ),
+              const CustomAppbar(title: "About Us"),
               Spacing.y(5),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -74,8 +68,8 @@ class AboutUsScreen extends StatelessWidget {
                     Spacing.y(2),
                     Text(
                       "V2.67.1",
-                      style: AppTextStyles.bodyMedium
-                          .copyWith(color: Colors.white38),
+                      style:
+                          textTheme.bodyMedium!.copyWith(color: Colors.white38),
                     ),
                     Spacing.y(3),
                     Row(
@@ -117,7 +111,7 @@ class AboutUsScreen extends StatelessWidget {
                               Spacing.x(4),
                               Text(
                                 aboutTitle[index],
-                                style: AppTextStyles.bodySmall
+                                style: textTheme.bodySmall!
                                     .copyWith(fontWeight: FontWeight.w500),
                               ),
                               const Spacer(),
@@ -159,18 +153,16 @@ class AboutUsScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     aboutDevice[index],
-                                    style: AppTextStyles.bodyExtraSmall
+                                    style: textTheme.displaySmall!
                                         .copyWith(fontWeight: FontWeight.w700),
                                   ),
                                   Spacing.y(1),
                                   Text(
                                     aboutDeviceUpdate[index],
-                                    style: AppTextStyles.bodyExtraSmall
-                                        .copyWith(
-                                            fontSize:
-                                                SizeConfig.textMultiplier *
-                                                    1.05,
-                                            color: Colors.white38),
+                                    style: textTheme.displaySmall!.copyWith(
+                                        fontSize:
+                                            SizeConfig.textMultiplier * 1.05,
+                                        color: Colors.white38),
                                   ),
                                 ],
                               ),

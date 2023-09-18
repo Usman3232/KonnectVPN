@@ -11,21 +11,23 @@ class PinScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: SingleChildScrollView(
           child: Padding(
-            padding: AppConstants.defaultPadding,
+            padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.widthMultiplier * 4),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Spacing.y(12),
-                Text("Enter Your Pin", style: AppTextStyles.bodyMedium),
+                Text("Enter Your Pin", style: textTheme.bodyMedium!),
                 Spacing.y(2),
                 Text(
                   "Please enter 6 unique number",
-                  style: AppTextStyles.bodyExtraSmall
-                      .copyWith(color: Colors.white38),
+                  style:
+                      textTheme.displaySmall!.copyWith(color: Colors.white38),
                 ),
                 Spacing.y(3),
                 Row(
@@ -38,7 +40,7 @@ class PinScreen extends StatelessWidget {
                             horizontal: SizeConfig.widthMultiplier * 3),
                         child: Text(
                           "*",
-                          style: AppTextStyles.headingLarge.copyWith(
+                          style: textTheme.headlineLarge!.copyWith(
                               color: Colors.white30,
                               fontSize: SizeConfig.textMultiplier * 4),
                         ),
@@ -49,7 +51,7 @@ class PinScreen extends StatelessWidget {
                 Spacing.y(3),
                 Text(
                   "Try New Pin Again",
-                  style: AppTextStyles.bodySmall.copyWith(
+                  style: textTheme.bodySmall!.copyWith(
                       fontWeight: FontWeight.w500, color: AppColors.primaryClr),
                 ),
                 Spacing.y(4),
@@ -134,6 +136,7 @@ class PinButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Container(
       height: SizeConfig.heightMultiplier * 12,
       width: SizeConfig.widthMultiplier * 24,
@@ -150,7 +153,7 @@ class PinButton extends StatelessWidget {
               )
             : Text(
                 title,
-                style: AppTextStyles.headingLarge,
+                style: textTheme.headlineLarge!,
               ),
       ),
     );

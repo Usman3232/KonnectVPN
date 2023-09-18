@@ -19,13 +19,15 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Obx(
       () => Scaffold(
         body: Background(
           child: SafeArea(
             child: SingleChildScrollView(
               child: Padding(
-                padding: AppConstants.defaultPadding,
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.widthMultiplier * 4),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -33,27 +35,27 @@ class SignUpScreen extends StatelessWidget {
                     Center(
                       child: Text(
                         "Create Account",
-                        style: AppTextStyles.bodyMedium
+                        style: textTheme.bodyMedium!
                             .copyWith(fontWeight: FontWeight.w500),
                       ),
                     ),
                     Spacing.y(5),
-                    Text("First Name", style: AppTextStyles.bodyExtraSmall),
+                    Text("First Name", style: textTheme.displaySmall!),
                     Spacing.y(1),
                     AuthTextField(
                         hintText: "Enter first name",
                         controller: signUpCont.firstName),
-                    Text("Last Name", style: AppTextStyles.bodyExtraSmall),
+                    Text("Last Name", style: textTheme.displaySmall!),
                     Spacing.y(1),
                     AuthTextField(
                         hintText: "Enter last name",
                         controller: signUpCont.lastName),
-                    Text("Email", style: AppTextStyles.bodyExtraSmall),
+                    Text("Email", style: textTheme.displaySmall!),
                     Spacing.y(1),
                     AuthTextField(
                         hintText: "Enter your email",
                         controller: signUpCont.email),
-                    Text("Password", style: AppTextStyles.bodyExtraSmall),
+                    Text("Password", style: textTheme.displaySmall!),
                     Spacing.y(1),
                     AuthTextField(
                       hintText: "Enter your password",
@@ -62,12 +64,12 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     Text(
                       "At least 12 uppercase, lowercase characters and numbers",
-                      style: AppTextStyles.bodyExtraSmall.copyWith(
+                      style: textTheme.displaySmall!.copyWith(
                           fontSize: SizeConfig.textMultiplier * 1.2,
                           color: Colors.white38),
                     ),
                     Spacing.y(2),
-                    Text("Referral Code", style: AppTextStyles.bodyExtraSmall),
+                    Text("Referral Code", style: textTheme.displaySmall!),
                     Spacing.y(1),
                     AuthTextField(
                         hintText: "Enter your referral code",
@@ -86,8 +88,7 @@ class SignUpScreen extends StatelessWidget {
                             signUpCont.checkbox.value = value!;
                           },
                         ),
-                        Text("Agree to Policy",
-                            style: AppTextStyles.bodyExtraSmall)
+                        Text("Agree to Policy", style: textTheme.displaySmall!)
                       ],
                     ),
                     Spacing.y(8),
@@ -103,7 +104,7 @@ class SignUpScreen extends StatelessWidget {
                       children: [
                         Text(
                           "Dont have an account?   ",
-                          style: AppTextStyles.bodyExtraSmall.copyWith(
+                          style: textTheme.displaySmall!.copyWith(
                               fontWeight: FontWeight.w500,
                               color: Colors.white38),
                         ),
@@ -113,7 +114,7 @@ class SignUpScreen extends StatelessWidget {
                           },
                           child: Text(
                             "Login",
-                            style: AppTextStyles.bodyExtraSmall.copyWith(
+                            style: textTheme.displaySmall!.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.primaryClr),
                           ),

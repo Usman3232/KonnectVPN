@@ -49,6 +49,7 @@ class _SubscribeOptionBottomSheetState
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Container(
       height: SizeConfig.heightMultiplier * 45,
       margin: EdgeInsets.symmetric(
@@ -67,8 +68,8 @@ class _SubscribeOptionBottomSheetState
             alignment: Alignment.topLeft,
             child: Text(
               "Subscribe Option",
-              style: AppTextStyles.bodyMedium
-                  .copyWith(fontWeight: FontWeight.w700),
+              style:
+                  textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
             ),
           ),
           Spacing.y(2),
@@ -102,13 +103,13 @@ class _SubscribeOptionBottomSheetState
                       children: [
                         Text(
                           subscribeTitles[index],
-                          style: AppTextStyles.bodySmall
+                          style: textTheme.bodySmall!
                               .copyWith(fontWeight: FontWeight.w700),
                         ),
                         Spacing.y(.4),
                         Text(
                           "Limit Device : 0",
-                          style: AppTextStyles.bodyExtraSmall.copyWith(
+                          style: textTheme.displaySmall!.copyWith(
                               fontSize: SizeConfig.textMultiplier * 1.05,
                               color: Colors.white38,
                               fontWeight: FontWeight.w500),

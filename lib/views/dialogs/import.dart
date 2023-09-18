@@ -44,6 +44,7 @@ class _ImportDialogState extends State<ImportDialog> {
   int selectedImport = 0;
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context);
     return Padding(
       padding: EdgeInsets.only(bottom: size.viewInsets.top),
@@ -71,7 +72,7 @@ class _ImportDialogState extends State<ImportDialog> {
                 alignment: Alignment.center,
                 child: Text(
                   "Import",
-                  style: AppTextStyles.bodyLarge
+                  style: textTheme.bodyLarge!
                       .copyWith(fontWeight: FontWeight.w700),
                 ),
               ),
@@ -81,7 +82,7 @@ class _ImportDialogState extends State<ImportDialog> {
                 children: [
                   Text(
                     "Address Nickname",
-                    style: AppTextStyles.bodyExtraSmall,
+                    style: textTheme.displaySmall!,
                   ),
                   Spacing.y(1),
                   AuthTextField(hintText: "Nickname", controller: nickName),
@@ -118,7 +119,7 @@ class _ImportDialogState extends State<ImportDialog> {
                                       : Colors.transparent),
                               child: Text(
                                 importTypeList[index],
-                                style: AppTextStyles.bodyExtraSmall.copyWith(
+                                style: textTheme.displaySmall!.copyWith(
                                     fontSize: SizeConfig.textMultiplier * 1.05,
                                     fontWeight: FontWeight.w500,
                                     color: selectedImport == index
@@ -147,13 +148,13 @@ class _ImportDialogState extends State<ImportDialog> {
                       children: [
                         TextFormField(
                           maxLines: 3,
-                          style: AppTextStyles.bodySmall
+                          style: textTheme.bodySmall!
                               .copyWith(fontWeight: FontWeight.w500),
                           decoration: InputDecoration(
                               isDense: true,
                               isCollapsed: true,
                               hintText: "Secret Pharse",
-                              hintStyle: AppTextStyles.bodyExtraSmall.copyWith(
+                              hintStyle: textTheme.displaySmall!.copyWith(
                                   fontWeight: FontWeight.w500,
                                   color: Colors.white38,
                                   fontSize: SizeConfig.textMultiplier * 1.05),
@@ -184,12 +185,10 @@ class _ImportDialogState extends State<ImportDialog> {
                                     Spacing.x(1),
                                     Text(
                                       "Paste",
-                                      style: AppTextStyles.bodyExtraSmall
-                                          .copyWith(
-                                              color: Colors.white60,
-                                              fontSize:
-                                                  SizeConfig.textMultiplier *
-                                                      .8),
+                                      style: textTheme.displaySmall!.copyWith(
+                                          color: Colors.white60,
+                                          fontSize:
+                                              SizeConfig.textMultiplier * .8),
                                     )
                                   ],
                                 ),
@@ -205,7 +204,7 @@ class _ImportDialogState extends State<ImportDialog> {
                     width: SizeConfig.widthMultiplier * 80,
                     child: Text(
                       "Typically 12 (sometimes 18, 24) words separated by single spaces",
-                      style: AppTextStyles.bodyExtraSmall.copyWith(
+                      style: textTheme.displaySmall!.copyWith(
                           fontSize: SizeConfig.textMultiplier * 1.05,
                           height: 1.9,
                           color: Colors.white54),

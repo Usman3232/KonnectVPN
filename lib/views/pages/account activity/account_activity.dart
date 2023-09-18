@@ -43,13 +43,15 @@ class _AccountActivityScreenState extends State<AccountActivityScreen>
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: AppConstants.defaultPadding,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -58,7 +60,7 @@ class _AccountActivityScreenState extends State<AccountActivityScreen>
                     children: [
                       const CustomBackButton(),
                       Spacing.x(21),
-                      Text("Account Activity", style: AppTextStyles.bodyMedium)
+                      Text("Account Activity", style: textTheme.bodyMedium!)
                     ],
                   ),
                   Spacing.y(5),
@@ -83,7 +85,7 @@ class _AccountActivityScreenState extends State<AccountActivityScreen>
                           controller: _tabController,
                           labelColor: AppColors.primaryClr,
                           unselectedLabelColor: Colors.white30,
-                          labelStyle: AppTextStyles.bodyExtraSmall
+                          labelStyle: textTheme.displaySmall!
                               .copyWith(fontWeight: FontWeight.w500),
                           tabs: myTabs,
                         ),
@@ -117,6 +119,7 @@ class LoginActivityTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 6),
       child: Column(
@@ -130,7 +133,7 @@ class LoginActivityTab extends StatelessWidget {
                 children: [
                   Text(
                     "Date Range",
-                    style: AppTextStyles.bodyExtraSmall.copyWith(
+                    style: textTheme.displaySmall!.copyWith(
                         fontWeight: FontWeight.w500,
                         fontSize: SizeConfig.textMultiplier * 1.05,
                         color: Colors.white30),
@@ -158,7 +161,7 @@ class LoginActivityTab extends StatelessWidget {
                 children: [
                   Text(
                     "Date Range",
-                    style: AppTextStyles.bodyExtraSmall.copyWith(
+                    style: textTheme.displaySmall!.copyWith(
                         fontWeight: FontWeight.w500,
                         fontSize: SizeConfig.textMultiplier * 1.05,
                         color: Colors.white30),
@@ -201,12 +204,12 @@ class LoginActivityTab extends StatelessWidget {
                         children: [
                           Text(
                             "Date",
-                            style: AppTextStyles.bodyExtraSmall
+                            style: textTheme.displaySmall!
                                 .copyWith(color: Colors.white30),
                           ),
                           Text(
                             "Level 1",
-                            style: AppTextStyles.bodyExtraSmall,
+                            style: textTheme.displaySmall!,
                           )
                         ],
                       ),
@@ -219,12 +222,12 @@ class LoginActivityTab extends StatelessWidget {
                         children: [
                           Text(
                             "Secure",
-                            style: AppTextStyles.bodyExtraSmall
+                            style: textTheme.displaySmall!
                                 .copyWith(color: Colors.white30),
                           ),
                           Text(
                             "3.54% - 5.06%",
-                            style: AppTextStyles.bodyExtraSmall,
+                            style: textTheme.displaySmall!,
                           )
                         ],
                       ),
@@ -237,12 +240,12 @@ class LoginActivityTab extends StatelessWidget {
                         children: [
                           Text(
                             "Location",
-                            style: AppTextStyles.bodyExtraSmall
+                            style: textTheme.displaySmall!
                                 .copyWith(color: Colors.white30),
                           ),
                           Text(
                             "3 Months",
-                            style: AppTextStyles.bodyExtraSmall,
+                            style: textTheme.displaySmall!,
                           )
                         ],
                       ),
@@ -255,12 +258,12 @@ class LoginActivityTab extends StatelessWidget {
                         children: [
                           Text(
                             "IP Address",
-                            style: AppTextStyles.bodyExtraSmall
+                            style: textTheme.displaySmall!
                                 .copyWith(color: Colors.white30),
                           ),
                           Text(
                             "3 Months",
-                            style: AppTextStyles.bodyExtraSmall,
+                            style: textTheme.displaySmall!,
                           )
                         ],
                       ),
@@ -292,7 +295,7 @@ class LoginActivityTab extends StatelessWidget {
                         children: [
                           Text(
                             "Status",
-                            style: AppTextStyles.bodyExtraSmall
+                            style: textTheme.displaySmall!
                                 .copyWith(color: Colors.white30),
                           ),
                           const Spacer(),
@@ -304,7 +307,7 @@ class LoginActivityTab extends StatelessWidget {
                           Spacing.x(2),
                           Text(
                             "Completed",
-                            style: AppTextStyles.bodyExtraSmall.copyWith(
+                            style: textTheme.displaySmall!.copyWith(
                                 color: AppColors.primaryClr,
                                 fontSize: SizeConfig.textMultiplier * 1.05),
                           ),
@@ -329,6 +332,7 @@ class SecurityActivityTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return ListView(
       children: const [],
     );

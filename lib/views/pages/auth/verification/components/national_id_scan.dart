@@ -14,6 +14,7 @@ class NationalIdScan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Column(
       children: [
         SizedBox(
@@ -21,7 +22,7 @@ class NationalIdScan extends StatelessWidget {
           child: Text(
             "Have a final check if all data is clearly visible and that it matches the information you have entered in previous steps.",
             textAlign: TextAlign.center,
-            style: AppTextStyles.bodyExtraSmall
+            style: textTheme.displaySmall!
                 .copyWith(height: 1.9, color: Colors.white38),
           ),
         ),
@@ -57,6 +58,7 @@ class IdCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Column(
       children: [
         Spacing.y(5),
@@ -75,8 +77,8 @@ class IdCard extends StatelessWidget {
             children: [
               Text(
                 type,
-                style: AppTextStyles.bodySmall
-                    .copyWith(fontWeight: FontWeight.w600),
+                style:
+                    textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w600),
               ),
               GestureDetector(
                 onTap: onTap,
@@ -94,7 +96,7 @@ class IdCard extends StatelessWidget {
                     children: [
                       Text(
                         "Scan Now",
-                        style: AppTextStyles.bodyExtraSmall.copyWith(
+                        style: textTheme.displaySmall!.copyWith(
                             color: Colors.white38,
                             fontSize: SizeConfig.textMultiplier * 1),
                       ),

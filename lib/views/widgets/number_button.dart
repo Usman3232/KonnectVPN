@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../constants/text_styles.dart';
@@ -17,6 +16,7 @@ class NumberButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return MaterialButton(
       height: SizeConfig.heightMultiplier * 9,
       minWidth: SizeConfig.widthMultiplier * 24,
@@ -30,7 +30,7 @@ class NumberButton extends StatelessWidget {
               )
             : Text(
                 title,
-                style: AppTextStyles.headingLarge,
+                style: textTheme.headlineLarge!,
               ),
       ),
     );

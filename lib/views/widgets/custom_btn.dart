@@ -15,6 +15,7 @@ class CustomButton extends StatelessWidget {
   final bool isShadow;
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Container(
       decoration: BoxDecoration(
         color: isBorder ? Colors.black : null,
@@ -61,5 +62,3 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
-
-

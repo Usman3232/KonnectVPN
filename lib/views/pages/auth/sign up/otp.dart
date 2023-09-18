@@ -19,19 +19,21 @@ class OtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: AppConstants.defaultPadding,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Spacing.y(4),
                   Text(
                     "Verification Reuired",
-                    style: AppTextStyles.bodyMedium
+                    style: textTheme.bodyMedium!
                         .copyWith(fontWeight: FontWeight.w400),
                   ),
                   Spacing.y(8),
@@ -40,19 +42,19 @@ class OtpScreen extends StatelessWidget {
                   Spacing.y(5),
                   Text(
                     "Verification Code",
-                    style: AppTextStyles.bodyExtraLarge
+                    style: textTheme.displayLarge!
                         .copyWith(fontWeight: FontWeight.w700),
                   ),
                   Spacing.y(5),
                   Text(
                     "We have sent the code verification to your Email",
-                    style: AppTextStyles.bodyExtraSmall
-                        .copyWith(color: Colors.white38),
+                    style:
+                        textTheme.displaySmall!.copyWith(color: Colors.white38),
                   ),
                   Spacing.y(2),
                   Text(
                     "arnar.john@gmail.com",
-                    style: AppTextStyles.bodyMedium
+                    style: textTheme.bodyMedium!
                         .copyWith(color: AppColors.primaryClr),
                   ),
                   Spacing.y(5),
@@ -86,14 +88,14 @@ class OtpScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Don’t receive any code?   ",
-                          style: AppTextStyles.bodySmall.copyWith(
+                          style: textTheme.bodySmall!.copyWith(
                               fontWeight: FontWeight.w500,
                               color: Colors.white38)),
                       GestureDetector(
                         onTap: () {},
                         child: Text(
                           "Request Again",
-                          style: AppTextStyles.bodySmall.copyWith(
+                          style: textTheme.bodySmall!.copyWith(
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryClr),
                         ),

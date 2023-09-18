@@ -1,36 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 
-class CountryScreen extends StatelessWidget {
-  const CountryScreen({super.key});
+class CountryScreen extends StatefulWidget {
+  CountryScreen({super.key});
+
+  @override
+  State<CountryScreen> createState() => _CountryScreenState();
+}
+
+class _CountryScreenState extends State<CountryScreen> {
+  int selectedCountry = -1;
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Spacing.y(6),
-              Row(
-                children: [
-                  const CustomBackButton(),
-                  Spacing.x(28.5),
-                  Text(
-                    "Country",
-                    style: AppTextStyles.bodyMedium,
-                  )
-                ],
-              ),
+              const CustomAppbar(title: "Country"),
               Spacing.y(5),
               Stack(
                 children: [
@@ -43,33 +42,46 @@ class CountryScreen extends StatelessWidget {
                       physics: const BouncingScrollPhysics(),
                       itemCount: 20,
                       itemBuilder: (context, index) {
-                        return Container(
-                          height: SizeConfig.heightMultiplier * 8,
-                          width: SizeConfig.widthMultiplier * 92,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: SizeConfig.widthMultiplier * 3),
-                          margin: EdgeInsets.only(
-                              bottom: SizeConfig.heightMultiplier * 3),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(color: Colors.white24),
-                          ),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: SizeConfig.heightMultiplier * 3.5,
-                                width: SizeConfig.widthMultiplier * 7,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: AppColors.primaryClr),
-                              ),
-                              Spacing.x(3),
-                              Text(
-                                "Indonesia",
-                                style: AppTextStyles.bodySmall
-                                    .copyWith(fontWeight: FontWeight.w600),
-                              )
-                            ],
+                        return InkWell(
+                          onTap: () {
+                            setState(() {
+                              selectedCountry = index;
+                            });
+                          },
+                          child: Container(
+                            height: SizeConfig.heightMultiplier * 8,
+                            width: SizeConfig.widthMultiplier * 92,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: SizeConfig.widthMultiplier * 3),
+                            margin: EdgeInsets.only(
+                                bottom: SizeConfig.heightMultiplier * 3),
+                            decoration: BoxDecoration(
+                              color: selectedCountry == index
+                                  ? Colors.white10
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(14),
+                              border: Border.all(
+                                  color: selectedCountry == index
+                                      ? Colors.white38
+                                      : Colors.white24),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: SizeConfig.heightMultiplier * 3.5,
+                                  width: SizeConfig.widthMultiplier * 7,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: AppColors.primaryClr),
+                                ),
+                                Spacing.x(3),
+                                Text(
+                                  "Indonesia",
+                                  style: textTheme.bodySmall!
+                                      .copyWith(fontWeight: FontWeight.w600),
+                                )
+                              ],
+                            ),
                           ),
                         );
                       },
@@ -95,10 +107,12 @@ class CountryScreen extends StatelessWidget {
                   )
                 ],
               ),
+              const Spacer(),
               CustomButton(
                 title: "Next Step",
                 onTap: () {},
-              )
+              ),
+              Spacing.y(2)
             ],
           ),
         ),

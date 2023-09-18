@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
-import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
-import '../../../../constants/text_styles.dart';
 
 class SkateKpnScreen extends StatelessWidget {
   const SkateKpnScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -31,25 +30,26 @@ class SkateKpnScreen extends StatelessWidget {
                   children: [
                     Text(
                       "KPN Amount",
-                      style: AppTextStyles.bodyExtraSmall
+                      style: textTheme.displaySmall!
                           .copyWith(color: Colors.white54),
                     ),
                     Spacing.y(1),
                     Text(
                       "71.871",
-                      style: AppTextStyles.headingLarge
+                      style: textTheme.headlineLarge!
                           .copyWith(fontSize: SizeConfig.textMultiplier * 6.4),
                     ),
                     Spacing.y(10),
                     Text(
                       "Choose Wallet",
-                      style: AppTextStyles.bodyExtraSmall,
+                      style: textTheme.displaySmall!,
                     ),
                     Spacing.y(1),
                     Container(
                       height: SizeConfig.heightMultiplier * 6,
                       width: SizeConfig.widthMultiplier * 88,
-                      padding: AppConstants.defaultPadding,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: SizeConfig.widthMultiplier * 4),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(14),
                           color: Colors.white10),
@@ -66,7 +66,7 @@ class SkateKpnScreen extends StatelessWidget {
                           ),
                           Text(
                             "Wallet 1",
-                            style: AppTextStyles.bodySmall,
+                            style: textTheme.bodySmall!,
                           ),
                           const Spacer(),
                           Icon(
@@ -83,16 +83,22 @@ class SkateKpnScreen extends StatelessWidget {
                       color: Colors.white30,
                     ),
                     Spacing.y(5),
-                    _rowInfo("Fee", "Level 1"),
-                    _rowInfo("Total", "\$12"),
-                    Spacing.y(22),
-                    CustomButton(
-                      title: "Stake Now",
-                      onTap: () {},
-                    )
+                    _rowInfo("Fee", "Level 1", context),
+                    _rowInfo("Total", "\$12", context),
                   ],
                 ),
-              )
+              ),
+              const Spacer(),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.widthMultiplier * 2),
+                child: CustomButton(
+                  title: "Stake Now",
+                  isShadow: false,
+                  onTap: () {},
+                ),
+              ),
+              Spacing.y(2)
             ],
           ),
         ),
@@ -100,7 +106,7 @@ class SkateKpnScreen extends StatelessWidget {
     );
   }
 
-  Widget _rowInfo(String title, data) {
+  Widget _rowInfo(String title, data, BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: SizeConfig.heightMultiplier * 3),
       child: Row(
@@ -108,11 +114,14 @@ class SkateKpnScreen extends StatelessWidget {
         children: [
           Text(
             title,
-            style: AppTextStyles.bodySmall.copyWith(color: Colors.white30),
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall!
+                .copyWith(color: Colors.white30),
           ),
           Text(
             data,
-            style: AppTextStyles.bodySmall,
+            style: Theme.of(context).textTheme.bodySmall!,
           )
         ],
       ),

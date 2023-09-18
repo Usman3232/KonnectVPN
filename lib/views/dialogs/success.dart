@@ -14,6 +14,7 @@ class SuccessDialog extends StatefulWidget {
 class _SuccessDialogState extends State<SuccessDialog> {
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Dialog(
       insetPadding: EdgeInsets.zero,
       backgroundColor: Colors.transparent,
@@ -40,8 +41,7 @@ class _SuccessDialogState extends State<SuccessDialog> {
             Spacing.y(3),
             Text(
               "Download Success",
-              style:
-                  AppTextStyles.bodyLarge.copyWith(fontWeight: FontWeight.w700),
+              style: textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),
             ),
             Spacing.y(1),
             SizedBox(
@@ -49,7 +49,7 @@ class _SuccessDialogState extends State<SuccessDialog> {
               child: Text(
                 "The private key  success download to file manager",
                 textAlign: TextAlign.center,
-                style: AppTextStyles.bodyExtraSmall
+                style: textTheme.displaySmall!
                     .copyWith(height: 1.5, color: Colors.white38),
               ),
             ),

@@ -30,6 +30,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return ZoomDrawer(
       controller: cont.zoomDrawerController,
       menuScreen: MenuDrawer(),
@@ -79,6 +80,7 @@ class MenuDrawer extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Padding(
@@ -122,20 +124,20 @@ class MenuDrawer extends StatelessWidget {
               Spacing.y(1),
               Text(
                 "6184749169",
-                style: AppTextStyles.bodyExtraSmall.copyWith(
+                style: textTheme.displaySmall!.copyWith(
                     fontWeight: FontWeight.w500, color: Colors.white60),
               ),
               Spacing.y(1),
               Text(
                 "Mattie Hardwick",
-                style: AppTextStyles.bodyLarge
-                    .copyWith(fontWeight: FontWeight.w700),
+                style:
+                    textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),
               ),
               Spacing.y(1),
               Text(
                 "Verification Is Denied",
-                style: AppTextStyles.bodyExtraSmall
-                    .copyWith(color: AppColors.errorClr),
+                style:
+                    textTheme.displaySmall!.copyWith(color: AppColors.errorClr),
               ),
               Spacing.y(3),
               ...List.generate(
@@ -204,6 +206,7 @@ class DrawerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -218,7 +221,7 @@ class DrawerTile extends StatelessWidget {
             Spacing.x(3),
             Text(
               title,
-              style: AppTextStyles.bodySmall.copyWith(
+              style: textTheme.bodySmall!.copyWith(
                   fontWeight: FontWeight.w500,
                   color: isSignOut ? Colors.white : Colors.white38),
             )

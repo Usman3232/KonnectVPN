@@ -5,6 +5,8 @@ import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/controllers/home.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
+import 'package:konnekt_vpn/views/pages/devices/device.dart';
+import 'package:konnekt_vpn/views/pages/swap/swap.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 import '../../../../utils/size_config.dart';
 
@@ -21,6 +23,7 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     double selectedBorderWidth = 3;
     double unSelectedBorderWidth = 2;
 
@@ -80,8 +83,8 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                 children: [
                   //TOP LEFT
                   Positioned(
-                    top: SizeConfig.heightMultiplier * 5,
-                    left: SizeConfig.widthMultiplier * 2,
+                    top: SizeConfig.heightMultiplier * 4.7,
+                    left: SizeConfig.widthMultiplier * 1.9,
                     child: GestureDetector(
                       onTap: () => buttonOnTap(0),
                       child: Stack(
@@ -95,9 +98,9 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                               : const SizedBox(),
                           CustomPaint(
                             size: Size(
-                                SizeConfig.heightMultiplier * 17.5,
-                                (SizeConfig.widthMultiplier * 41.5)
-                                    .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                              SizeConfig.widthMultiplier * 39,
+                              SizeConfig.heightMultiplier * 18.75,
+                            ),
                             painter: TopLeftPainter(
                                 borderColor: cont.selectedVal.value == 0
                                     ? AppColors.secondaryClr
@@ -121,7 +124,7 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                                 Spacing.y(1),
                                 Text(
                                   "Devices",
-                                  style: AppTextStyles.bodyExtraSmall.copyWith(
+                                  style: textTheme.displaySmall!.copyWith(
                                     fontSize: SizeConfig.textMultiplier * 1.05,
                                     color: cont.selectedVal.value == 0
                                         ? AppColors.secondaryClr
@@ -137,8 +140,8 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                   ),
                   // TOP RIGHT
                   Positioned(
-                    top: SizeConfig.heightMultiplier * 5,
-                    right: SizeConfig.widthMultiplier * 2,
+                    top: SizeConfig.heightMultiplier * 4.7,
+                    right: SizeConfig.widthMultiplier * 1.9,
                     child: GestureDetector(
                       onTap: () => buttonOnTap(1),
                       child: Stack(
@@ -152,9 +155,9 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                               : const SizedBox(),
                           CustomPaint(
                             size: Size(
-                                SizeConfig.heightMultiplier * 17.5,
-                                (SizeConfig.widthMultiplier * 41.5)
-                                    .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                              SizeConfig.widthMultiplier * 39,
+                              SizeConfig.heightMultiplier * 18.75,
+                            ),
                             painter: TopRightPainter(
                                 borderColor: cont.selectedVal.value == 1
                                     ? AppColors.secondaryClr
@@ -178,7 +181,7 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                                 Spacing.y(1),
                                 Text(
                                   "Swap",
-                                  style: AppTextStyles.bodyExtraSmall.copyWith(
+                                  style: textTheme.displaySmall!.copyWith(
                                       fontSize:
                                           SizeConfig.textMultiplier * 1.05,
                                       color: cont.selectedVal.value == 1
@@ -194,8 +197,8 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                   ),
                   //BOTTOM LEFT
                   Positioned(
-                    bottom: SizeConfig.heightMultiplier * 4.6,
-                    left: SizeConfig.widthMultiplier * 2,
+                    bottom: SizeConfig.heightMultiplier * 4.7,
+                    left: SizeConfig.widthMultiplier * 1.9,
                     child: GestureDetector(
                       onTap: () => buttonOnTap(2),
                       child: Stack(
@@ -209,9 +212,9 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                               : const SizedBox(),
                           CustomPaint(
                             size: Size(
-                                SizeConfig.heightMultiplier * 17.5,
-                                (SizeConfig.widthMultiplier * 41.5)
-                                    .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                              SizeConfig.widthMultiplier * 39,
+                              SizeConfig.heightMultiplier * 18.5,
+                            ),
                             painter: BottomLeftPainter(
                                 borderColor: cont.selectedVal.value == 2
                                     ? AppColors.secondaryClr
@@ -235,7 +238,7 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                                 Spacing.y(1),
                                 Text(
                                   "History",
-                                  style: AppTextStyles.bodyExtraSmall.copyWith(
+                                  style: textTheme.displaySmall!.copyWith(
                                     fontSize: SizeConfig.textMultiplier * 1.05,
                                     color: cont.selectedVal.value == 2
                                         ? AppColors.secondaryClr
@@ -251,8 +254,8 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                   ),
                   //BOTTOM RIGHT
                   Positioned(
-                    bottom: SizeConfig.heightMultiplier * 4.6,
-                    right: SizeConfig.widthMultiplier * 2,
+                    bottom: SizeConfig.heightMultiplier * 4.7,
+                    right: SizeConfig.widthMultiplier * 1.9,
                     child: GestureDetector(
                       onTap: () => buttonOnTap(3),
                       child: Stack(
@@ -266,9 +269,9 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                               : const SizedBox(),
                           CustomPaint(
                             size: Size(
-                                SizeConfig.heightMultiplier * 17.5,
-                                (SizeConfig.widthMultiplier * 41.5)
-                                    .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                              SizeConfig.widthMultiplier * 39,
+                              SizeConfig.heightMultiplier * 18.5,
+                            ),
                             painter: BottomRightPainter(
                                 borderColor: cont.selectedVal.value == 3
                                     ? AppColors.secondaryClr
@@ -292,7 +295,7 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
                                 Spacing.y(1),
                                 Text(
                                   "Wallet",
-                                  style: AppTextStyles.bodyExtraSmall.copyWith(
+                                  style: textTheme.displaySmall!.copyWith(
                                     fontSize: SizeConfig.textMultiplier * 1.05,
                                     color: cont.selectedVal.value == 3
                                         ? AppColors.secondaryClr
@@ -355,6 +358,11 @@ class _CustomShapeButtonState extends State<CustomShapeButton> {
 
   buttonOnTap(int index) {
     cont.selectedVal.value = index;
+    if (cont.selectedVal.value == 0) {
+      Get.to(() => DeviceScreen());
+    } else if (cont.selectedVal.value == 1) {
+      Get.to(() => SwapScreen());
+    }
   }
 }
 
@@ -586,6 +594,7 @@ class BehindShadow extends StatelessWidget {
   final int value;
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     double blueRadius = 40;
     double withOpacity = 0.35;
     return SizedBox(

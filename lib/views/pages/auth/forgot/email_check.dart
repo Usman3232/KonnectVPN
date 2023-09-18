@@ -15,41 +15,42 @@ class EmailCheckScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: AppConstants.defaultPadding,
-            child: Column(
-              children: [
-                Spacing.y(20),
-                Text(
-                  "Check Your Email",
-                  style: AppTextStyles.bodyExtraLarge
-                      .copyWith(fontWeight: FontWeight.w700),
+        child: Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
+          child: Column(
+            children: [
+              Spacing.y(20),
+              Text(
+                "Check Your Email",
+                style: textTheme.displayLarge!
+                    .copyWith(fontWeight: FontWeight.w700),
+              ),
+              Spacing.y(2),
+              SizedBox(
+                width: SizeConfig.widthMultiplier * 83,
+                child: Text(
+                  "Follow a password recovery instruction we have just sent to your email address",
+                  textAlign: TextAlign.center,
+                  style: textTheme.displaySmall!
+                      .copyWith(height: 1.9, color: Colors.white38),
                 ),
-                Spacing.y(2),
-                SizedBox(
-                  width: SizeConfig.widthMultiplier * 83,
-                  child: Text(
-                    "Follow a password recovery instruction we have just sent to your email address",
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.bodyExtraSmall
-                        .copyWith(height: 1.9, color: Colors.white38),
-                  ),
-                ),
-                Spacing.y(10),
-                Image.asset(AppImages.lock,
-                    height: SizeConfig.imageSizeMultiplier * 65),
-                Spacing.y(21),
-                CustomButton(
-                  title: "Next",
-                  onTap: () {
-                    Get.to(() => OtpScreen());
-                  },
-                ),
-              ],
-            ),
+              ),
+              Spacing.y(10),
+              Image.asset(AppImages.lock,
+                  height: SizeConfig.imageSizeMultiplier * 65),
+              const Spacer(),
+              CustomButton(
+                title: "Next",
+                onTap: () {
+                  Get.to(() => OtpScreen());
+                },
+              ),
+              Spacing.y(3)
+            ],
           ),
         ),
       ),

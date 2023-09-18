@@ -26,6 +26,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: EdgeInsets.only(bottom: SizeConfig.heightMultiplier * 2),
       child: TextField(
@@ -52,7 +53,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
               horizontal: SizeConfig.widthMultiplier * 5,
               vertical: SizeConfig.heightMultiplier * 2),
           hintText: widget.hintText,
-          hintStyle: AppTextStyles.bodySmall.copyWith(color: Colors.white38),
+          hintStyle: textTheme.bodySmall!.copyWith(color: Colors.white38),
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.transparent),
             borderRadius: BorderRadius.circular(14),
@@ -76,7 +77,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
             ),
           ),
         ),
-        style: AppTextStyles.bodySmall.copyWith(fontWeight: FontWeight.w500),
+        style: textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500),
       ),
     );
   }

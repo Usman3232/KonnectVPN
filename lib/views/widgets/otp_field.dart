@@ -16,6 +16,7 @@ class OtpField extends StatefulWidget {
 class _OtpFieldState extends State<OtpField> {
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return SizedBox(
       height: SizeConfig.heightMultiplier * 9,
       width: SizeConfig.widthMultiplier * 19,

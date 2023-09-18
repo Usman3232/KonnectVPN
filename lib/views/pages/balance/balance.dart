@@ -23,6 +23,7 @@ class BalanceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Obx(
       () => Scaffold(
         resizeToAvoidBottomInset: false,
@@ -30,7 +31,8 @@ class BalanceScreen extends StatelessWidget {
           inAsyncCall: cont.isBlur.value,
           child: Background(
             child: Padding(
-              padding: AppConstants.defaultPadding,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4),
               child: Column(
                 children: [
                   Spacing.y(6),
@@ -47,17 +49,17 @@ class BalanceScreen extends StatelessWidget {
                       children: [
                         Text(
                           "Balance",
-                          style: AppTextStyles.bodySmall
+                          style: textTheme.bodySmall!
                               .copyWith(color: Colors.white54),
                         ),
                         Text(
                           "1.000",
-                          style: AppTextStyles.headingLarge.copyWith(
+                          style: textTheme.headlineLarge!.copyWith(
                               fontSize: SizeConfig.textMultiplier * 5.6),
                         ),
                         Text(
                           "KPN",
-                          style: AppTextStyles.bodyMedium.copyWith(
+                          style: textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryClr),
                         ),
@@ -70,9 +72,15 @@ class BalanceScreen extends StatelessWidget {
                               (index) => InkWell(
                                 onTap: () {
                                   if (index == 0) {
-                                    Get.dialog(const ImportDialog());
+                                    Get.dialog(
+                                      const ImportDialog(),
+                                      barrierColor: Colors.transparent,
+                                    );
                                   } else if (index == 1) {
-                                    Get.dialog(const CreateDialog());
+                                    Get.dialog(
+                                      const CreateDialog(),
+                                      barrierColor: Colors.transparent,
+                                    );
                                   }
                                 },
                                 child: Container(
@@ -104,10 +112,9 @@ class BalanceScreen extends StatelessWidget {
                                       ),
                                       Text(
                                         walletButtonTitle[index],
-                                        style: AppTextStyles.bodyExtraSmall
-                                            .copyWith(
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.white54),
+                                        style: textTheme.displaySmall!.copyWith(
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white54),
                                       )
                                     ],
                                   ),
@@ -121,7 +128,7 @@ class BalanceScreen extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             "Wallets",
-                            style: AppTextStyles.bodySmall
+                            style: textTheme.bodySmall!
                                 .copyWith(fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -150,14 +157,13 @@ class BalanceScreen extends StatelessWidget {
                                       children: [
                                         Text(
                                           "1000 KPN",
-                                          style: AppTextStyles.bodyMedium
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w700),
+                                          style: textTheme.bodyMedium!.copyWith(
+                                              fontWeight: FontWeight.w700),
                                         ),
                                         Spacing.y(.6),
                                         Text(
                                           "87oftg6758ed76",
-                                          style: AppTextStyles.bodySmall
+                                          style: textTheme.bodySmall!
                                               .copyWith(color: Colors.white54),
                                         )
                                       ],
@@ -177,7 +183,7 @@ class BalanceScreen extends StatelessWidget {
                                         children: [
                                           Text(
                                             "Private Key",
-                                            style: AppTextStyles.bodyExtraSmall
+                                            style: textTheme.displaySmall!
                                                 .copyWith(
                                                     color: AppColors.primaryClr,
                                                     fontWeight: FontWeight.w500,

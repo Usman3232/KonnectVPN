@@ -25,6 +25,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Obx(
         () => GlassBackground(
@@ -33,7 +34,8 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: AppConstants.defaultPadding,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.widthMultiplier * 4),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -75,15 +77,22 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 child: Text(
                                   "567",
-                                  style: AppTextStyles.bodyExtraSmall.copyWith(
+                                  style: textTheme.headlineLarge!.copyWith(
                                       fontSize: SizeConfig.textMultiplier * 1,
                                       fontWeight: FontWeight.w500,
                                       color: AppColors.primaryClr),
                                 ),
                               ),
                               Text(
+                                "567",
+                                style: textTheme.headlineLarge!.copyWith(
+                                    fontSize: SizeConfig.textMultiplier * 1,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.primaryClr),
+                              ),
+                              Text(
                                 "1 KPN = 10.000 KNKT",
-                                style: AppTextStyles.bodyExtraSmall.copyWith(
+                                style: textTheme.displaySmall!.copyWith(
                                     fontSize: SizeConfig.textMultiplier * .85,
                                     fontWeight: FontWeight.w500),
                               ),
@@ -94,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                       Spacing.y(7),
                       Text(
                         "Total Bandwidth Speed",
-                        style: AppTextStyles.bodyExtraSmall
+                        style: textTheme.displaySmall!
                             .copyWith(color: Colors.white54),
                       ),
                       Spacing.y(.5),
@@ -103,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Text(
                             "71.871",
-                            style: AppTextStyles.headingLarge.copyWith(
+                            style: textTheme.headlineLarge!.copyWith(
                                 fontSize: SizeConfig.textMultiplier * 5.5),
                           ),
                           Padding(
@@ -111,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                                 bottom: SizeConfig.heightMultiplier * .9),
                             child: Text(
                               " KNKT/m",
-                              style: AppTextStyles.headingMedium
+                              style: textTheme.headlineMedium!
                                   .copyWith(fontWeight: FontWeight.w400),
                             ),
                           ),
@@ -161,9 +170,8 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     Text(
                                       homeTypeTitle[index],
-                                      style: AppTextStyles.bodyExtraSmall
-                                          .copyWith(
-                                              fontWeight: FontWeight.w600),
+                                      style: textTheme.displaySmall!.copyWith(
+                                          fontWeight: FontWeight.w600),
                                     )
                                   ],
                                 ),
@@ -175,7 +183,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Expanded(child: CustomShapeButton())
+                const Expanded(child: CustomShapeButton())
               ],
             ),
           ),

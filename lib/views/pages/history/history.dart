@@ -6,6 +6,7 @@ import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -40,24 +41,20 @@ class _HistoryScreenState extends State<HistoryScreen>
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: AppConstants.defaultPadding,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Spacing.y(6),
-                  Row(
-                    children: [
-                      const CustomBackButton(),
-                      Spacing.x(29),
-                      Text("History", style: AppTextStyles.bodyMedium)
-                    ],
-                  ),
+                  const CustomAppbar(title: "History"),
                   Spacing.y(5),
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -81,7 +78,7 @@ class _HistoryScreenState extends State<HistoryScreen>
                           controller: _tabController,
                           labelColor: AppColors.primaryClr,
                           unselectedLabelColor: Colors.white30,
-                          labelStyle: AppTextStyles.bodyExtraSmall
+                          labelStyle: textTheme.displaySmall!
                               .copyWith(fontWeight: FontWeight.w500),
                           tabs: myTabs,
                         ),
@@ -99,19 +96,19 @@ class _HistoryScreenState extends State<HistoryScreen>
                   Center(
                     child: Text(
                       "2",
-                      style: AppTextStyles.bodyExtraLarge,
+                      style: textTheme.displayLarge!,
                     ),
                   ),
                   Center(
                     child: Text(
                       "3",
-                      style: AppTextStyles.bodyExtraLarge,
+                      style: textTheme.displayLarge!,
                     ),
                   ),
                   Center(
                     child: Text(
                       "4",
-                      style: AppTextStyles.bodyExtraLarge,
+                      style: textTheme.displayLarge!,
                     ),
                   ),
                 ],
@@ -131,6 +128,7 @@ class DepositTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 6),
       physics: const BouncingScrollPhysics(),
@@ -141,7 +139,7 @@ class DepositTab extends StatelessWidget {
           children: [
             Text(
               "Show 123 datas",
-              style: AppTextStyles.bodyExtraSmall.copyWith(
+              style: textTheme.displaySmall!.copyWith(
                   fontSize: SizeConfig.textMultiplier * 1.05,
                   color: Colors.white38),
             ),
@@ -162,7 +160,7 @@ class DepositTab extends StatelessWidget {
                   Spacing.x(1),
                   Text(
                     "Filter",
-                    style: AppTextStyles.bodyExtraSmall.copyWith(
+                    style: textTheme.displaySmall!.copyWith(
                         fontSize: SizeConfig.textMultiplier * 1.05,
                         color: Colors.white60),
                   ),
@@ -197,12 +195,12 @@ class DepositTab extends StatelessWidget {
                       children: [
                         Text(
                           "Model : ",
-                          style: AppTextStyles.bodySmall
+                          style: textTheme.bodySmall!
                               .copyWith(fontWeight: FontWeight.w700),
                         ),
                         Text(
                           "12EWTU",
-                          style: AppTextStyles.bodySmall.copyWith(
+                          style: textTheme.bodySmall!.copyWith(
                               color: AppColors.primaryClr,
                               fontWeight: FontWeight.w700),
                         ),
@@ -211,7 +209,7 @@ class DepositTab extends StatelessWidget {
                     Spacing.y(1),
                     Text(
                       "Bandwidth : 500 KNKT/m",
-                      style: AppTextStyles.bodyExtraSmall.copyWith(
+                      style: textTheme.displaySmall!.copyWith(
                           color: Colors.white38,
                           fontSize: SizeConfig.textMultiplier * 1.05),
                     ),

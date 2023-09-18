@@ -1,4 +1,3 @@
-
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
@@ -14,6 +13,7 @@ class GlassBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     List<Widget> widgetList = <Widget>[];
     widgetList.add(child);
     if (inAsyncCall) {

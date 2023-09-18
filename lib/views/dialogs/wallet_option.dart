@@ -48,6 +48,7 @@ class _WalletOptionDialogState extends State<WalletOptionDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Dialog(
       insetPadding: EdgeInsets.zero,
       backgroundColor: Colors.transparent,
@@ -68,13 +69,12 @@ class _WalletOptionDialogState extends State<WalletOptionDialog> {
           children: [
             Text(
               "Wallet Option",
-              style:
-                  AppTextStyles.bodyLarge.copyWith(fontWeight: FontWeight.w700),
+              style: textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),
             ),
             Spacing.y(1),
             Text(
               "Your List Wallet What  You Have",
-              style: AppTextStyles.bodyExtraSmall.copyWith(
+              style: textTheme.displaySmall!.copyWith(
                   fontSize: SizeConfig.textMultiplier * 1.05,
                   color: Colors.white38),
             ),
@@ -103,7 +103,7 @@ class _WalletOptionDialogState extends State<WalletOptionDialog> {
                     ),
                     Text(
                       walletTitle[index],
-                      style: AppTextStyles.bodyExtraSmall
+                      style: textTheme.displaySmall!
                           .copyWith(fontWeight: FontWeight.w500),
                     ),
                     const Spacer(),
@@ -158,7 +158,7 @@ class _WalletOptionDialogState extends State<WalletOptionDialog> {
                           ),
                           Text(
                             walletButtonTitle[index],
-                            style: AppTextStyles.bodyExtraSmall.copyWith(
+                            style: textTheme.displaySmall!.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white54),
                           )

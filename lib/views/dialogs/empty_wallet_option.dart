@@ -39,6 +39,7 @@ class _EmptyWalletOptionDialogState extends State<EmptyWalletOptionDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Dialog(
       insetPadding: EdgeInsets.zero,
       backgroundColor: Colors.transparent,
@@ -59,13 +60,12 @@ class _EmptyWalletOptionDialogState extends State<EmptyWalletOptionDialog> {
           children: [
             Text(
               "Wallet Option",
-              style:
-                  AppTextStyles.bodyLarge.copyWith(fontWeight: FontWeight.w700),
+              style: textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),
             ),
             Spacing.y(1),
             Text(
               "Your List Wallet What  You Have",
-              style: AppTextStyles.bodyExtraSmall.copyWith(
+              style: textTheme.displaySmall!.copyWith(
                   fontSize: SizeConfig.textMultiplier * 1.05,
                   color: Colors.white38),
             ),
@@ -80,7 +80,7 @@ class _EmptyWalletOptionDialogState extends State<EmptyWalletOptionDialog> {
               alignment: Alignment.center,
               child: Text(
                 "You Don’t Have Yet",
-                style: AppTextStyles.bodyExtraSmall.copyWith(
+                style: textTheme.displaySmall!.copyWith(
                     fontWeight: FontWeight.w500,
                     fontSize: SizeConfig.textMultiplier * 1.05,
                     color: Colors.white38),
@@ -119,7 +119,7 @@ class _EmptyWalletOptionDialogState extends State<EmptyWalletOptionDialog> {
                         ),
                         Text(
                           walletButtonTitle[index],
-                          style: AppTextStyles.bodyExtraSmall.copyWith(
+                          style: textTheme.displaySmall!.copyWith(
                               fontWeight: FontWeight.w500,
                               color: Colors.white54),
                         )

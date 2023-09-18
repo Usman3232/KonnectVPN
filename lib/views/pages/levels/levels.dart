@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/images.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/pages/stacking/stacking.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
-import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 
 class LevelScreen extends StatelessWidget {
   const LevelScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Background(
@@ -23,7 +21,8 @@ class LevelScreen extends StatelessWidget {
             Container(
               height: SizeConfig.heightMultiplier * 65,
               width: SizeConfig.widthMultiplier * 100,
-              padding: AppConstants.defaultPadding,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4),
               color: Colors.white.withOpacity(.05),
               child: Column(
                 children: [
@@ -44,13 +43,13 @@ class LevelScreen extends StatelessWidget {
                   Spacing.y(4),
                   Text(
                     "Choose Your Level",
-                    style: AppTextStyles.bodyExtraLarge
+                    style: textTheme.displayLarge!
                         .copyWith(fontWeight: FontWeight.w700),
                   ),
                   Spacing.y(1),
                   Text(
                     "Level can boost your Income more ",
-                    style: AppTextStyles.bodyExtraSmall.copyWith(
+                    style: textTheme.displaySmall!.copyWith(
                         fontSize: SizeConfig.textMultiplier * 1,
                         color: Colors.white38),
                   ),
@@ -59,7 +58,7 @@ class LevelScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       "Level 3",
-                      style: AppTextStyles.bodySmall.copyWith(
+                      style: textTheme.bodySmall!.copyWith(
                           color: const Color(0xff3CA69D),
                           fontWeight: FontWeight.w700),
                     ),
@@ -70,7 +69,7 @@ class LevelScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Increase APR by:",
-                        style: AppTextStyles.bodySmall
+                        style: textTheme.bodySmall!
                             .copyWith(color: Colors.white38),
                       ),
                       Row(
@@ -78,12 +77,12 @@ class LevelScreen extends StatelessWidget {
                         children: [
                           Text(
                             "20%",
-                            style: AppTextStyles.bodySmall,
+                            style: textTheme.bodySmall!,
                           ),
                           Spacing.x(1),
                           Text(
                             "+30",
-                            style: AppTextStyles.bodyExtraSmall.copyWith(
+                            style: textTheme.displaySmall!.copyWith(
                               fontSize: SizeConfig.textMultiplier * .8,
                               color: const Color(0xff3CA69D),
                             ),
@@ -98,7 +97,7 @@ class LevelScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Minimum Stake Amount",
-                        style: AppTextStyles.bodySmall
+                        style: textTheme.bodySmall!
                             .copyWith(color: Colors.white38),
                       ),
                       Row(
@@ -106,12 +105,12 @@ class LevelScreen extends StatelessWidget {
                         children: [
                           Text(
                             "\$21,564,3",
-                            style: AppTextStyles.bodySmall,
+                            style: textTheme.bodySmall!,
                           ),
                           Spacing.x(1),
                           Text(
                             "+121",
-                            style: AppTextStyles.bodyExtraSmall.copyWith(
+                            style: textTheme.displaySmall!.copyWith(
                               fontSize: SizeConfig.textMultiplier * .8,
                               color: const Color(0xff3CA69D),
                             ),
@@ -120,26 +119,27 @@ class LevelScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  Spacing.y(4),
-                  MaterialButton(
-                    onPressed: () {
-                      Get.to(() => const StackingScreen());
-                    },
-                    height: SizeConfig.heightMultiplier * 6,
-                    minWidth: SizeConfig.widthMultiplier * 92,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      side: const BorderSide(color: Colors.white24),
-                    ),
-                    child: Text(
-                      "Unlock Now",
-                      style: AppTextStyles.bodySmall.copyWith(
-                          fontWeight: FontWeight.w700, color: Colors.white24),
-                    ),
-                  ),
                 ],
               ),
-            )
+            ),
+            const Spacer(),
+            MaterialButton(
+              onPressed: () {
+                Get.to(() => const StackingScreen());
+              },
+              height: SizeConfig.heightMultiplier * 6,
+              minWidth: SizeConfig.widthMultiplier * 88,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(14),
+                side: const BorderSide(color: Colors.white24),
+              ),
+              child: Text(
+                "Unlock Now",
+                style: textTheme.bodySmall!.copyWith(
+                    fontWeight: FontWeight.w700, color: Colors.white24),
+              ),
+            ),
+            Spacing.y(2)
           ],
         ),
       ),

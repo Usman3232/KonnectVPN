@@ -12,6 +12,7 @@ class CustomAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -28,7 +29,7 @@ class CustomAppbar extends StatelessWidget {
           ),
         ),
         Text(title,
-            style: AppTextStyles.bodyMedium
+            style: textTheme.bodyMedium!
                 .copyWith(color: Colors.white.withOpacity(.8))),
         SizedBox(
           height: SizeConfig.heightMultiplier * 4.5,

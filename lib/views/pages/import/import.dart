@@ -26,12 +26,14 @@ class ImportScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Obx(
       () => Scaffold(
         resizeToAvoidBottomInset: false,
         body: Background(
           child: Padding(
-            padding: AppConstants.defaultPadding,
+            padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.widthMultiplier * 4),
             child: Column(
               children: [
                 Spacing.y(6),
@@ -45,7 +47,7 @@ class ImportScreen extends StatelessWidget {
                     children: [
                       Text(
                         "Address Nickname",
-                        style: AppTextStyles.bodyExtraSmall,
+                        style: textTheme.displaySmall!,
                       ),
                       Spacing.y(1),
                       AuthTextField(hintText: "Nickname", controller: nickName),
@@ -80,14 +82,12 @@ class ImportScreen extends StatelessWidget {
                                           : Colors.transparent),
                                   child: Text(
                                     importTypeList[index],
-                                    style: AppTextStyles.bodyExtraSmall
-                                        .copyWith(
-                                            fontSize:
-                                                SizeConfig.textMultiplier *
-                                                    1.05,
-                                            fontWeight: FontWeight.w500,
-                                            color: cont.selectedImport.value ==
-                                                    index
+                                    style: textTheme.displaySmall!.copyWith(
+                                        fontSize:
+                                            SizeConfig.textMultiplier * 1.05,
+                                        fontWeight: FontWeight.w500,
+                                        color:
+                                            cont.selectedImport.value == index
                                                 ? Colors.white
                                                 : Colors.white60),
                                   ),
@@ -112,18 +112,17 @@ class ImportScreen extends StatelessWidget {
                           children: [
                             TextFormField(
                               maxLines: 6,
-                              style: AppTextStyles.bodySmall
+                              style: textTheme.bodySmall!
                                   .copyWith(fontWeight: FontWeight.w500),
                               decoration: InputDecoration(
                                   isDense: true,
                                   isCollapsed: true,
                                   hintText: "Secret Pharse",
-                                  hintStyle: AppTextStyles.bodyExtraSmall
-                                      .copyWith(
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white38,
-                                          fontSize:
-                                              SizeConfig.textMultiplier * 1.05),
+                                  hintStyle: textTheme.displaySmall!.copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white38,
+                                      fontSize:
+                                          SizeConfig.textMultiplier * 1.05),
                                   border: InputBorder.none),
                             ),
                             Row(
@@ -152,7 +151,7 @@ class ImportScreen extends StatelessWidget {
                                         Spacing.x(1),
                                         Text(
                                           "Paste",
-                                          style: AppTextStyles.bodyExtraSmall
+                                          style: textTheme.displaySmall!
                                               .copyWith(
                                                   color: Colors.white60,
                                                   fontSize: SizeConfig
@@ -173,20 +172,26 @@ class ImportScreen extends StatelessWidget {
                         width: SizeConfig.widthMultiplier * 80,
                         child: Text(
                           "Typically 12 (sometimes 18, 24) words separated by single spaces",
-                          style: AppTextStyles.bodyExtraSmall
+                          style: textTheme.displaySmall!
                               .copyWith(height: 1.9, color: Colors.white54),
                         ),
                       ),
-                      Spacing.y(25),
-                      CustomButton(
-                        title: "Import",
-                        onTap: () {
-                          Get.to(() => BalanceScreen());
-                        },
-                      )
                     ],
                   ),
-                )
+                ),
+                const Spacer(),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.widthMultiplier * 2),
+                  child: CustomButton(
+                    title: "Import",
+                    isShadow: false,
+                    onTap: () {
+                      Get.to(() => BalanceScreen());
+                    },
+                  ),
+                ),
+                Spacing.y(2)
               ],
             ),
           ),

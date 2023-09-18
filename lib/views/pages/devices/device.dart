@@ -21,6 +21,7 @@ class DeviceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Obx(
       () => Scaffold(
         resizeToAvoidBottomInset: false,
@@ -28,7 +29,8 @@ class DeviceScreen extends StatelessWidget {
           inAsyncCall: cont.isBlur.value,
           child: Background(
             child: Padding(
-              padding: AppConstants.defaultPadding,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4),
               child: Column(
                 children: [
                   Spacing.y(6),
@@ -42,12 +44,12 @@ class DeviceScreen extends StatelessWidget {
                       children: [
                         Text(
                           "10",
-                          style: AppTextStyles.headingLarge.copyWith(
+                          style: textTheme.headlineLarge!.copyWith(
                               fontSize: SizeConfig.textMultiplier * 6.4),
                         ),
                         Text(
                           "Device Total",
-                          style: AppTextStyles.bodyMedium.copyWith(
+                          style: textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryClr),
                         ),
@@ -82,20 +84,19 @@ class DeviceScreen extends StatelessWidget {
                                         alignment: Alignment.center,
                                         child: Text(
                                           "04",
-                                          style: AppTextStyles.bodyExtraSmall
+                                          style: textTheme.displaySmall!
                                               .copyWith(
                                                   fontWeight: FontWeight.w600),
                                         ),
                                       ),
                                       Text(
                                         "Device On",
-                                        style: AppTextStyles.bodyExtraSmall
-                                            .copyWith(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize:
-                                                    SizeConfig.textMultiplier *
-                                                        1.05,
-                                                color: Colors.white54),
+                                        style: textTheme.displaySmall!.copyWith(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize:
+                                                SizeConfig.textMultiplier *
+                                                    1.05,
+                                            color: Colors.white54),
                                       ),
                                       Spacing.x(8),
                                       Image.asset(
@@ -115,7 +116,7 @@ class DeviceScreen extends StatelessWidget {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             "Device Model",
-                            style: AppTextStyles.bodySmall
+                            style: textTheme.bodySmall!
                                 .copyWith(fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -136,7 +137,10 @@ class DeviceScreen extends StatelessWidget {
                                             SizeConfig.heightMultiplier * 1.5),
                                     child: InkWell(
                                       onTap: () {
-                                        Get.dialog(MinersDetailDialog());
+                                        Get.dialog(
+                                          MinersDetailDialog(),
+                                          barrierColor: Colors.transparent,
+                                        );
                                       },
                                       child: Container(
                                         height:
@@ -187,8 +191,8 @@ class DeviceScreen extends StatelessWidget {
                                                   children: [
                                                     Text(
                                                       "ID : ",
-                                                      style: AppTextStyles
-                                                          .bodySmall
+                                                      style: textTheme
+                                                          .bodySmall!
                                                           .copyWith(
                                                               fontWeight:
                                                                   FontWeight
@@ -196,8 +200,8 @@ class DeviceScreen extends StatelessWidget {
                                                     ),
                                                     Text(
                                                       "12EWTU",
-                                                      style: AppTextStyles
-                                                          .bodySmall
+                                                      style: textTheme
+                                                          .bodySmall!
                                                           .copyWith(
                                                               fontWeight:
                                                                   FontWeight
@@ -210,8 +214,7 @@ class DeviceScreen extends StatelessWidget {
                                                 Spacing.y(1),
                                                 Text(
                                                   "192.168.1.1",
-                                                  style: AppTextStyles
-                                                      .bodyExtraSmall
+                                                  style: textTheme.displaySmall!
                                                       .copyWith(
                                                           color:
                                                               Colors.white38),
@@ -227,8 +230,7 @@ class DeviceScreen extends StatelessWidget {
                                               children: [
                                                 Text(
                                                   "1 KNKT/m",
-                                                  style: AppTextStyles
-                                                      .bodyExtraSmall
+                                                  style: textTheme.displaySmall!
                                                       .copyWith(
                                                           fontWeight:
                                                               FontWeight.w600),
@@ -236,8 +238,7 @@ class DeviceScreen extends StatelessWidget {
                                                 Spacing.y(1),
                                                 Text(
                                                   "Aug 19, 2023",
-                                                  style: AppTextStyles
-                                                      .bodyExtraSmall
+                                                  style: textTheme.displaySmall!
                                                       .copyWith(
                                                           fontSize: SizeConfig
                                                                   .textMultiplier *
@@ -320,6 +321,7 @@ class DeviceButton extends StatelessWidget {
   final bool isShadow;
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Container(
       decoration: BoxDecoration(
         color: isBorder ? Colors.black : null,

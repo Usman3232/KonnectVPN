@@ -15,6 +15,7 @@ class ChooseAuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Column(
@@ -27,7 +28,7 @@ class ChooseAuthScreen extends StatelessWidget {
                     height: SizeConfig.imageSizeMultiplier * 20),
                 Text(
                   "KonnektVPN",
-                  style: AppTextStyles.headingLarge
+                  style: textTheme.headlineLarge!
                       .copyWith(fontSize: SizeConfig.textMultiplier * 4),
                 ),
               ],

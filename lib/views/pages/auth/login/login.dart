@@ -21,33 +21,35 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: AppConstants.defaultPadding,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Spacing.y(17),
                   Text(
                     "Welcome",
-                    style: AppTextStyles.bodyExtraLarge
+                    style: textTheme.displayLarge!
                         .copyWith(fontWeight: FontWeight.w700),
                   ),
                   Spacing.y(2),
                   Text(
                     "Protect Your Online Privacy Our VPN app keeps your data secure and your identity anonymous.",
-                    style: AppTextStyles.bodyExtraSmall
+                    style: textTheme.displaySmall!
                         .copyWith(height: 1.9, color: Colors.white38),
                   ),
                   Spacing.y(6),
-                  Text("Email", style: AppTextStyles.bodyExtraSmall),
+                  Text("Email", style: textTheme.displaySmall!),
                   Spacing.y(1),
                   AuthTextField(
                       hintText: "Enter your email", controller: cont.email),
-                  Text("Password", style: AppTextStyles.bodyExtraSmall),
+                  Text("Password", style: textTheme.displaySmall!),
                   Spacing.y(1),
                   AuthTextField(
                     hintText: "Enter your password",
@@ -62,7 +64,7 @@ class LoginScreen extends StatelessWidget {
                       },
                       child: Text(
                         "Forgot Your password",
-                        style: AppTextStyles.bodyExtraSmall.copyWith(
+                        style: textTheme.displaySmall!.copyWith(
                             fontWeight: FontWeight.w500,
                             fontSize: SizeConfig.textMultiplier * 1.2,
                             color: Colors.white38),
@@ -81,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Dont have an account?   ",
-                          style: AppTextStyles.bodyExtraSmall.copyWith(
+                          style: textTheme.displaySmall!.copyWith(
                               fontWeight: FontWeight.w500,
                               color: Colors.white38)),
                       GestureDetector(
@@ -90,7 +92,7 @@ class LoginScreen extends StatelessWidget {
                         },
                         child: Text(
                           "Sign Up",
-                          style: AppTextStyles.bodyExtraSmall.copyWith(
+                          style: textTheme.displaySmall!.copyWith(
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryClr),
                         ),

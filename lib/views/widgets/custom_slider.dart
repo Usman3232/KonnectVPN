@@ -9,6 +9,7 @@ class CustomSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Stack(
       children: [
         Container(
@@ -28,7 +29,7 @@ class CustomSlider extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             "$value%",
-            style: AppTextStyles.bodyExtraSmall.copyWith(
+            style: textTheme.displaySmall!.copyWith(
               fontWeight: FontWeight.w500,
               fontSize: SizeConfig.textMultiplier * 1.05,
               color: Colors.white.withOpacity(.8),

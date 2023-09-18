@@ -23,11 +23,13 @@ class _MinerScreenState extends State<MinerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             children: [
               Spacing.y(6),
@@ -56,7 +58,7 @@ class _MinerScreenState extends State<MinerScreen> {
                               height: SizeConfig.heightMultiplier * 11,
                               width: SizeConfig.widthMultiplier * 88,
                               padding: EdgeInsets.symmetric(
-                                  horizontal: SizeConfig.widthMultiplier * 3),
+                                  horizontal: SizeConfig.widthMultiplier * 2.2),
                               decoration: BoxDecoration(
                                   border: Border.all(
                                       color: selectedMiner == index
@@ -84,15 +86,14 @@ class _MinerScreenState extends State<MinerScreen> {
                                         width: SizeConfig.widthMultiplier * 60,
                                         child: Text(
                                           "KP-1000 Dual-band Wireless Gigabit Router",
-                                          style: AppTextStyles.bodySmall
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w700),
+                                          style: textTheme.bodySmall!.copyWith(
+                                              fontWeight: FontWeight.w700),
                                         ),
                                       ),
                                       Spacing.y(1),
                                       Text(
                                         "Bandwidth : 14,400 - 20,160 KNKT/day",
-                                        style: AppTextStyles.bodyExtraSmall
+                                        style: textTheme.displaySmall!
                                             .copyWith(color: Colors.white38),
                                       )
                                     ],
@@ -104,16 +105,22 @@ class _MinerScreenState extends State<MinerScreen> {
                         );
                       },
                     ),
-                    Spacing.y(24),
-                    CustomButton(
-                      title: "Buy Now",
-                      onTap: () {
-                        Get.to(() => PaymentMethodScreen());
-                      },
-                    )
                   ],
                 ),
-              )
+              ),
+              const Spacer(),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.widthMultiplier * 2),
+                child: CustomButton(
+                  title: "Buy Now",
+                  isShadow: false,
+                  onTap: () {
+                    Get.to(() => PaymentMethodScreen());
+                  },
+                ),
+              ),
+              Spacing.y(2)
             ],
           ),
         ),

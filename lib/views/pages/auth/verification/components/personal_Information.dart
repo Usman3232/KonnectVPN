@@ -18,25 +18,25 @@ class PersonalInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Full Name", style: AppTextStyles.bodyExtraSmall),
+        Text("Full Name", style: textTheme.displaySmall!),
         Spacing.y(1),
         CustomTextField(hintText: "Enter full name", controller: cont.name),
-        Text("Full Address", style: AppTextStyles.bodyExtraSmall),
+        Text("Full Address", style: textTheme.displaySmall!),
         Spacing.y(1),
         CustomTextField(
             hintText: "Enter full address", controller: cont.address),
-        Text("Country", style: AppTextStyles.bodyExtraSmall),
+        Text("Country", style: textTheme.displaySmall!),
         Spacing.y(1),
         CustomTextField(
           hintText: "Select country",
           controller: cont.country,
           readOnly: true,
           onTap: () {
-            Get.to(() => const CountryScreen(),
-                transition: Transition.noTransition);
+            Get.to(() => CountryScreen(), transition: Transition.noTransition);
           },
         ),
         Row(
@@ -45,7 +45,7 @@ class PersonalInformation extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("City", style: AppTextStyles.bodyExtraSmall),
+                Text("City", style: textTheme.displaySmall!),
                 Spacing.y(1),
                 SizedBox(
                   width: SizeConfig.widthMultiplier * 55,
@@ -64,7 +64,7 @@ class PersonalInformation extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Code", style: AppTextStyles.bodyExtraSmall),
+                Text("Code", style: textTheme.displaySmall!),
                 Spacing.y(1),
                 SizedBox(
                   width: SizeConfig.widthMultiplier * 35,
@@ -77,7 +77,7 @@ class PersonalInformation extends StatelessWidget {
             )
           ],
         ),
-        Text("Citizenship", style: AppTextStyles.bodyExtraSmall),
+        Text("Citizenship", style: textTheme.displaySmall!),
         Spacing.y(1),
         CustomTextField(
           hintText: "Select citizenship",
@@ -88,7 +88,7 @@ class PersonalInformation extends StatelessWidget {
                 transition: Transition.noTransition);
           },
         ),
-        Text("Residence", style: AppTextStyles.bodyExtraSmall),
+        Text("Residence", style: textTheme.displaySmall!),
         Spacing.y(1),
         CustomTextField(
           hintText: "Select residence",
@@ -96,7 +96,6 @@ class PersonalInformation extends StatelessWidget {
           readOnly: true,
           onTap: () {},
         ),
-        Spacing.y(8),
       ],
     );
   }

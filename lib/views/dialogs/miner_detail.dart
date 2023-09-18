@@ -40,6 +40,7 @@ class _MinersDetailDialogState extends State<MinersDetailDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Dialog(
       insetPadding: EdgeInsets.zero,
       backgroundColor: Colors.transparent,
@@ -61,7 +62,7 @@ class _MinersDetailDialogState extends State<MinersDetailDialog> {
           children: [
             Text(
               "Miners Detail",
-              style: AppTextStyles.bodyLarge.copyWith(
+              style: textTheme.bodyLarge!.copyWith(
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -81,7 +82,7 @@ class _MinersDetailDialogState extends State<MinersDetailDialog> {
             Spacing.y(2),
             Text(
               "Miner Status",
-              style: AppTextStyles.bodyExtraSmall.copyWith(
+              style: textTheme.displaySmall!.copyWith(
                   fontWeight: FontWeight.w600,
                   fontSize: SizeConfig.textMultiplier * 1.05,
                   color: Colors.white38),
@@ -89,20 +90,18 @@ class _MinersDetailDialogState extends State<MinersDetailDialog> {
             Spacing.y(1),
             Text(
               "On",
-              style: AppTextStyles.bodyMedium.copyWith(
+              style: textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.w700, color: AppColors.primaryClr),
             ),
             Spacing.y(3),
             Align(
                 alignment: Alignment.centerLeft,
-                child:
-                    Text("Device Model", style: AppTextStyles.bodyExtraSmall)),
+                child: Text("Device Model", style: textTheme.displaySmall!)),
             Spacing.y(1),
             CustomTextField(hintText: "Model", controller: deviceModel),
             Align(
                 alignment: Alignment.centerLeft,
-                child:
-                    Text("Serial Number", style: AppTextStyles.bodyExtraSmall)),
+                child: Text("Serial Number", style: textTheme.displaySmall!)),
             Spacing.y(1),
             CustomTextField(hintText: "Number", controller: seriralNumber),
             Spacing.y(2),

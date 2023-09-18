@@ -2,18 +2,14 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/controllers/referral.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
-import 'package:konnekt_vpn/views/dialogs/wallet_option.dart';
 import 'package:konnekt_vpn/views/pages/skate%20kpn/skate_kpn.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
-import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
-import '../../../constants/text_styles.dart';
 import '../../widgets/number_button.dart';
 
 class ReferralScreen extends StatefulWidget {
@@ -31,6 +27,7 @@ class _ReferralScreenState extends State<ReferralScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     Duration animaDuration = const Duration(milliseconds: 700);
     return Scaffold(
       body: Background(
@@ -39,7 +36,8 @@ class _ReferralScreenState extends State<ReferralScreen> {
             alignment: Alignment.center,
             children: [
               Padding(
-                padding: AppConstants.defaultPadding,
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.widthMultiplier * 4),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -65,13 +63,13 @@ class _ReferralScreenState extends State<ReferralScreen> {
                         children: [
                           Text(
                             "Balance",
-                            style: AppTextStyles.bodySmall
+                            style: textTheme.bodySmall!
                                 .copyWith(color: Colors.white54),
                           ),
                           Spacing.y(1),
                           Text(
                             "\$1.000",
-                            style: AppTextStyles.headingLarge.copyWith(
+                            style: textTheme.headlineLarge!.copyWith(
                                 fontSize: SizeConfig.textMultiplier * 5.6),
                           ),
                           Spacing.y(2),
@@ -98,8 +96,7 @@ class _ReferralScreenState extends State<ReferralScreen> {
                                     alignment: Alignment.center,
                                     child: Text(
                                       "Withdraw",
-                                      style:
-                                          AppTextStyles.bodyExtraSmall.copyWith(
+                                      style: textTheme.displaySmall!.copyWith(
                                         fontSize:
                                             SizeConfig.textMultiplier * 1.05,
                                         fontWeight: FontWeight.w600,
@@ -156,8 +153,7 @@ class _ReferralScreenState extends State<ReferralScreen> {
                                                 ),
                                                 Text(
                                                   type[index],
-                                                  style: AppTextStyles
-                                                      .bodyExtraSmall
+                                                  style: textTheme.displaySmall!
                                                       .copyWith(
                                                           color: selectedType ==
                                                                   index
@@ -233,15 +229,14 @@ class _ReferralScreenState extends State<ReferralScreen> {
                                           children: [
                                             Text(
                                               "EKREF5368",
-                                              style: AppTextStyles.bodyMedium
+                                              style: textTheme.bodyMedium!
                                                   .copyWith(
                                                       color:
                                                           AppColors.primaryClr),
                                             ),
                                             Text(
                                               "Copy",
-                                              style: AppTextStyles
-                                                  .bodyExtraSmall
+                                              style: textTheme.displaySmall!
                                                   .copyWith(
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -277,7 +272,7 @@ class _ReferralScreenState extends State<ReferralScreen> {
                                   alignment: Alignment.centerLeft,
                                   child: Text(
                                     "My Referrals",
-                                    style: AppTextStyles.bodySmall
+                                    style: textTheme.bodySmall!
                                         .copyWith(fontWeight: FontWeight.w600),
                                   ),
                                 ),
@@ -322,7 +317,7 @@ class _ReferralScreenState extends State<ReferralScreen> {
                         children: [
                           Text(
                             "\$8.21",
-                            style: AppTextStyles.headingMedium
+                            style: textTheme.headlineMedium!
                                 .copyWith(fontWeight: FontWeight.w500),
                           ),
                           GestureDetector(
@@ -338,12 +333,10 @@ class _ReferralScreenState extends State<ReferralScreen> {
                                 children: [
                                   Text(
                                     "Wallet",
-                                    style: AppTextStyles.bodyExtraSmall
-                                        .copyWith(
-                                            fontSize:
-                                                SizeConfig.textMultiplier *
-                                                    1.05,
-                                            color: Colors.white54),
+                                    style: textTheme.displaySmall!.copyWith(
+                                        fontSize:
+                                            SizeConfig.textMultiplier * 1.05,
+                                        color: Colors.white54),
                                   ),
                                   Icon(
                                     Icons.keyboard_arrow_down_rounded,
@@ -363,13 +356,13 @@ class _ReferralScreenState extends State<ReferralScreen> {
                       children: [
                         Text(
                           "Fee Rate  : ",
-                          style: AppTextStyles.bodyExtraSmall.copyWith(
+                          style: textTheme.displaySmall!.copyWith(
                               color: Colors.white54,
                               fontSize: SizeConfig.textMultiplier * 1.05),
                         ),
                         Text(
                           "5% From Transaction",
-                          style: AppTextStyles.bodyExtraSmall.copyWith(
+                          style: textTheme.displaySmall!.copyWith(
                               fontSize: SizeConfig.textMultiplier * 1.05),
                         ),
                         Spacing.y(5),
@@ -390,6 +383,7 @@ class _ReferralScreenState extends State<ReferralScreen> {
                   width: SizeConfig.widthMultiplier * 100,
                   color: Colors.black,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Spacing.y(2),
                       Wrap(
@@ -445,13 +439,19 @@ class _ReferralScreenState extends State<ReferralScreen> {
                           ),
                         ],
                       ),
-                      Spacing.y(4),
-                      CustomButton(
-                        title: "Transfer",
-                        onTap: () {
-                          Get.to(() => const SkateKpnScreen());
-                        },
-                      )
+                      const Spacer(),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: SizeConfig.widthMultiplier * 6),
+                        child: CustomButton(
+                          title: "Transfer",
+                          isShadow: false,
+                          onTap: () {
+                            Get.to(() => const SkateKpnScreen());
+                          },
+                        ),
+                      ),
+                      Spacing.y(2)
                     ],
                   ),
                 ),
@@ -463,24 +463,24 @@ class _ReferralScreenState extends State<ReferralScreen> {
     );
   }
 
-  Widget _rowInfo(String title, data) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: SizeConfig.heightMultiplier * 3),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: AppTextStyles.bodySmall.copyWith(color: Colors.white30),
-          ),
-          Text(
-            data,
-            style: AppTextStyles.bodySmall,
-          )
-        ],
-      ),
-    );
-  }
+//   Widget _rowInfo(String title, data) {
+//     return Padding(
+//       padding: EdgeInsets.only(bottom: SizeConfig.heightMultiplier * 3),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: [
+//           Text(
+//             title,
+//             style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white30),
+//           ),
+//           Text(
+//             data,
+//             style: Theme.of(context).textTheme.bodySmall!,
+//           )
+//         ],
+//       ),
+//     );
+//   }
 }
 
 class MyReferralsTile extends StatelessWidget {
@@ -493,6 +493,7 @@ class MyReferralsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier * 1),
       child: Row(
@@ -516,19 +517,19 @@ class MyReferralsTile extends StatelessWidget {
             children: [
               Text(
                 "Jhon Doe",
-                style: AppTextStyles.bodySmall
-                    .copyWith(fontWeight: FontWeight.w700),
+                style:
+                    textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w700),
               ),
               Spacing.y(1),
               isAvailable
                   ? Text(
                       "Available",
-                      style: AppTextStyles.bodyExtraSmall
+                      style: textTheme.displaySmall!
                           .copyWith(color: AppColors.primaryClr),
                     )
                   : Text(
                       "Pending",
-                      style: AppTextStyles.bodyExtraSmall
+                      style: textTheme.displaySmall!
                           .copyWith(color: Colors.white38),
                     )
             ],
@@ -536,7 +537,7 @@ class MyReferralsTile extends StatelessWidget {
           const Spacer(),
           Text(
             "\$10",
-            style: AppTextStyles.bodyLarge
+            style: textTheme.bodyLarge!
                 .copyWith(color: Colors.white.withOpacity(.7)),
           )
         ],
@@ -558,6 +559,7 @@ class ReferralCodeStepper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Row(
       children: [
         InkWell(
@@ -574,7 +576,7 @@ class ReferralCodeStepper extends StatelessWidget {
               ),
               Text(
                 title,
-                style: AppTextStyles.bodyExtraSmall
+                style: textTheme.displaySmall!
                     .copyWith(fontWeight: FontWeight.w500),
               )
             ],

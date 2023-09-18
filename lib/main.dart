@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
+import 'package:konnekt_vpn/constants/theme.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/views/drawer/drawer.dart';
 import 'package:konnekt_vpn/views/pages/about%20us/about_us.dart';
@@ -11,6 +12,7 @@ import 'package:konnekt_vpn/views/pages/auth/forgot/forgot.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/get_started.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/new_password.dart';
 import 'package:konnekt_vpn/views/pages/auth/forgot/verification_on_process.dart';
+import 'package:konnekt_vpn/views/pages/auth/forgot/welcome_onboard.dart';
 import 'package:konnekt_vpn/views/pages/auth/login/login.dart';
 import 'package:konnekt_vpn/views/pages/auth/pin/pin.dart';
 import 'package:konnekt_vpn/views/pages/auth/sign%20up/otp.dart';
@@ -66,15 +68,10 @@ class MyApp extends StatelessWidget {
         return OrientationBuilder(
           builder: (context, orientation) {
             SizeConfig().init(constraints, orientation);
-
             return GetMaterialApp(
-              theme: ThemeData(
-                fontFamily: 'PlusJakartaSans',
-                colorScheme: ColorScheme.light(primary: AppColors.primaryClr),
-                scaffoldBackgroundColor: Colors.black,
-              ),
+              theme: AppTheme().getTheme(),
               debugShowCheckedModeBanner: false,
-              home: DrawerScreen(),
+              home: ChooseAuthScreen(),
             );
           },
         );

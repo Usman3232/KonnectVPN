@@ -18,11 +18,13 @@ class MinerDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             children: [
               Spacing.y(6),
@@ -32,7 +34,7 @@ class MinerDetailScreen extends StatelessWidget {
                   Spacing.x(24),
                   Text(
                     "Miners Detail",
-                    style: AppTextStyles.bodyMedium.copyWith(
+                    style: textTheme.bodyMedium!.copyWith(
                       color: Colors.white.withOpacity(.8),
                     ),
                   )
@@ -49,7 +51,7 @@ class MinerDetailScreen extends StatelessWidget {
               Spacing.y(3),
               Text(
                 "Miner Status",
-                style: AppTextStyles.bodyExtraSmall.copyWith(
+                style: textTheme.displaySmall!.copyWith(
                     fontWeight: FontWeight.w600,
                     fontSize: SizeConfig.textMultiplier * 1.05,
                     color: Colors.white38),
@@ -57,28 +59,25 @@ class MinerDetailScreen extends StatelessWidget {
               Spacing.y(1),
               Text(
                 "On",
-                style: AppTextStyles.bodyMedium.copyWith(
+                style: textTheme.bodyMedium!.copyWith(
                     fontWeight: FontWeight.w700, color: AppColors.primaryClr),
               ),
               Spacing.y(6),
               Align(
                   alignment: Alignment.centerLeft,
-                  child: Text("Device Model",
-                      style: AppTextStyles.bodyExtraSmall)),
+                  child: Text("Device Model", style: textTheme.displaySmall!)),
               Spacing.y(1),
               CustomTextField(hintText: "Model", controller: deviceModel),
               Spacing.y(2),
               Align(
                   alignment: Alignment.centerLeft,
-                  child: Text("Serial Number",
-                      style: AppTextStyles.bodyExtraSmall)),
+                  child: Text("Serial Number", style: textTheme.displaySmall!)),
               Spacing.y(1),
               CustomTextField(hintText: "Number", controller: seriralNumber),
               Spacing.y(2),
               Align(
                   alignment: Alignment.centerLeft,
-                  child:
-                      Text("IP address", style: AppTextStyles.bodyExtraSmall)),
+                  child: Text("IP address", style: textTheme.displaySmall!)),
               Spacing.y(1),
               CustomTextField(
                   hintText: "Model", isfilled: false, controller: ipAddress),

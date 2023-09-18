@@ -22,13 +22,15 @@ class CalculatorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Obx(
       () => Scaffold(
         body: GlassBackground(
           inAsyncCall: cont.isBlur.value,
           child: Background(
             child: Padding(
-              padding: AppConstants.defaultPadding,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -38,7 +40,7 @@ class CalculatorScreen extends StatelessWidget {
                       const CustomBackButton(),
                       Spacing.x(26),
                       Text("Calculator",
-                          style: AppTextStyles.bodyMedium
+                          style: textTheme.bodyMedium!
                               .copyWith(color: Colors.white.withOpacity(.8)))
                     ],
                   ),
@@ -54,7 +56,7 @@ class CalculatorScreen extends StatelessWidget {
                           children: [
                             Text(
                               "Revenue Record",
-                              style: AppTextStyles.bodySmall
+                              style: textTheme.bodySmall!
                                   .copyWith(fontWeight: FontWeight.w700),
                             ),
                             Container(
@@ -98,7 +100,7 @@ class CalculatorScreen extends StatelessWidget {
                                         ),
                                         child: Text(
                                           revenueTitle[index],
-                                          style: AppTextStyles.bodyExtraSmall
+                                          style: textTheme.displaySmall!
                                               .copyWith(
                                                   color: cont.selectedRevenue
                                                               .value ==
@@ -129,14 +131,14 @@ class CalculatorScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     "1K-3K \$",
-                                    style: AppTextStyles.headingLarge.copyWith(
+                                    style: textTheme.headlineLarge!.copyWith(
                                         fontWeight: FontWeight.w700,
                                         fontSize:
                                             SizeConfig.textMultiplier * 4.4),
                                   ),
                                   Text(
                                     "+21.01%",
-                                    style: AppTextStyles.bodySmall.copyWith(
+                                    style: textTheme.bodySmall!.copyWith(
                                         fontWeight: FontWeight.w500,
                                         color: Colors.white60),
                                   ),
@@ -168,6 +170,7 @@ class CalculatorScreen extends StatelessWidget {
                               onTap: () {
                                 Get.bottomSheet(
                                     const SubscribeOptionBottomSheet(),
+                                    barrierColor: Colors.transparent,
                                     isScrollControlled: true);
                               },
                               child: Container(
@@ -198,16 +201,15 @@ class CalculatorScreen extends StatelessWidget {
                                     ),
                                     Text(
                                       "Silver",
-                                      style: AppTextStyles.bodySmall.copyWith(
+                                      style: textTheme.bodySmall!.copyWith(
                                           fontWeight: FontWeight.w500),
                                     ),
                                     const Spacer(),
                                     Text(
                                       "Limit : 5",
-                                      style: AppTextStyles.bodyExtraSmall
-                                          .copyWith(
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white38),
+                                      style: textTheme.displaySmall!.copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white38),
                                     ),
                                     Spacing.x(2),
                                     Icon(
@@ -228,7 +230,7 @@ class CalculatorScreen extends StatelessWidget {
                           children: [
                             Text(
                               "Device Model",
-                              style: AppTextStyles.bodySmall
+                              style: textTheme.bodySmall!
                                   .copyWith(fontWeight: FontWeight.w700),
                             ),
                             Container(
@@ -248,12 +250,10 @@ class CalculatorScreen extends StatelessWidget {
                                   Spacing.x(2),
                                   Text(
                                     "Update Data",
-                                    style: AppTextStyles.bodyExtraSmall
-                                        .copyWith(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize:
-                                                SizeConfig.textMultiplier *
-                                                    1.05),
+                                    style: textTheme.displaySmall!.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize:
+                                            SizeConfig.textMultiplier * 1.05),
                                   )
                                 ],
                               ),
@@ -298,14 +298,14 @@ class CalculatorScreen extends StatelessWidget {
                                           children: [
                                             Text(
                                               "Model : ",
-                                              style: AppTextStyles.bodySmall
+                                              style: textTheme.bodySmall!
                                                   .copyWith(
                                                       fontWeight:
                                                           FontWeight.w700),
                                             ),
                                             Text(
                                               "12EWTU",
-                                              style: AppTextStyles.bodySmall
+                                              style: textTheme.bodySmall!
                                                   .copyWith(
                                                       color:
                                                           AppColors.primaryClr,
@@ -317,7 +317,7 @@ class CalculatorScreen extends StatelessWidget {
                                         Spacing.y(1),
                                         Text(
                                           "Bandwidth : 200 KNKT/m",
-                                          style: AppTextStyles.bodyExtraSmall
+                                          style: textTheme.displaySmall!
                                               .copyWith(color: Colors.white38),
                                         )
                                       ],
@@ -327,7 +327,7 @@ class CalculatorScreen extends StatelessWidget {
                                       children: [
                                         Text(
                                           "Count",
-                                          style: AppTextStyles.bodyExtraSmall
+                                          style: textTheme.displaySmall!
                                               .copyWith(
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: SizeConfig
@@ -352,8 +352,7 @@ class CalculatorScreen extends StatelessWidget {
                                             children: [
                                               Text(
                                                 "2",
-                                                style: AppTextStyles
-                                                    .bodyExtraSmall
+                                                style: textTheme.displaySmall!
                                                     .copyWith(
                                                         fontWeight:
                                                             FontWeight.w600),

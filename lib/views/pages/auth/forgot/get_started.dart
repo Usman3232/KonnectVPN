@@ -15,41 +15,42 @@ class GetStartedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: AppConstants.defaultPadding,
-            child: Column(
-              children: [
-                Spacing.y(20),
-                Text(
-                  "Well Done",
-                  style: AppTextStyles.bodyExtraLarge
-                      .copyWith(fontWeight: FontWeight.w700),
+        child: Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
+          child: Column(
+            children: [
+              Spacing.y(20),
+              Text(
+                "Well Done",
+                style: textTheme.displayLarge!
+                    .copyWith(fontWeight: FontWeight.w700),
+              ),
+              Spacing.y(2),
+              SizedBox(
+                width: SizeConfig.widthMultiplier * 80,
+                child: Text(
+                  "Your profile is now being reviewed. You can expect it to finish in the next 24 hours.",
+                  textAlign: TextAlign.center,
+                  style: textTheme.displaySmall!
+                      .copyWith(height: 1.9, color: Colors.white38),
                 ),
-                Spacing.y(2),
-                SizedBox(
-                  width: SizeConfig.widthMultiplier * 80,
-                  child: Text(
-                    "Your profile is now being reviewed. You can expect it to finish in the next 24 hours.",
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.bodyExtraSmall
-                        .copyWith(height: 1.9, color: Colors.white38),
-                  ),
-                ),
-                Spacing.y(10),
-                Image.asset(AppImages.getStarted,
-                    height: SizeConfig.imageSizeMultiplier * 65),
-                Spacing.y(21),
-                CustomButton(
-                  title: "Get Started Now",
-                  onTap: () {
-                    Get.to(() => NewPasswordScreen());
-                  },
-                ),
-              ],
-            ),
+              ),
+              Spacing.y(10),
+              Image.asset(AppImages.getStarted,
+                  height: SizeConfig.imageSizeMultiplier * 65),
+              const Spacer(),
+              CustomButton(
+                title: "Get Started Now",
+                onTap: () {
+                  Get.to(() => NewPasswordScreen());
+                },
+              ),
+              Spacing.y(3)
+            ],
           ),
         ),
       ),

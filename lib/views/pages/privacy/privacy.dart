@@ -9,6 +9,7 @@ import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/pages/privacy/privacy_note.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 
 class PrivacyScreen extends StatefulWidget {
@@ -24,22 +25,16 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             children: [
               Spacing.y(6),
-              Row(
-                children: [
-                  const CustomBackButton(),
-                  Spacing.x(29),
-                  Text("Privacy",
-                      style: AppTextStyles.bodyMedium
-                          .copyWith(color: Colors.white.withOpacity(.8)))
-                ],
-              ),
+              const CustomAppbar(title: "Privacy"),
               Spacing.y(5),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -67,7 +62,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                           ),
                           Text(
                             "Privacy Policy",
-                            style: AppTextStyles.bodyExtraSmall
+                            style: textTheme.displaySmall!
                                 .copyWith(fontWeight: FontWeight.w500),
                           ),
                           const Spacer(),
@@ -80,19 +75,19 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                     Spacing.y(6),
                     Text(
                       "General",
-                      style: AppTextStyles.bodySmall
+                      style: textTheme.bodySmall!
                           .copyWith(fontWeight: FontWeight.w600),
                     ),
                     Spacing.y(3),
                     Text(
                       "Marketing and Analytics",
-                      style: AppTextStyles.bodySmall
+                      style: textTheme.bodySmall!
                           .copyWith(fontWeight: FontWeight.w500),
                     ),
                     Spacing.y(1),
                     Text(
                       "Opt out of sharing data with 3rd party marketing vendors for analytics and to improve targeted advertising.",
-                      style: AppTextStyles.bodyExtraSmall.copyWith(
+                      style: textTheme.displaySmall!.copyWith(
                           fontSize: SizeConfig.textMultiplier * 1.05,
                           color: Colors.white38),
                     ),
@@ -105,7 +100,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                           children: [
                             Text(
                               "Analytics",
-                              style: AppTextStyles.bodySmall
+                              style: textTheme.bodySmall!
                                   .copyWith(fontWeight: FontWeight.w500),
                             ),
                             Spacing.y(1),
@@ -113,7 +108,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                               width: SizeConfig.widthMultiplier * 68,
                               child: Text(
                                 "Binance may share usage data to 3rd party analytics platforms to help improve our products and marketing.",
-                                style: AppTextStyles.bodyExtraSmall.copyWith(
+                                style: textTheme.displaySmall!.copyWith(
                                     fontSize: SizeConfig.textMultiplier * 1.05,
                                     color: Colors.white38),
                               ),
@@ -141,7 +136,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                           children: [
                             Text(
                               "Advertising",
-                              style: AppTextStyles.bodySmall
+                              style: textTheme.bodySmall!
                                   .copyWith(fontWeight: FontWeight.w500),
                             ),
                             Spacing.y(1),
@@ -149,7 +144,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                               width: SizeConfig.widthMultiplier * 68,
                               child: Text(
                                 "Binance may share usage data to 3rd party ad platforms to help improve our targeting and marketing quality",
-                                style: AppTextStyles.bodyExtraSmall.copyWith(
+                                style: textTheme.displaySmall!.copyWith(
                                     fontSize: SizeConfig.textMultiplier * 1.05,
                                     color: Colors.white38),
                               ),

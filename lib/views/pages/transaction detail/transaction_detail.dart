@@ -14,12 +14,14 @@ class TransactionDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Spacing.y(6),
               Row(
@@ -28,7 +30,7 @@ class TransactionDetailScreen extends StatelessWidget {
                   Spacing.x(18),
                   Text(
                     "Transaction Details",
-                    style: AppTextStyles.bodyMedium.copyWith(
+                    style: textTheme.bodyMedium!.copyWith(
                       color: Colors.white.withOpacity(.8),
                     ),
                   ),
@@ -62,16 +64,16 @@ class TransactionDetailScreen extends StatelessWidget {
                                 Spacing.y(8),
                                 Text(
                                   "Confirmed",
-                                  style: AppTextStyles.bodySmall
+                                  style: textTheme.bodySmall!
                                       .copyWith(color: AppColors.primaryClr),
                                 ),
                                 Spacing.y(3),
                                 Text("Transaction Swap",
-                                    style: AppTextStyles.bodyExtraLarge),
+                                    style: textTheme.displayLarge!),
                                 Spacing.y(1),
                                 Text(
                                   "We have sent the money on your account",
-                                  style: AppTextStyles.bodyExtraSmall.copyWith(
+                                  style: textTheme.displaySmall!.copyWith(
                                       fontSize:
                                           SizeConfig.textMultiplier * 1.05,
                                       color: Colors.white38),
@@ -81,12 +83,10 @@ class TransactionDetailScreen extends StatelessWidget {
                                   alignment: Alignment.centerLeft,
                                   child: Text(
                                     "Transaction ID",
-                                    style: AppTextStyles.bodyExtraSmall
-                                        .copyWith(
-                                            fontSize:
-                                                SizeConfig.textMultiplier *
-                                                    1.05,
-                                            color: Colors.white38),
+                                    style: textTheme.displaySmall!.copyWith(
+                                        fontSize:
+                                            SizeConfig.textMultiplier * 1.05,
+                                        color: Colors.white38),
                                   ),
                                 ),
                                 Spacing.y(1),
@@ -94,7 +94,7 @@ class TransactionDetailScreen extends StatelessWidget {
                                   alignment: Alignment.centerLeft,
                                   child: Text(
                                     "3M8w2knJKsr3jqMatYiyuraxVvZA",
-                                    style: AppTextStyles.bodySmall
+                                    style: textTheme.bodySmall!
                                         .copyWith(fontWeight: FontWeight.w700),
                                   ),
                                 ),
@@ -109,7 +109,7 @@ class TransactionDetailScreen extends StatelessWidget {
                                       children: [
                                         Text(
                                           "Transaction ID",
-                                          style: AppTextStyles.bodyExtraSmall
+                                          style: textTheme.displaySmall!
                                               .copyWith(
                                                   fontSize: SizeConfig
                                                           .textMultiplier *
@@ -122,7 +122,7 @@ class TransactionDetailScreen extends StatelessWidget {
                                               SizeConfig.widthMultiplier * 30,
                                           child: Text(
                                             "Ox0b06d4JH48e5DK3jm4a3af69BnVO",
-                                            style: AppTextStyles.bodyExtraSmall
+                                            style: textTheme.displaySmall!
                                                 .copyWith(
                                                     fontSize: SizeConfig
                                                             .textMultiplier *
@@ -139,7 +139,7 @@ class TransactionDetailScreen extends StatelessWidget {
                                       children: [
                                         Text(
                                           "Transaction ID",
-                                          style: AppTextStyles.bodyExtraSmall
+                                          style: textTheme.displaySmall!
                                               .copyWith(
                                                   fontSize: SizeConfig
                                                           .textMultiplier *
@@ -152,7 +152,7 @@ class TransactionDetailScreen extends StatelessWidget {
                                               SizeConfig.widthMultiplier * 30,
                                           child: Text(
                                             "3M8w2knJKsr3jqMatYiyuraxVvZA",
-                                            style: AppTextStyles.bodyExtraSmall
+                                            style: textTheme.displaySmall!
                                                 .copyWith(
                                                     fontSize: SizeConfig
                                                             .textMultiplier *
@@ -190,7 +190,7 @@ class TransactionDetailScreen extends StatelessWidget {
                                 Spacing.y(5),
                                 Text(
                                   "Total Amount",
-                                  style: AppTextStyles.bodyExtraSmall.copyWith(
+                                  style: textTheme.displaySmall!.copyWith(
                                       fontSize:
                                           SizeConfig.textMultiplier * 1.05,
                                       color: Colors.white38),
@@ -201,7 +201,7 @@ class TransactionDetailScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text("\$204.48 ",
-                                        style: AppTextStyles.headingLarge
+                                        style: textTheme.headlineLarge!
                                             .copyWith(
                                                 fontSize:
                                                     SizeConfig.textMultiplier *
@@ -212,7 +212,7 @@ class TransactionDetailScreen extends StatelessWidget {
                                               SizeConfig.heightMultiplier * .8),
                                       child: Text(
                                         "(0.021 KPN)",
-                                        style: AppTextStyles.bodySmall.copyWith(
+                                        style: textTheme.bodySmall!.copyWith(
                                             color: AppColors.primaryClr,
                                             fontWeight: FontWeight.w500),
                                       ),
@@ -225,20 +225,16 @@ class TransactionDetailScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       "Withdraw fee ",
-                                      style: AppTextStyles.bodyExtraSmall
-                                          .copyWith(
-                                              color: Colors.white38,
-                                              fontSize:
-                                                  SizeConfig.textMultiplier *
-                                                      1.05),
+                                      style: textTheme.displaySmall!.copyWith(
+                                          color: Colors.white38,
+                                          fontSize:
+                                              SizeConfig.textMultiplier * 1.05),
                                     ),
                                     Text(
                                       "0,0015 KPN",
-                                      style: AppTextStyles.bodyExtraSmall
-                                          .copyWith(
-                                              fontSize:
-                                                  SizeConfig.textMultiplier *
-                                                      1.05),
+                                      style: textTheme.displaySmall!.copyWith(
+                                          fontSize:
+                                              SizeConfig.textMultiplier * 1.05),
                                     ),
                                   ],
                                 )
@@ -255,14 +251,20 @@ class TransactionDetailScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    Spacing.y(5),
-                    CustomButton(
-                      title: "Back to Wallet",
-                      onTap: () {},
-                    )
                   ],
                 ),
-              )
+              ),
+              const Spacer(),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: SizeConfig.widthMultiplier * 2),
+                child: CustomButton(
+                  title: "Back to Wallet",
+                  isShadow: false,
+                  onTap: () {},
+                ),
+              ),
+              Spacing.y(2)
             ],
           ),
         ),

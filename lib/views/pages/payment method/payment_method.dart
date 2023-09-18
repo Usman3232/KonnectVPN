@@ -32,12 +32,14 @@ class PaymentMethodScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Obx(
       () => Scaffold(
         resizeToAvoidBottomInset: false,
         body: Background(
           child: Padding(
-            padding: AppConstants.defaultPadding,
+            padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.widthMultiplier * 4),
             child: Column(
               children: [
                 Spacing.y(6),
@@ -46,7 +48,7 @@ class PaymentMethodScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                       horizontal: SizeConfig.widthMultiplier * 2),
                   child: SizedBox(
-                    height: SizeConfig.heightMultiplier * 86,
+                    height: SizeConfig.heightMultiplier * 81.5,
                     child: SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
                       child: Column(
@@ -168,8 +170,7 @@ class PaymentMethodScreen extends StatelessWidget {
                                             ),
                                             Text(
                                               eWalletTitles[index],
-                                              style: AppTextStyles
-                                                  .bodyExtraSmall
+                                              style: textTheme.displaySmall!
                                                   .copyWith(
                                                       fontWeight:
                                                           FontWeight.w600),
@@ -231,7 +232,7 @@ class PaymentMethodScreen extends StatelessWidget {
                           Spacing.y(4),
                           Text(
                             "Promo Code",
-                            style: AppTextStyles.bodyExtraSmall,
+                            style: textTheme.displaySmall!,
                           ),
                           Spacing.y(1),
                           // Container(
@@ -276,7 +277,7 @@ class PaymentMethodScreen extends StatelessWidget {
                                   horizontal: SizeConfig.widthMultiplier * 5,
                                   vertical: SizeConfig.heightMultiplier * 2),
                               hintText: "Enter Here",
-                              hintStyle: AppTextStyles.bodySmall
+                              hintStyle: textTheme.bodySmall!
                                   .copyWith(color: Colors.white38),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
@@ -290,22 +291,27 @@ class PaymentMethodScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            style: AppTextStyles.bodySmall
+                            style: textTheme.bodySmall!
                                 .copyWith(fontWeight: FontWeight.w500),
-                          ),
-                          Spacing.y(8),
-                          CustomButton(
-                            title: "Continue Payment",
-                            onTap: () {
-                              Get.to(() => const DetailScreen());
-                            },
                           ),
                           Spacing.y(2)
                         ],
                       ),
                     ),
                   ),
-                )
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.widthMultiplier * 2),
+                  child: CustomButton(
+                    title: "Continue Payment",
+                    isShadow: false,
+                    onTap: () {
+                      Get.to(() => const DetailScreen());
+                    },
+                  ),
+                ),
+                Spacing.y(2)
               ],
             ),
           ),
@@ -334,6 +340,7 @@ class PaymentMethodTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -341,14 +348,14 @@ class PaymentMethodTextField extends StatelessWidget {
           children: [
             Text(
               title,
-              style: AppTextStyles.bodyExtraSmall.copyWith(
+              style: textTheme.displaySmall!.copyWith(
                   fontSize: SizeConfig.textMultiplier * 1.05,
                   color: Colors.white60),
             ),
             isRequired
                 ? Text(
                     "*",
-                    style: AppTextStyles.bodyExtraSmall.copyWith(
+                    style: textTheme.displaySmall!.copyWith(
                         fontSize: SizeConfig.textMultiplier * 1.05,
                         color: AppColors.errorClr),
                   )
@@ -370,7 +377,7 @@ class PaymentMethodTextField extends StatelessWidget {
                 horizontal: SizeConfig.widthMultiplier * 5,
                 vertical: SizeConfig.heightMultiplier * 2),
             hintText: hintText,
-            hintStyle: AppTextStyles.bodySmall.copyWith(color: Colors.white38),
+            hintStyle: textTheme.bodySmall!.copyWith(color: Colors.white38),
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.transparent),
               borderRadius: BorderRadius.circular(14),
@@ -382,7 +389,7 @@ class PaymentMethodTextField extends StatelessWidget {
               ),
             ),
           ),
-          style: AppTextStyles.bodySmall.copyWith(fontWeight: FontWeight.w500),
+          style: textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500),
         ),
         Spacing.y(1),
       ],
@@ -407,6 +414,7 @@ class PaymentMethodTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -430,8 +438,8 @@ class PaymentMethodTile extends StatelessWidget {
             ),
             Text(
               title,
-              style: AppTextStyles.bodyExtraSmall
-                  .copyWith(fontWeight: FontWeight.w600),
+              style:
+                  textTheme.displaySmall!.copyWith(fontWeight: FontWeight.w600),
             ),
             const Spacer(),
             AnimatedContainer(

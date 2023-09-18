@@ -16,19 +16,21 @@ class ForgotScreen extends StatelessWidget {
   final cont = Get.put(ForgotCont());
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: AppConstants.defaultPadding,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Spacing.y(17),
                   Text(
                     "Forgot Password?",
-                    style: AppTextStyles.bodyExtraLarge
+                    style: textTheme.displayLarge!
                         .copyWith(fontWeight: FontWeight.w700),
                   ),
                   Spacing.y(2),
@@ -36,12 +38,12 @@ class ForgotScreen extends StatelessWidget {
                     width: SizeConfig.widthMultiplier * 70,
                     child: Text(
                       "Enter your registated email address to receive password reset instruction",
-                      style: AppTextStyles.bodyExtraSmall
+                      style: textTheme.displaySmall!
                           .copyWith(height: 1.9, color: Colors.white38),
                     ),
                   ),
                   Spacing.y(6),
-                  Text("Email", style: AppTextStyles.bodyExtraSmall),
+                  Text("Email", style: textTheme.displaySmall!),
                   Spacing.y(1),
                   AuthTextField(
                       hintText: "Enter your email", controller: cont.email),

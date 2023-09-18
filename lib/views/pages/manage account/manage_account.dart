@@ -18,10 +18,12 @@ class ManageAccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -32,7 +34,7 @@ class ManageAccountScreen extends StatelessWidget {
                   Spacing.x(20),
                   Text(
                     "Manage Account",
-                    style: AppTextStyles.bodyMedium.copyWith(
+                    style: textTheme.bodyMedium!.copyWith(
                       color: Colors.white.withOpacity(.8),
                     ),
                   )
@@ -47,7 +49,7 @@ class ManageAccountScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Account Preference",
-                      style: AppTextStyles.bodySmall
+                      style: textTheme.bodySmall!
                           .copyWith(fontWeight: FontWeight.w600),
                     ),
                     Spacing.y(4),
@@ -66,7 +68,7 @@ class ManageAccountScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     manageAccountTitle[index],
-                                    style: AppTextStyles.bodyExtraSmall
+                                    style: textTheme.displaySmall!
                                         .copyWith(fontWeight: FontWeight.w500),
                                   ),
                                   SizedBox(
@@ -75,13 +77,11 @@ class ManageAccountScreen extends StatelessWidget {
                                         : SizeConfig.widthMultiplier * 77,
                                     child: Text(
                                       manageAccountDiscription[index],
-                                      style: AppTextStyles.bodyExtraSmall
-                                          .copyWith(
-                                              height: 1.9,
-                                              fontSize:
-                                                  SizeConfig.textMultiplier *
-                                                      1.05,
-                                              color: Colors.white38),
+                                      style: textTheme.displaySmall!.copyWith(
+                                          height: 1.9,
+                                          fontSize:
+                                              SizeConfig.textMultiplier * 1.05,
+                                          color: Colors.white38),
                                     ),
                                   )
                                 ],

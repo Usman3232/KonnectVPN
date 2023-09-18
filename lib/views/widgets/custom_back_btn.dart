@@ -11,6 +11,7 @@ class CustomBackButton extends StatelessWidget {
   final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return GestureDetector(
       onTap: onTap ?? () => Get.back(),
       child: Container(

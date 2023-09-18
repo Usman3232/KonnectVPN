@@ -70,16 +70,18 @@ class _ScanScreenState extends State<ScanScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Padding(
-        padding: AppConstants.defaultPadding,
+        padding:
+            EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
         child: Column(children: [
           Spacing.y(6),
           Row(
             children: [
               const CustomBackButton(),
               Spacing.x(23),
-              Text("Scan Back Side", style: AppTextStyles.bodyMedium),
+              Text("Scan Back Side", style: textTheme.bodyMedium!),
             ],
           ),
           Spacing.y(20),
@@ -90,7 +92,7 @@ class _ScanScreenState extends State<ScanScreen> {
             child: Text(
                 "Position your document inside the frame. Make sure that all the data is clearly visible.",
                 textAlign: TextAlign.center,
-                style: AppTextStyles.bodyExtraSmall.copyWith(height: 1.9)),
+                style: textTheme.displaySmall!.copyWith(height: 1.9)),
           ),
           Spacing.y(24),
           Row(

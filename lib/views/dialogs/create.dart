@@ -37,6 +37,7 @@ class _CreateDialogState extends State<CreateDialog> {
   TextEditingController address = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Dialog(
       insetPadding: EdgeInsets.zero,
       backgroundColor: Colors.transparent,
@@ -61,26 +62,26 @@ class _CreateDialogState extends State<CreateDialog> {
               alignment: Alignment.center,
               child: Text(
                 "Create",
-                style: AppTextStyles.bodyLarge
-                    .copyWith(fontWeight: FontWeight.w700),
+                style:
+                    textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),
               ),
             ),
             Spacing.y(2),
             Text(
               "Nick Name",
-              style: AppTextStyles.bodyExtraSmall,
+              style: textTheme.displaySmall!,
             ),
             Spacing.y(1),
             AuthTextField(hintText: "Nickname", controller: nickName),
             Text(
               "Wallet Option",
-              style: AppTextStyles.bodyExtraSmall,
+              style: textTheme.displaySmall!,
             ),
             Spacing.y(1),
             AuthTextField(hintText: "Nickname", controller: nickName),
             Text(
               "Address",
-              style: AppTextStyles.bodyExtraSmall,
+              style: textTheme.displaySmall!,
             ),
             Spacing.y(1),
             AuthTextField(hintText: "Address", controller: address),

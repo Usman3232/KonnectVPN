@@ -1,40 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_slider.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import '../../../constants/text_styles.dart';
 
 class BandwidthScreen extends StatelessWidget {
   const BandwidthScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Background(
         child: Padding(
-          padding: AppConstants.defaultPadding,
+          padding:
+              EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Spacing.y(6),
-              Row(
-                children: [
-                  const CustomBackButton(),
-                  Spacing.x(21),
-                  Text(
-                    "Total Bandwidth",
-                    style: AppTextStyles.bodyMedium.copyWith(
-                      color: Colors.white.withOpacity(.8),
-                    ),
-                  ),
-                ],
-              ),
+              const CustomAppbar(title: "Total Bandwidth"),
               Spacing.y(6),
               Center(
                 child: CircularPercentIndicator(
@@ -64,15 +54,25 @@ class BandwidthScreen extends StatelessWidget {
                   center: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        "4579",
-                        style: AppTextStyles.headingLarge.copyWith(
-                            fontSize: SizeConfig.textMultiplier * 4.8,
-                            fontWeight: FontWeight.w700),
+                      ShaderMask(
+                        blendMode: BlendMode.srcIn,
+                        shaderCallback: (bounds) => const LinearGradient(
+                          colors: [Colors.white, Colors.white38],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ).createShader(
+                          Rect.fromLTWH(1, 1, bounds.width, bounds.height),
+                        ),
+                        child: Text(
+                          "4579",
+                          style: textTheme.headlineLarge!.copyWith(
+                              fontSize: SizeConfig.textMultiplier * 4.8,
+                              fontWeight: FontWeight.w700),
+                        ),
                       ),
                       Text(
                         "KNKT/m",
-                        style: AppTextStyles.headingMedium
+                        style: textTheme.headlineMedium!
                             .copyWith(color: AppColors.primaryClr),
                       ),
                     ],
@@ -80,26 +80,6 @@ class BandwidthScreen extends StatelessWidget {
                 ),
               ),
               Spacing.y(7),
-              // Spacing.y(30),
-
-              // SfRadialGauge(axes: <RadialAxis>[
-              //   RadialAxis(minimum: 0, maximum: 150, ranges: <GaugeRange>[
-              //     GaugeRange(startValue: 0, endValue: 50, color: Colors.green),
-              //     GaugeRange(
-              //         startValue: 50, endValue: 100, color: Colors.orange),
-              //     GaugeRange(startValue: 100, endValue: 150, color: Colors.red)
-              //   ], pointers: <GaugePointer>[
-              //     NeedlePointer(value: 90)
-              //   ], annotations: <GaugeAnnotation>[
-              //     GaugeAnnotation(
-              //         widget: Container(
-              //             child: Text('90.0',
-              //                 style: TextStyle(
-              //                     fontSize: 25, fontWeight: FontWeight.bold))),
-              //         angle: 90,
-              //         positionFactor: 0.5)
-              //   ])
-              // ]),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.widthMultiplier * 2),
@@ -108,7 +88,7 @@ class BandwidthScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Subcription Status",
-                      style: AppTextStyles.bodySmall
+                      style: textTheme.bodySmall!
                           .copyWith(fontWeight: FontWeight.w600),
                     ),
                     Spacing.y(2),
@@ -134,14 +114,14 @@ class BandwidthScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   "Bandwidth : ",
-                                  style: AppTextStyles.bodyExtraSmall.copyWith(
+                                  style: textTheme.displaySmall!.copyWith(
                                       color: Colors.white54,
                                       fontSize:
                                           SizeConfig.textMultiplier * 1.05),
                                 ),
                                 Text(
                                   "10 KNKT/m",
-                                  style: AppTextStyles.bodyExtraSmall.copyWith(
+                                  style: textTheme.displaySmall!.copyWith(
                                       color: AppColors.primaryClr,
                                       fontWeight: FontWeight.w500,
                                       fontSize:
@@ -158,7 +138,7 @@ class BandwidthScreen extends StatelessWidget {
                     Spacing.y(4),
                     Text(
                       "Miners",
-                      style: AppTextStyles.bodySmall
+                      style: textTheme.bodySmall!
                           .copyWith(fontWeight: FontWeight.w600),
                     ),
                     Spacing.y(1),
@@ -191,12 +171,12 @@ class BandwidthScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       "Model : ",
-                                      style: AppTextStyles.bodySmall.copyWith(
+                                      style: textTheme.bodySmall!.copyWith(
                                           fontWeight: FontWeight.w700),
                                     ),
                                     Text(
                                       "12EWTU",
-                                      style: AppTextStyles.bodySmall.copyWith(
+                                      style: textTheme.bodySmall!.copyWith(
                                           color: AppColors.primaryClr,
                                           fontWeight: FontWeight.w700),
                                     ),
@@ -205,7 +185,7 @@ class BandwidthScreen extends StatelessWidget {
                                 Spacing.y(1),
                                 Text(
                                   "Bandwidth : 200 KNKT/m",
-                                  style: AppTextStyles.bodyExtraSmall
+                                  style: textTheme.displaySmall!
                                       .copyWith(color: Colors.white38),
                                 ),
                               ],
@@ -216,13 +196,13 @@ class BandwidthScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   "Count",
-                                  style: AppTextStyles.bodyExtraSmall
+                                  style: textTheme.displaySmall!
                                       .copyWith(color: Colors.white38),
                                 ),
                                 Spacing.y(1),
                                 Text(
                                   "2",
-                                  style: AppTextStyles.bodyExtraSmall
+                                  style: textTheme.displaySmall!
                                       .copyWith(fontWeight: FontWeight.w600),
                                 )
                               ],

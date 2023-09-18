@@ -17,6 +17,7 @@ class SpecialOfferScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Background(
@@ -24,7 +25,8 @@ class SpecialOfferScreen extends StatelessWidget {
           children: [
             Spacing.y(6),
             Padding(
-              padding: AppConstants.defaultPadding,
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4),
               child: const Align(
                 alignment: Alignment.topLeft,
                 child: CustomBackButton(),
@@ -33,14 +35,13 @@ class SpecialOfferScreen extends StatelessWidget {
             Spacing.y(3),
             Text(
               "Special Offer",
-              style: AppTextStyles.bodyExtraLarge
-                  .copyWith(fontWeight: FontWeight.w700),
+              style:
+                  textTheme.displayLarge!.copyWith(fontWeight: FontWeight.w700),
             ),
             Spacing.y(2),
             Text(
               "Congratulation We Have Special Offer For You ",
-              style:
-                  AppTextStyles.bodyExtraSmall.copyWith(color: Colors.white38),
+              style: textTheme.displaySmall!.copyWith(color: Colors.white38),
             ),
             Spacing.y(4),
             SizedBox(
@@ -56,10 +57,10 @@ class SpecialOfferScreen extends StatelessWidget {
                 },
               ),
             ),
-            Spacing.y(20),
+            const Spacer(),
             MaterialButton(
               height: SizeConfig.heightMultiplier * 6,
-              minWidth: SizeConfig.widthMultiplier * 92,
+              minWidth: SizeConfig.widthMultiplier * 88,
               onPressed: () {
                 Get.to(() => PaymentMethodScreen());
               },
@@ -69,7 +70,7 @@ class SpecialOfferScreen extends StatelessWidget {
               ),
               child: Text(
                 "Continue Gold Plan",
-                style: AppTextStyles.bodySmall.copyWith(
+                style: textTheme.bodySmall!.copyWith(
                     fontWeight: FontWeight.w500, color: AppColors.primaryClr),
               ),
             ),
@@ -93,6 +94,7 @@ class SpecialOffer extends StatelessWidget {
   final cont = Get.find<SpecialOfferCont>();
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Obx(
       () => Stack(
         alignment: Alignment.center,
@@ -122,7 +124,7 @@ class SpecialOffer extends StatelessWidget {
                   children: [
                     Text(
                       "\$8,25",
-                      style: AppTextStyles.bodyExtraLarge.copyWith(
+                      style: textTheme.displayLarge!.copyWith(
                           fontSize: SizeConfig.textMultiplier * 4,
                           fontWeight: FontWeight.w600,
                           color: cont.selectedOffer.value == indexx
@@ -134,7 +136,7 @@ class SpecialOffer extends StatelessWidget {
                           bottom: SizeConfig.heightMultiplier * .5),
                       child: Text(
                         " / Month",
-                        style: AppTextStyles.bodyMedium.copyWith(
+                        style: textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.w600,
                             color: cont.selectedOffer.value == indexx
                                 ? Colors.white
@@ -146,7 +148,7 @@ class SpecialOffer extends StatelessWidget {
                 Spacing.y(1),
                 Text(
                   "\$99 / year  billing yearly",
-                  style: AppTextStyles.bodySmall.copyWith(
+                  style: textTheme.bodySmall!.copyWith(
                       color: cont.selectedOffer.value == indexx
                           ? Colors.white38
                           : Colors.white10),
@@ -154,7 +156,7 @@ class SpecialOffer extends StatelessWidget {
                 Spacing.y(3),
                 Text(
                   "12 month subscriptions",
-                  style: AppTextStyles.bodyMedium.copyWith(
+                  style: textTheme.bodyMedium!.copyWith(
                       color: cont.selectedOffer.value == indexx
                           ? Colors.white
                           : Colors.white30),
@@ -184,7 +186,7 @@ class SpecialOffer extends StatelessWidget {
                         ),
                         Text(
                           subcriptionFeatures[index],
-                          style: AppTextStyles.bodyExtraSmall.copyWith(
+                          style: textTheme.displaySmall!.copyWith(
                               color: cont.selectedOffer.value == indexx
                                   ? Colors.white
                                   : Colors.white30),
