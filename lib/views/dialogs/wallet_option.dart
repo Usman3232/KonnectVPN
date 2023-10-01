@@ -4,8 +4,6 @@ import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/controllers/swap.dart';
 import 'package:konnekt_vpn/views/pages/import/import.dart';
 import 'package:konnekt_vpn/views/pages/wallet/wallet.dart';
-
-import '../../constants/text_styles.dart';
 import '../../utils/size_config.dart';
 import '../../utils/spacing.dart';
 

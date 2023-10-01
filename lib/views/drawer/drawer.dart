@@ -3,7 +3,6 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
 import 'package:konnekt_vpn/constants/icons.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/controllers/drawer.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/pages/about%20us/about_us.dart';
@@ -17,6 +16,7 @@ import 'package:konnekt_vpn/views/pages/setting/setting.dart';
 import 'package:konnekt_vpn/views/pages/subcription/subcription.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import '../../../utils/size_config.dart';
+import 'components/drawer_tile.dart';
 
 class DrawerScreen extends StatefulWidget {
   DrawerScreen({super.key});
@@ -30,7 +30,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return ZoomDrawer(
       controller: cont.zoomDrawerController,
       menuScreen: MenuDrawer(),
@@ -185,47 +184,6 @@ class MenuDrawer extends StatelessWidget {
               )
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class DrawerTile extends StatelessWidget {
-  const DrawerTile(
-      {super.key,
-      required this.title,
-      this.isSignOut = false,
-      required this.onTap,
-      required this.icons});
-
-  final String title;
-  final String icons;
-  final bool isSignOut;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding:
-            EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier * 1.7),
-        child: Row(
-          children: [
-            Image.asset(
-              icons,
-              height: SizeConfig.imageSizeMultiplier * 5,
-            ),
-            Spacing.x(3),
-            Text(
-              title,
-              style: textTheme.bodySmall!.copyWith(
-                  fontWeight: FontWeight.w500,
-                  color: isSignOut ? Colors.white : Colors.white38),
-            )
-          ],
         ),
       ),
     );

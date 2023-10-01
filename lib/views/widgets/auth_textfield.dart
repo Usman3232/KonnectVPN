@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
+
 import '../../utils/size_config.dart';
 
 class AuthTextField extends StatefulWidget {

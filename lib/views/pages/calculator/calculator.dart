@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
+
 import 'package:konnekt_vpn/constants/icons.dart';
 import 'package:konnekt_vpn/constants/images.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
+
 import 'package:konnekt_vpn/controllers/calculator.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
@@ -12,6 +12,9 @@ import 'package:konnekt_vpn/views/bottom%20sheets/subscribe_option.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/glass_background.dart';
+
+import 'components/tile.dart';
+import 'components/revenue_record.dart';
 
 class CalculatorScreen extends StatelessWidget {
   CalculatorScreen({super.key});
@@ -51,75 +54,7 @@ class CalculatorScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Revenue Record",
-                              style: textTheme.bodySmall!
-                                  .copyWith(fontWeight: FontWeight.w700),
-                            ),
-                            Container(
-                              height: SizeConfig.heightMultiplier * 4,
-                              width: SizeConfig.widthMultiplier * 42,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(48),
-                                border: Border.all(color: AppColors.borderClr),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ...List.generate(
-                                    revenueTitle.length,
-                                    (index) => GestureDetector(
-                                      onTap: () {
-                                        cont.selectedRevenue.value = index;
-                                      },
-                                      child: AnimatedContainer(
-                                        duration:
-                                            const Duration(milliseconds: 200),
-                                        curve: Curves.easeIn,
-                                        height:
-                                            SizeConfig.heightMultiplier * 3.3,
-                                        width:
-                                            SizeConfig.widthMultiplier * 13.5,
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(48),
-                                          gradient: cont
-                                                      .selectedRevenue.value ==
-                                                  index
-                                              ? LinearGradient(
-                                                  colors: [
-                                                    Colors.white,
-                                                    Colors.white.withOpacity(.8)
-                                                  ],
-                                                )
-                                              : null,
-                                        ),
-                                        child: Text(
-                                          revenueTitle[index],
-                                          style: textTheme.displaySmall!
-                                              .copyWith(
-                                                  color: cont.selectedRevenue
-                                                              .value ==
-                                                          index
-                                                      ? Colors.black
-                                                      : Colors.white,
-                                                  fontSize: SizeConfig
-                                                          .textMultiplier *
-                                                      .9,
-                                                  fontWeight: FontWeight.w600),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                        RevenueRecord(),
                         SizedBox(
                           height: SizeConfig.heightMultiplier * 25,
                           child: Row(
@@ -261,121 +196,13 @@ class CalculatorScreen extends StatelessWidget {
                           ],
                         ),
                         Spacing.y(1.5),
-                        SizedBox(
-                          height: SizeConfig.heightMultiplier * 38,
-                          child: ListView.builder(
-                            padding: EdgeInsets.zero,
-                            itemCount: 3,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical:
-                                        SizeConfig.heightMultiplier * 1.5),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      height: 52,
-                                      width: 52,
-                                      margin: EdgeInsets.only(
-                                          right:
-                                              SizeConfig.widthMultiplier * 3),
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(16),
-                                          color: Colors.white10),
-                                      alignment: Alignment.center,
-                                      child: Image.asset(
-                                        AppIcons.dataBase,
-                                        height: SizeConfig.imageSizeMultiplier *
-                                            5.5,
-                                      ),
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "Model : ",
-                                              style: textTheme.bodySmall!
-                                                  .copyWith(
-                                                      fontWeight:
-                                                          FontWeight.w700),
-                                            ),
-                                            Text(
-                                              "12EWTU",
-                                              style: textTheme.bodySmall!
-                                                  .copyWith(
-                                                      color:
-                                                          AppColors.primaryClr,
-                                                      fontWeight:
-                                                          FontWeight.w700),
-                                            ),
-                                          ],
-                                        ),
-                                        Spacing.y(1),
-                                        Text(
-                                          "Bandwidth : 200 KNKT/m",
-                                          style: textTheme.displaySmall!
-                                              .copyWith(color: Colors.white38),
-                                        )
-                                      ],
-                                    ),
-                                    const Spacer(),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "Count",
-                                          style: textTheme.displaySmall!
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: SizeConfig
-                                                          .textMultiplier *
-                                                      1.05,
-                                                  color: Colors.white38),
-                                        ),
-                                        Spacing.y(1),
-                                        Container(
-                                          height:
-                                              SizeConfig.heightMultiplier * 3.5,
-                                          width:
-                                              SizeConfig.widthMultiplier * 10.5,
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              color: Colors.white10),
-                                          alignment: Alignment.center,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                "2",
-                                                style: textTheme.displaySmall!
-                                                    .copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                              ),
-                                              Spacing.x(1),
-                                              Icon(
-                                                Icons
-                                                    .keyboard_arrow_down_rounded,
-                                                color: Colors.white38,
-                                                size: SizeConfig
-                                                        .imageSizeMultiplier *
-                                                    4,
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              );
-                            },
-                          ),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          itemCount: 3,
+                          itemBuilder: (context, index) {
+                            return const DeviceTile();
+                          },
                         )
                       ],
                     ),

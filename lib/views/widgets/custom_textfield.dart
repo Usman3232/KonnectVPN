@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
+
 import '../../utils/size_config.dart';
 
 class CustomTextField extends StatefulWidget {

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/images.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
-import '../../../constants/text_styles.dart';
 
 class TransactionDetailScreen extends StatelessWidget {
   const TransactionDetailScreen({super.key});
@@ -108,7 +106,7 @@ class TransactionDetailScreen extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Transaction ID",
+                                          "Source of Funds",
                                           style: textTheme.displaySmall!
                                               .copyWith(
                                                   fontSize: SizeConfig
@@ -138,7 +136,7 @@ class TransactionDetailScreen extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Transaction ID",
+                                          "Destination",
                                           style: textTheme.displaySmall!
                                               .copyWith(
                                                   fontSize: SizeConfig

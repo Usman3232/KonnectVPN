@@ -1,34 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/icons.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
-import 'package:konnekt_vpn/controllers/payment_method.dart';
+import 'package:konnekt_vpn/controllers/subcription.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/pages/detail/detail.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
-import 'package:flutter_fadein/flutter_fadein.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
+import 'components/card_expansion_tile.dart';
+import 'components/payment_tile.dart';
+import 'components/promo_textfield.dart';
+import 'components/wallet_expansion_tile.dart';
 
 class PaymentMethodScreen extends StatelessWidget {
   PaymentMethodScreen({super.key});
-  final cont = Get.put(PaymentMethodCont());
+  final cont = Get.put(SubcriptionCont());
 
-  final TextEditingController name = TextEditingController();
-  final TextEditingController number = TextEditingController();
-  final TextEditingController date = TextEditingController();
-  final TextEditingController cvc = TextEditingController();
-
-  List<String> eWalletTitles = ["Paypal", "Google Pay", "Apple Pay"];
-
-  List<String> eWalletIcons = [
-    AppIcons.paypal,
-    AppIcons.googlePay,
-    AppIcons.applePay
-  ];
+  TextEditingController code = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,60 +53,7 @@ class PaymentMethodScreen extends StatelessWidget {
                             },
                             isCheck: cont.isIdCard.value,
                           ),
-                          Visibility(
-                            visible: cont.isIdCard.value,
-                            child: FadeIn(
-                              duration: const Duration(milliseconds: 600),
-                              curve: Curves.easeIn,
-                              child: Container(
-                                width: SizeConfig.widthMultiplier * 88,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: SizeConfig.widthMultiplier * 4,
-                                    vertical: SizeConfig.heightMultiplier * 3),
-                                margin: EdgeInsets.only(
-                                    bottom: SizeConfig.heightMultiplier * 2),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Colors.white10),
-                                child: Column(
-                                  children: [
-                                    PaymentMethodTextField(
-                                      title: "Name On Card",
-                                      hintText: "Card Owner",
-                                      controller: name,
-                                    ),
-                                    PaymentMethodTextField(
-                                      title: "Card Number",
-                                      hintText: "Card Number",
-                                      controller: name,
-                                      isObsecure: true,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Flexible(
-                                          child: PaymentMethodTextField(
-                                            title: "Expiration Date",
-                                            hintText: "MM/YY",
-                                            controller: name,
-                                            isRequired: false,
-                                          ),
-                                        ),
-                                        Spacing.x(4),
-                                        Flexible(
-                                          child: PaymentMethodTextField(
-                                            title: "Pin",
-                                            hintText: "CVC",
-                                            controller: name,
-                                            isRequired: false,
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
+                          CardExpansionTile(),
                           PaymentMethodTile(
                             title: "E-Wallet",
                             icon: AppIcons.eWallet,
@@ -125,98 +62,7 @@ class PaymentMethodScreen extends StatelessWidget {
                             },
                             isCheck: cont.isEWallet.value,
                           ),
-                          FadeIn(
-                            duration: const Duration(seconds: 3),
-                            curve: Curves.easeIn,
-                            child: Visibility(
-                              visible: cont.isEWallet.value,
-                              child: Column(
-                                children: [
-                                  ...List.generate(
-                                    3,
-                                    (index) => InkWell(
-                                      onTap: () {
-                                        cont.selectedEWallet.value = index;
-                                      },
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical:
-                                                SizeConfig.heightMultiplier *
-                                                    .5),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              height: 36,
-                                              width: 36,
-                                              margin: EdgeInsets.only(
-                                                  left: SizeConfig
-                                                          .widthMultiplier *
-                                                      8,
-                                                  right: SizeConfig
-                                                          .widthMultiplier *
-                                                      4),
-                                              decoration: BoxDecoration(
-                                                color: Colors.white10,
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                              alignment: Alignment.center,
-                                              child: Image.asset(
-                                                eWalletIcons[index],
-                                                height: SizeConfig
-                                                        .imageSizeMultiplier *
-                                                    6,
-                                              ),
-                                            ),
-                                            Text(
-                                              eWalletTitles[index],
-                                              style: textTheme.displaySmall!
-                                                  .copyWith(
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                            ),
-                                            const Spacer(),
-                                            AnimatedContainer(
-                                              duration: const Duration(
-                                                  milliseconds: 300),
-                                              height: 16,
-                                              width: 16,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                border: Border.all(
-                                                  color: cont.selectedEWallet
-                                                              .value ==
-                                                          index
-                                                      ? const Color(0xff44CCCC)
-                                                      : Colors.white24,
-                                                ),
-                                              ),
-                                              alignment: Alignment.center,
-                                              child: AnimatedContainer(
-                                                duration: const Duration(
-                                                    milliseconds: 300),
-                                                height: 10,
-                                                width: 10,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: cont.selectedEWallet
-                                                              .value ==
-                                                          index
-                                                      ? const Color(0xff44CCCC)
-                                                      : Colors.transparent,
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Spacing.y(2),
-                                ],
-                              ),
-                            ),
-                          ),
+                          EWalletExpansionTile(),
                           PaymentMethodTile(
                             title: "Crypto",
                             icon: AppIcons.crypto,
@@ -225,6 +71,7 @@ class PaymentMethodScreen extends StatelessWidget {
                             },
                             isCheck: cont.isCrypto.value,
                           ),
+                          //extract this code after design
                           Visibility(
                             visible: cont.isEWallet.value,
                             child: const SizedBox(),
@@ -235,64 +82,8 @@ class PaymentMethodScreen extends StatelessWidget {
                             style: textTheme.displaySmall!,
                           ),
                           Spacing.y(1),
-                          // Container(
-                          //   height: SizeConfig.heightMultiplier * 6,
-                          //   width: SizeConfig.widthMultiplier * 88,
-                          //   decoration: BoxDecoration(borderRadius: BorderRadius.circular(14),border: ),
-                          // ),
-                          TextFormField(
-                            cursorColor: AppColors.primaryClr,
-                            // keyboardType: keyboardType,
-                            decoration: InputDecoration(
-                              isDense: true,
-                              isCollapsed: true,
-                              fillColor: Colors.white10,
-                              filled: true,
-                              prefixIcon: SizedBox(
-                                width: SizeConfig.widthMultiplier * 17,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                        width:
-                                            SizeConfig.widthMultiplier * 1.6),
-                                    Image.asset(
-                                      AppIcons.promo,
-                                      height:
-                                          SizeConfig.imageSizeMultiplier * 6,
-                                    ),
-                                    Spacing.x(2),
-                                    SizedBox(
-                                      height: SizeConfig.heightMultiplier * 3,
-                                      child: VerticalDivider(
-                                        width: SizeConfig.widthMultiplier * 3,
-                                        color: Colors.white38,
-                                        thickness: 1,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: SizeConfig.widthMultiplier * 5,
-                                  vertical: SizeConfig.heightMultiplier * 2),
-                              hintText: "Enter Here",
-                              hintStyle: textTheme.bodySmall!
-                                  .copyWith(color: Colors.white38),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.white60),
-                                borderRadius: BorderRadius.circular(14),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(14),
-                                borderSide: BorderSide(
-                                  color: AppColors.primaryClr,
-                                ),
-                              ),
-                            ),
-                            style: textTheme.bodySmall!
-                                .copyWith(fontWeight: FontWeight.w500),
+                          PaymentTextField(
+                            controller: code,
                           ),
                           Spacing.y(2)
                         ],
@@ -315,155 +106,6 @@ class PaymentMethodScreen extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class PaymentMethodTextField extends StatelessWidget {
-  PaymentMethodTextField({
-    super.key,
-    required this.title,
-    required this.hintText,
-    required this.controller,
-    this.isRequired = true,
-    this.isObsecure = false,
-    this.keyboardType,
-  });
-
-  final String title, hintText;
-  final TextEditingController controller;
-  final bool isRequired;
-  final bool isObsecure;
-  final TextInputType? keyboardType;
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Text(
-              title,
-              style: textTheme.displaySmall!.copyWith(
-                  fontSize: SizeConfig.textMultiplier * 1.05,
-                  color: Colors.white60),
-            ),
-            isRequired
-                ? Text(
-                    "*",
-                    style: textTheme.displaySmall!.copyWith(
-                        fontSize: SizeConfig.textMultiplier * 1.05,
-                        color: AppColors.errorClr),
-                  )
-                : const SizedBox(),
-          ],
-        ),
-        Spacing.y(1),
-        TextFormField(
-          obscureText: isObsecure,
-          obscuringCharacter: "*",
-          cursorColor: AppColors.primaryClr,
-          keyboardType: keyboardType,
-          decoration: InputDecoration(
-            isDense: true,
-            isCollapsed: true,
-            fillColor: Colors.white10,
-            filled: true,
-            contentPadding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.widthMultiplier * 5,
-                vertical: SizeConfig.heightMultiplier * 2),
-            hintText: hintText,
-            hintStyle: textTheme.bodySmall!.copyWith(color: Colors.white38),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.transparent),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(
-                color: AppColors.primaryClr,
-              ),
-            ),
-          ),
-          style: textTheme.bodySmall!.copyWith(fontWeight: FontWeight.w500),
-        ),
-        Spacing.y(1),
-      ],
-    );
-  }
-}
-
-class PaymentMethodTile extends StatelessWidget {
-  PaymentMethodTile({
-    super.key,
-    required this.title,
-    required this.onTap,
-    required this.isCheck,
-    required this.icon,
-  });
-
-  final String title, icon;
-  final VoidCallback onTap;
-  final bool isCheck;
-
-  final cont = Get.find<PaymentMethodCont>();
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding:
-            EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier * 2),
-        child: Row(
-          children: [
-            Container(
-              height: 30,
-              width: 30,
-              margin: EdgeInsets.only(right: SizeConfig.widthMultiplier * 4),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white10,
-              ),
-              alignment: Alignment.center,
-              child: Image.asset(
-                icon,
-                height: SizeConfig.imageSizeMultiplier * 4.5,
-              ),
-            ),
-            Text(
-              title,
-              style:
-                  textTheme.displaySmall!.copyWith(fontWeight: FontWeight.w600),
-            ),
-            const Spacer(),
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              height: 16,
-              width: 16,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: isCheck ? const Color(0xff44CCCC) : Colors.white24,
-                ),
-              ),
-              alignment: Alignment.center,
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                height: 10,
-                width: 10,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: isCheck ? const Color(0xff44CCCC) : Colors.transparent,
-                ),
-              ),
-            )
-          ],
         ),
       ),
     );

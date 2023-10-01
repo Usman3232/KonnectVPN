@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
 import 'package:konnekt_vpn/constants/icons.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/controllers/swap.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
@@ -11,7 +9,6 @@ import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 import 'package:konnekt_vpn/views/widgets/glass_background.dart';
-import '../../dialogs/empty_wallet_option.dart';
 import '../../dialogs/wallet_option.dart';
 import '../../widgets/number_button.dart';
 
@@ -155,8 +152,8 @@ class SwapScreen extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          height: 28,
-                          width: 63,
+                          height: SizeConfig.heightMultiplier * 3,
+                          width: SizeConfig.widthMultiplier * 15.2,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
                               color: Colors.white10),

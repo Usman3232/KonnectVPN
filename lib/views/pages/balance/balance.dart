@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
+
 import 'package:konnekt_vpn/controllers/swap.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
@@ -13,6 +12,7 @@ import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/glass_background.dart';
 
 import '../../../constants/icons.dart';
+import 'components/wallet_tile.dart';
 
 class BalanceScreen extends StatelessWidget {
   BalanceScreen({super.key});
@@ -141,62 +141,7 @@ class BalanceScreen extends StatelessWidget {
                             padding: EdgeInsets.zero,
                             itemCount: 20,
                             itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical:
-                                        SizeConfig.heightMultiplier * 1.5),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "1000 KPN",
-                                          style: textTheme.bodyMedium!.copyWith(
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        Spacing.y(.6),
-                                        Text(
-                                          "87oftg6758ed76",
-                                          style: textTheme.bodySmall!
-                                              .copyWith(color: Colors.white54),
-                                        )
-                                      ],
-                                    ),
-                                    Container(
-                                      height: SizeConfig.heightMultiplier * 3.3,
-                                      width: SizeConfig.widthMultiplier * 22,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
-                                        border: Border.all(
-                                            color: AppColors.primaryClr),
-                                      ),
-                                      alignment: Alignment.center,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "Private Key",
-                                            style: textTheme.displaySmall!
-                                                .copyWith(
-                                                    color: AppColors.primaryClr,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: SizeConfig
-                                                            .textMultiplier *
-                                                        1.05),
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              );
+                              return const WalletTile();
                             },
                           ),
                         )

@@ -5,9 +5,10 @@ import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
-import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_slider.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+
+import 'components/miners_tile.dart';
 
 class BandwidthScreen extends StatelessWidget {
   const BandwidthScreen({super.key});
@@ -144,72 +145,7 @@ class BandwidthScreen extends StatelessWidget {
                     Spacing.y(1),
                     ...List.generate(
                       3,
-                      (index) => Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: SizeConfig.heightMultiplier * 1.5),
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 52,
-                              width: 52,
-                              margin: EdgeInsets.only(
-                                  right: SizeConfig.widthMultiplier * 4),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: Colors.white10),
-                              alignment: Alignment.center,
-                              child: Image.asset(
-                                AppIcons.dataBase,
-                                height: SizeConfig.imageSizeMultiplier * 6,
-                              ),
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      "Model : ",
-                                      style: textTheme.bodySmall!.copyWith(
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                    Text(
-                                      "12EWTU",
-                                      style: textTheme.bodySmall!.copyWith(
-                                          color: AppColors.primaryClr,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ],
-                                ),
-                                Spacing.y(1),
-                                Text(
-                                  "Bandwidth : 200 KNKT/m",
-                                  style: textTheme.displaySmall!
-                                      .copyWith(color: Colors.white38),
-                                ),
-                              ],
-                            ),
-                            const Spacer(),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Count",
-                                  style: textTheme.displaySmall!
-                                      .copyWith(color: Colors.white38),
-                                ),
-                                Spacing.y(1),
-                                Text(
-                                  "2",
-                                  style: textTheme.displaySmall!
-                                      .copyWith(fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
+                      (index) => const MinersTile(),
                     )
                   ],
                 ),

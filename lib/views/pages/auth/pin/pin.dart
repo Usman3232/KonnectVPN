@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
+
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
+
+import 'components/pin_button.dart';
 
 class PinScreen extends StatelessWidget {
   const PinScreen({super.key});
@@ -116,45 +117,6 @@ class PinScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class PinButton extends StatelessWidget {
-  const PinButton({
-    super.key,
-    this.title = "0",
-    required this.onTap,
-    this.isDecoration = true,
-    this.isIcon = false,
-  });
-  final String title;
-  final VoidCallback onTap;
-  final bool isDecoration;
-  final bool isIcon;
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Container(
-      height: SizeConfig.heightMultiplier * 12,
-      width: SizeConfig.widthMultiplier * 24,
-      decoration: isDecoration
-          ? const BoxDecoration(color: Colors.white10, shape: BoxShape.circle)
-          : null,
-      child: MaterialButton(
-        onPressed: onTap,
-        shape: const CircleBorder(),
-        child: isIcon
-            ? const Icon(
-                Icons.arrow_back_rounded,
-                color: Colors.white,
-              )
-            : Text(
-                title,
-                style: textTheme.headlineLarge!,
-              ),
       ),
     );
   }

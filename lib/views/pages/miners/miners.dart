@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:konnekt_vpn/constants/colors.dart';
-import 'package:konnekt_vpn/constants/constants.dart';
-import 'package:konnekt_vpn/constants/text_styles.dart';
 import 'package:konnekt_vpn/utils/size_config.dart';
 import 'package:konnekt_vpn/utils/spacing.dart';
 import 'package:konnekt_vpn/views/pages/payment%20method/payment_method.dart';
 import 'package:konnekt_vpn/views/widgets/background.dart';
 import 'package:konnekt_vpn/views/widgets/custom_appbar.dart';
-import 'package:konnekt_vpn/views/widgets/custom_back_btn.dart';
 import 'package:konnekt_vpn/views/widgets/custom_btn.dart';
 
 class MinerScreen extends StatefulWidget {
@@ -25,7 +22,6 @@ class _MinerScreenState extends State<MinerScreen> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: Background(
         child: Padding(
           padding:
@@ -33,7 +29,7 @@ class _MinerScreenState extends State<MinerScreen> {
           child: Column(
             children: [
               Spacing.y(6),
-              const CustomAppbar(title: "Miners Detail"),
+              const CustomAppbar(title: "Miners"),
               Spacing.y(5),
               Padding(
                 padding: EdgeInsets.symmetric(
